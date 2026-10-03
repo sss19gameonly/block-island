@@ -3,17 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>Block Island Ver.1.2.2</title>
+<title>Block Island Ver.1.2.3</title>
 <style>
 :root{--sea:#8fd6e8;--land:#b9d98c;--land2:#d7e9ad;--ink:#17313a;--muted:#607780;--panel:#ffffff;--accent:#ef8f35;--accent2:#2f7f77;--border:#cddde1;--glow:#ffd166;--danger:#c94f4f}
 *{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef8fb;color:var(--ink);margin:0;padding:14px 12px 32px;text-align:center}main{max-width:720px;margin:0 auto}h1{font-size:26px;margin:4px 0 2px}.subtitle{font-size:13px;color:var(--muted);margin:0 0 10px}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:7px 4px;font-size:12px}.stat b{display:block;font-size:20px;margin-top:2px}.progress{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:14px}.handTitle{font-size:13px;color:var(--muted);text-align:left;margin:6px 2px}.hand{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}.card{min-height:74px;border:2px solid var(--border);background:#fff;border-radius:13px;padding:6px 4px;color:var(--ink);font-weight:700;touch-action:manipulation}.card .icon{font-size:27px;display:block;line-height:1.1}.card .name{font-size:12px;display:block;margin-top:4px}.card .tag{font-size:9px;color:var(--muted);display:block;font-weight:600}.card.selected{border-color:var(--accent);background:#fff4e8;box-shadow:0 0 0 2px rgba(239,143,53,.15)}.card.fixed{border-style:dashed}.forecast{font-size:12px;color:var(--muted);margin:-2px 0 9px}.cell.forecastCell{box-shadow:inset 0 0 0 3px rgba(255,255,255,.82),0 0 0 2px rgba(69,135,167,.55);animation:forecastPulse 1.45s infinite}.forecastMark{position:absolute;right:4px;top:2px;font-size:13px;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35)}.floatDelta{position:absolute;left:50%;top:8%;transform:translateX(-50%);z-index:20;pointer-events:none;font-size:12px;font-weight:900;white-space:nowrap;background:rgba(255,255,255,.94);border:1px solid rgba(23,49,58,.12);border-radius:999px;padding:3px 6px;animation:floatUp 1.15s ease forwards}.landBurst{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;pointer-events:none;animation:landPop .8s ease forwards}.card:disabled{opacity:.45}.boardWrap{background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px;margin:0 auto}.board{display:grid;gap:4px;justify-content:center;margin:auto}.cell{position:relative;width:min(13.9vw,58px);aspect-ratio:1;border:1px solid rgba(31,75,83,.16);border-radius:10px;background:var(--sea);font-size:28px;padding:0;touch-action:manipulation;overflow:visible}.cell.land{background:linear-gradient(145deg,var(--land2),var(--land))}.cell.valid{outline:3px solid rgba(47,127,119,.45);outline-offset:-3px}.cell.mergeable{animation:pulse 1.1s infinite;box-shadow:0 0 0 3px rgba(255,209,102,.7)}.cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8);animation:none}.cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65);animation:pulse 1s infinite}.cell .terrainDot{position:absolute;left:4px;bottom:3px;font-size:8px;opacity:.5}.levelBadge{position:absolute;right:3px;bottom:2px;z-index:7;font-size:9px;font-weight:900;line-height:1;background:rgba(255,255,255,.82);color:var(--ink);border-radius:5px;padding:3px 4px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}.cell .obj{display:inline-block;transition:transform .18s ease,opacity .18s ease}.cell.pop .obj{animation:pop .28s ease}.status{min-height:54px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:10px 0 8px;font-size:14px;display:flex;align-items:center;justify-content:center}.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.action{border:0;border-radius:10px;padding:10px 14px;background:var(--accent2);color:#fff;font-weight:700}.action.secondary{background:#738a92}.action.warn{background:var(--accent)}.action:disabled{opacity:.4}.legend{font-size:11px;color:var(--muted);margin-top:8px}.achievement{margin-top:10px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}.achievement h2{font-size:14px;margin:0 0 6px}.achList{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:11px;background:#edf4f4;border-radius:999px;padding:5px 8px}.badge.locked{opacity:.35}.result{display:none;background:#fff8e9;border:2px solid #f2c56b;border-radius:16px;padding:16px;margin-top:12px}.result.show{display:block}.result h2{margin:0 0 4px}.result .islandType{font-size:24px;font-weight:900}.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.mini{background:#fff;border-radius:9px;padding:6px 2px;font-size:11px}.mini b{display:block;font-size:17px}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}@keyframes forecastPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.1)}}@keyframes floatUp{0%{opacity:0;transform:translate(-50%,8px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-28px) scale(1.05)}}@keyframes landPop{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1)}}@keyframes pop{0%{transform:scale(.65);opacity:.35}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
 .detailPanel{display:none;text-align:left;background:#fff;border:2px solid var(--accent2);border-radius:14px;padding:11px 12px;margin:10px 0 8px;position:relative}.detailPanel.show{display:block}.detailHead{display:flex;align-items:center;gap:10px}.detailIcon{font-size:32px}.detailTitle{font-weight:900;font-size:18px}.detailBranch{font-size:11px;color:var(--muted)}.detailStats{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.detailChip{background:#edf5f4;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:800}.detailText{font-size:12px;color:var(--muted);line-height:1.55;margin:5px 0}.detailActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.detailActions button{border:0;border-radius:9px;padding:9px 12px;font-weight:800}.detailMerge{background:var(--accent);color:#fff}.detailClose{background:#e7eff1;color:var(--ink)}.cell.detail-selected{outline:3px solid rgba(47,127,119,.7);outline-offset:-3px}.obj.merge-keep-prep{animation:mergeKeep .28s ease forwards}.obj.merge-source-fly{animation:mergeFly .28s ease forwards;z-index:25;position:relative}.obj.merge-result{animation:mergeResult .46s cubic-bezier(.2,.9,.3,1.35)}.obj.merge-result.final{animation:mergeFinal .72s cubic-bezier(.15,.9,.25,1.3)}@keyframes mergeKeep{0%{transform:scale(1)}60%{transform:scale(.58)}100%{transform:scale(.72)}}@keyframes mergeFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.28);opacity:.2}}@keyframes mergeResult{0%{transform:scale(.45);opacity:.25}55%{transform:scale(1.34);opacity:1}100%{transform:scale(1)}}@keyframes mergeFinal{0%{transform:scale(.35) rotate(-3deg);opacity:.2}48%{transform:scale(1.58) rotate(2deg);opacity:1}72%{transform:scale(.92)}100%{transform:scale(1)}}
+
+.cell.finalPair{background:linear-gradient(145deg,#dff0b9,#a9cf73);box-shadow:inset 0 0 0 2px rgba(239,143,53,.38)}
+.cell.finalPair .obj{font-size:34px;filter:drop-shadow(0 2px 1px rgba(0,0,0,.10))}
+.cell.finalPairH.finalPairStart{border-right-color:transparent;border-top-right-radius:3px;border-bottom-right-radius:3px}
+.cell.finalPairH.finalPairEnd{border-left-color:transparent;border-top-left-radius:3px;border-bottom-left-radius:3px}
+.cell.finalPairV.finalPairStart{border-bottom-color:transparent;border-bottom-left-radius:3px;border-bottom-right-radius:3px}
+.cell.finalPairV.finalPairEnd{border-top-color:transparent;border-top-left-radius:3px;border-top-right-radius:3px}
+.cell.finalPairH.finalPairStart::after,.cell.finalPairV.finalPairStart::after{content:'LINK';position:absolute;z-index:6;font-size:7px;font-weight:900;color:#fff;background:rgba(239,143,53,.86);padding:2px 4px;border-radius:999px;left:4px;top:4px}
 @media(max-width:380px){body{padding-left:8px;padding-right:8px}.cell{width:min(13.5vw,52px);font-size:25px}.card{min-height:70px}.card .icon{font-size:24px}}
 </style>
 </head>
 <body>
 <main>
-<h1>🏝️ Block Island <small style="font-size:12px;color:#607780">Ver.1.2.2</small></h1>
+<h1>🏝️ Block Island <small style="font-size:12px;color:#607780">Ver.1.2.3</small></h1>
 <p class="subtitle">島は2ターンごとに成長。配置・仕込み・連鎖、そしてFinal Developmentで最終進化。</p>
 <div class="topbar">
   <div class="stat">👥 Population<b id="popStat">0</b></div>
@@ -40,7 +48,7 @@
   <button class="action" id="finish" hidden>島を完成させる</button>
   <button class="action secondary" id="reset">最初から</button>
 </div>
-<div class="legend">✨ 黄色く光るアイテムは合体可能。残したいマスをタップすると即合体。通常の設置済みマスをタップすると下に説明を表示。右下のLvは進化段階。Final Developmentでは最終進化が解禁。◇は次の陸地候補。</div>
+<div class="legend">✨ 黄色く光るアイテムは合体可能。残したいマスをタップすると即合体。通常の設置済みマスをタップすると下に説明を表示。右下のLvは進化段階。Final Developmentの最終進化は2マスを保持した大型施設になる。◇は次の陸地候補。</div>
 <section class="achievement">
   <h2>実績 / Unlocks</h2>
   <div class="achList" id="achievements"></div>
@@ -103,7 +111,7 @@ const ACHS={
 };
 
 let state;
-function blankCell(){return {terrain:'water',object:null};}
+function blankCell(){return {terrain:'water',object:null,finalGroup:null};}
 function initialLandIndices(){const a=Math.floor(N/2)-1,b=Math.floor(N/2);return [a*N+a,a*N+b,b*N+a,b*N+b];}
 function loadProgress(){try{return JSON.parse(localStorage.getItem('blockIslandProgressV11')||'{}');}catch{return {};}}
 function saveProgress(){try{localStorage.setItem('blockIslandProgressV11',JSON.stringify(state.progress));}catch{}}
@@ -116,7 +124,8 @@ function freshState(){
 }
 function idxXY(i){return [i%N,Math.floor(i/N)];}
 function neighbors(i){const [x,y]=idxXY(i);return [[x-1,y],[x+1,y],[x,y-1],[x,y+1]].filter(([a,b])=>a>=0&&a<N&&b>=0&&b<N).map(([a,b])=>b*N+a);}
-function countObj(id){return state.cells.filter(c=>c.object===id).length;}
+function countObj(id){const seen=new Set();let n=0;state.cells.forEach(c=>{if(c.object!==id)return;if(c.finalGroup){if(seen.has(c.finalGroup))return;seen.add(c.finalGroup);}n++;});return n;}
+function linkedFinalMate(i){const g=state.cells[i]?.finalGroup;if(!g)return null;for(let j=0;j<state.cells.length;j++)if(j!==i&&state.cells[j].finalGroup===g)return j;return null;}
 function objectAt(i){return state.cells[i].object?OBJECTS[state.cells[i].object]:null;}
 function canEvolve(o){if(!o)return false;const next=CHAINS[o.branch][o.level+1];if(!next)return false;if(next.finalOnly&&!state.finalPhase)return false;return true;}
 function sameMergeNeighbors(i){const o=objectAt(i);if(!canEvolve(o))return [];return neighbors(i).filter(j=>state.cells[j].object===o.id);}
@@ -154,7 +163,7 @@ function place(i){
  if(!canPlaceObject(i)){statusEl.textContent='ここには配置できないよ。';return;}
  state.detailIndex=null;
  const before={...state.stats};
- const cardId=state.hand[state.selected];state.cells[i].object=cardId;state.hand.splice(state.selected,1,drawCard());
+ const cardId=state.hand[state.selected];state.cells[i].object=cardId;state.cells[i].finalGroup=null;state.hand.splice(state.selected,1,drawCard());
  state.turn++;state.selected=null;recomputeStats();const after={...state.stats};checkAchievements();
  let landIdx=null;
  if(state.turn%CONFIG.landEvery===0&&state.turn<MAX_TURNS)landIdx=growLandFromForecast();
@@ -189,12 +198,21 @@ function mergePair(keep,remove){
  if(keepObj)keepObj.classList.add('merge-keep-prep');
  if(sourceObj&&keepObj){const a=sourceObj.getBoundingClientRect(),b=keepObj.getBoundingClientRect();sourceObj.style.setProperty('--dx',`${b.left-a.left}px`);sourceObj.style.setProperty('--dy',`${b.top-a.top}px`);sourceObj.classList.add('merge-source-fly');}
  setTimeout(()=>{
-  state.cells[keep].object=next.id;state.cells[remove].object=null;state.mergeMode=null;state.detailIndex=null;recomputeStats();const after={...state.stats};checkAchievements();
-  const chained=sameMergeNeighbors(keep).length>0;
-  if(next.finalOnly)statusEl.textContent=`🌟 FINAL EVOLUTION！ ${o.name}×2 → ${next.name}！`;
+  if(next.finalOnly){
+   const group=`F${Date.now()}_${keep}_${remove}`;
+   state.cells[keep].object=next.id;state.cells[remove].object=next.id;
+   state.cells[keep].finalGroup=group;state.cells[remove].finalGroup=group;
+  }else{
+   state.cells[keep].object=next.id;state.cells[remove].object=null;
+   state.cells[keep].finalGroup=null;state.cells[remove].finalGroup=null;
+  }
+  state.mergeMode=null;state.detailIndex=null;recomputeStats();const after={...state.stats};checkAchievements();
+  const chained=!next.finalOnly&&sameMergeNeighbors(keep).length>0;
+  if(next.finalOnly)statusEl.textContent=`🌟 FINAL EVOLUTION！ ${o.name}×2 → 2マス大型${next.name}！`;
   else statusEl.textContent=chained?`✨ ${o.name}×2 → ${next.name}！ さらに連鎖できる！`:`✨ ${o.name}×2 → ${next.name}！`;
   state.animating=false;render();
-  const resultObj=boardEl.children[keep]?.querySelector('.obj');if(resultObj){resultObj.classList.add('merge-result');if(next.finalOnly)resultObj.classList.add('final');setTimeout(()=>resultObj.classList.remove('merge-result','final'),800);}
+  const indices=next.finalOnly?[keep,remove]:[keep];
+  indices.forEach(idx=>{const resultObj=boardEl.children[idx]?.querySelector('.obj');if(resultObj){resultObj.classList.add('merge-result');if(next.finalOnly)resultObj.classList.add('final');setTimeout(()=>resultObj.classList.remove('merge-result','final'),800);}});
   showStatDelta(keep,before,after,true);
  },290);
 }
@@ -203,12 +221,12 @@ function statsHTML(o){const meta={population:'👥 Population',economy:'💰 Eco
 function synergyFor(o){
  if(o.id==='forest'||o.id==='ruins')return '相性：森と遺跡が隣接すると Nature +5 / Culture +5。';
  if(o.id==='house'||o.id==='market')return '相性：家と市場が隣接すると Population +5 / Economy +5。';
- if(o.finalOnly)return 'Final Developmentでのみ作れる最終進化。大きなステータス上昇を得られる。';
+ if(o.finalOnly)return 'Final Development限定の2マス大型施設。ステータスは1施設分、隣接判定は2マスの両方から行う。';
  return '同じアイテムを隣接させると進化候補になる。合体は好きなタイミングで実行できる。';
 }
 function showDetails(i){
  const o=objectAt(i);if(!o)return closeDetails();state.detailIndex=i;
- detailIcon.textContent=o.icon;detailTitle.textContent=o.name;detailBranch.textContent=`${branchJP(o.branch)} / ${o.finalOnly?'Final Evolution':`Lv.${o.level+1}`}`;detailStats.innerHTML=statsHTML(o);
+ detailIcon.textContent=o.icon;detailTitle.textContent=o.name;detailBranch.textContent=`${branchJP(o.branch)} / ${o.finalOnly?'Final Evolution・2マス大型施設':`Lv.${o.level+1}`}`;detailStats.innerHTML=statsHTML(o);
  const next=CHAINS[o.branch][o.level+1];
  if(!next)detailEvolution.textContent='進化：このルートの最終段階。';
  else if(next.finalOnly&&!state.finalPhase)detailEvolution.textContent=`進化：${o.name}×2 → ${next.name}（Final Development限定）`;
@@ -219,7 +237,8 @@ function showDetails(i){
 function closeDetails(){state.detailIndex=null;detailPanel.classList.remove('show');renderBoard();}
 function recomputeStats(){
  const s={population:0,economy:0,nature:0,culture:0};
- state.cells.forEach(c=>{if(!c.object)return;const o=OBJECTS[c.object];for(const [k,v] of Object.entries(o.stats))s[k]+=v;});
+ const countedFinalGroups=new Set();
+ state.cells.forEach(c=>{if(!c.object)return;if(c.finalGroup){if(countedFinalGroups.has(c.finalGroup))return;countedFinalGroups.add(c.finalGroup);}const o=OBJECTS[c.object];for(const [k,v] of Object.entries(o.stats))s[k]+=v;});
  for(let i=0;i<state.cells.length;i++){
   const a=state.cells[i].object;if(!a)continue;
   for(const j of neighbors(i)){if(j<=i)continue;const b=state.cells[j].object;if(!b)continue;const pair=[a,b].sort().join('|');
@@ -249,6 +268,8 @@ function renderBoard(){
   if(state.detailIndex===i)b.classList.add('detail-selected');
   if(state.mergeMode){if(i===state.mergeMode.target)b.classList.add('merge-target');const opts=sameMergeNeighbors(state.mergeMode.target);if(opts.includes(i))b.classList.add('merge-source');}
   const o=c.object?OBJECTS[c.object]:null;
+  const mate=c.finalGroup?linkedFinalMate(i):null;
+  if(c.finalGroup&&mate!==null){const [x1,y1]=idxXY(i),[x2,y2]=idxXY(mate);b.classList.add('finalPair');b.classList.add(y1===y2?'finalPairH':'finalPairV');if((y1===y2&&x1<x2)||(x1===x2&&y1<y2))b.classList.add('finalPairStart');else b.classList.add('finalPairEnd');}
   const levelText=o?(o.finalOnly?'FINAL':`Lv${o.level+1}`):'';
   b.innerHTML=o?`<span class="obj">${o.icon}</span><span class="terrainDot">●</span><span class="levelBadge">${levelText}</span>`:'';
   if(forecastSet.has(i)&&c.terrain==='water')b.innerHTML+='<span class="forecastMark">◇</span>';
