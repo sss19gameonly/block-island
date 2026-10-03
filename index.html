@@ -1,1 +1,233 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>ブロックアイランド</title><style>body{font-family:system-ui,sans-serif;background:#eaf6ff;color:#264653;text-align:center;margin:0;padding:16px}h1{margin:10px}#board{display:grid;grid-template-columns:repeat(5,min(16vw,65px));gap:5px;justify-content:center;margin:18px auto}.cell{aspect-ratio:1;border:2px solid #c9d6bc;border-radius:9px;background:#d9c5a3;font-size:30px;touch-action:manipulation}button{cursor:pointer}#tools{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.tool{font-size:17px;padding:10px;border:2px solid #aac;border-radius:12px;background:white}.selected{border-color:#ed8b30;background:#fff0d4}#status{min-height:3em}#reset{padding:9px 20px;border:0;border-radius:9px;background:#437b77;color:white}</style></head><body><h1>🏝️ ブロックアイランド</h1><p>草原を置いて島を広げよう！<br>森は草原の隣、家は森の隣に置けるよ。</p><p><b>スコア：<span id="score">0</span></b>　残り：<span id="left">15</span>手</p><div id="tools"><button class="tool selected" data-type="grass">🌱 草原 +1</button><button class="tool" data-type="forest">🌳 森 +3</button><button class="tool" data-type="house">🏠 家 +5</button></div><div id="board" aria-label="ゲーム盤"></div><p id="status" aria-live="polite">中央の島からスタート！</p><button id="reset">最初から</button><script>const N=5,icons={empty:'',grass:'🌱',forest:'🌳',house:'🏠'},points={grass:1,forest:3,house:5};let cells,selected,score,left;const board=document.getElementById('board'),status=document.getElementById('status');function neighbors(i){let x=i%N,y=Math.floor(i/N);return [[x-1,y],[x+1,y],[x,y-1],[x,y+1]].filter(([a,b])=>a>=0&&a<N&&b>=0&&b<N).map(([a,b])=>b*N+a)}function render(){board.innerHTML='';cells.forEach((v,i)=>{let b=document.createElement('button');b.className='cell';b.textContent=icons[v];b.setAttribute('aria-label',`${i+1}番 ${v==='empty'?'海':v}`);b.style.background=v==='empty'?'#9cdded':'#c7e8a4';b.onclick=()=>place(i);board.appendChild(b)});document.getElementById('score').textContent=score;document.getElementById('left').textContent=left;document.querySelectorAll('.tool').forEach(b=>b.classList.toggle('selected',b.dataset.type===selected))}function place(i){if(left<=0){status.textContent='終了！「最初から」で再挑戦してね。';return}if(cells[i]!=='empty'){status.textContent='ここにはもう置いてあるよ。';return}let need={grass:['grass','forest','house'],forest:['grass'],house:['forest']}[selected];if(!neighbors(i).some(j=>need.includes(cells[j]))){status.textContent=selected==='forest'?'森は草原の隣に置こう！':selected==='house'?'家は森の隣に置こう！':'今ある島の隣に置こう！';return}cells[i]=selected;score+=points[selected];left--;status.textContent=left?`いいね！ +${points[selected]}点`:`完成！ ${score}点！ また遊んでね。`;render()}function reset(){cells=Array(N*N).fill('empty');cells[12]='grass';selected='grass';score=0;left=15;status.textContent='中央の島からスタート！';render()}document.querySelectorAll('.tool').forEach(b=>b.onclick=()=>{selected=b.dataset.type;render()});document.getElementById('reset').onclick=reset;reset();</script></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Block Island Ver.1</title>
+<style>
+:root{--sea:#8fd6e8;--land:#b9d98c;--land2:#d7e9ad;--ink:#17313a;--muted:#607780;--panel:#ffffff;--accent:#ef8f35;--accent2:#2f7f77;--border:#cddde1;--glow:#ffd166;--danger:#c94f4f}
+*{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef8fb;color:var(--ink);margin:0;padding:14px 12px 32px;text-align:center}main{max-width:720px;margin:0 auto}h1{font-size:26px;margin:4px 0 2px}.subtitle{font-size:13px;color:var(--muted);margin:0 0 10px}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:7px 4px;font-size:12px}.stat b{display:block;font-size:20px;margin-top:2px}.progress{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:14px}.handTitle{font-size:13px;color:var(--muted);text-align:left;margin:6px 2px}.hand{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}.card{min-height:74px;border:2px solid var(--border);background:#fff;border-radius:13px;padding:6px 4px;color:var(--ink);font-weight:700;touch-action:manipulation}.card .icon{font-size:27px;display:block;line-height:1.1}.card .name{font-size:12px;display:block;margin-top:4px}.card .tag{font-size:9px;color:var(--muted);display:block;font-weight:600}.card.selected{border-color:var(--accent);background:#fff4e8;box-shadow:0 0 0 2px rgba(239,143,53,.15)}.card.fixed{border-style:dashed}.card:disabled{opacity:.45}.boardWrap{background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px;margin:0 auto}.board{display:grid;gap:4px;justify-content:center;margin:auto}.cell{position:relative;width:min(13.9vw,58px);aspect-ratio:1;border:1px solid rgba(31,75,83,.16);border-radius:10px;background:var(--sea);font-size:28px;padding:0;touch-action:manipulation;overflow:visible}.cell.land{background:linear-gradient(145deg,var(--land2),var(--land))}.cell.valid{outline:3px solid rgba(47,127,119,.45);outline-offset:-3px}.cell.mergeable{animation:pulse 1.1s infinite;box-shadow:0 0 0 3px rgba(255,209,102,.7)}.cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8);animation:none}.cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65);animation:pulse 1s infinite}.cell .terrainDot{position:absolute;left:4px;bottom:3px;font-size:8px;opacity:.5}.cell .obj{display:inline-block;transition:transform .18s ease,opacity .18s ease}.cell.pop .obj{animation:pop .28s ease}.status{min-height:54px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:10px 0 8px;font-size:14px;display:flex;align-items:center;justify-content:center}.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.action{border:0;border-radius:10px;padding:10px 14px;background:var(--accent2);color:#fff;font-weight:700}.action.secondary{background:#738a92}.action.warn{background:var(--accent)}.action:disabled{opacity:.4}.legend{font-size:11px;color:var(--muted);margin-top:8px}.achievement{margin-top:10px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}.achievement h2{font-size:14px;margin:0 0 6px}.achList{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:11px;background:#edf4f4;border-radius:999px;padding:5px 8px}.badge.locked{opacity:.35}.result{display:none;background:#fff8e9;border:2px solid #f2c56b;border-radius:16px;padding:16px;margin-top:12px}.result.show{display:block}.result h2{margin:0 0 4px}.result .islandType{font-size:24px;font-weight:900}.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.mini{background:#fff;border-radius:9px;padding:6px 2px;font-size:11px}.mini b{display:block;font-size:17px}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}@keyframes pop{0%{transform:scale(.65);opacity:.35}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}@media(max-width:380px){body{padding-left:8px;padding-right:8px}.cell{width:min(13.5vw,52px);font-size:25px}.card{min-height:70px}.card .icon{font-size:24px}}
+</style>
+</head>
+<body>
+<main>
+<h1>🏝️ Block Island <small style="font-size:12px;color:#607780">Ver.1</small></h1>
+<p class="subtitle">置く・溜める・好きなタイミングで合体。自分だけの島を育てよう。</p>
+<div class="topbar">
+  <div class="stat">👥 Population<b id="popStat">0</b></div>
+  <div class="stat">💰 Economy<b id="ecoStat">0</b></div>
+  <div class="stat">🌿 Nature<b id="natStat">0</b></div>
+  <div class="stat">🏺 Culture<b id="culStat">0</b></div>
+</div>
+<div class="progress"><span>Turn <b id="turnNow">0</b> / <span id="turnMax">30</span></span><span id="modeLabel">Standard</span></div>
+<div class="handTitle">カードを1枚選ぶ（陸地は固定枠・通常手札は使った1枚だけ補充）</div>
+<div class="hand" id="hand"></div>
+<div class="boardWrap"><div class="board" id="board" aria-label="Block Island game board"></div></div>
+<div class="status" id="status" aria-live="polite">カードを選んでスタート。</div>
+<div class="actions">
+  <button class="action secondary" id="cancelMerge" hidden>合体選択をやめる</button>
+  <button class="action warn" id="redraw" hidden>手札を全交換（1ゲーム1回）</button>
+  <button class="action" id="finish" hidden>島を完成させる</button>
+  <button class="action secondary" id="reset">最初から</button>
+</div>
+<div class="legend">✨ 黄色く光るアイテムは合体可能。合体はターンを消費しません。</div>
+<section class="achievement">
+  <h2>実績 / Unlocks</h2>
+  <div class="achList" id="achievements"></div>
+</section>
+<section class="result" id="result">
+  <h2>Island Complete!</h2>
+  <div class="islandType" id="islandType"></div>
+  <p id="islandText"></p>
+  <div class="resultGrid">
+    <div class="mini">👥<b id="rPop"></b></div><div class="mini">💰<b id="rEco"></b></div><div class="mini">🌿<b id="rNat"></b></div><div class="mini">🏺<b id="rCul"></b></div>
+  </div>
+</section>
+</main>
+<script>
+(() => {
+const CONFIG = {"size": 6, "turns": 30};
+const N=CONFIG.size, MAX_TURNS=CONFIG.turns;
+const boardEl=document.getElementById('board'), handEl=document.getElementById('hand'), statusEl=document.getElementById('status');
+const statEls={population:document.getElementById('popStat'),economy:document.getElementById('ecoStat'),nature:document.getElementById('natStat'),culture:document.getElementById('culStat')};
+const turnNow=document.getElementById('turnNow'),turnMax=document.getElementById('turnMax'),finishBtn=document.getElementById('finish'),resetBtn=document.getElementById('reset'),cancelMergeBtn=document.getElementById('cancelMerge'),redrawBtn=document.getElementById('redraw');
+const resultEl=document.getElementById('result');
+turnMax.textContent=MAX_TURNS; boardEl.style.gridTemplateColumns=`repeat(${N}, min-content)`;
+
+const CHAINS={
+ nature:[
+  {id:'sapling',name:'苗木',icon:'🌱',stats:{nature:4}},
+  {id:'tree',name:'木',icon:'🌳',stats:{nature:10}},
+  {id:'forest',name:'森',icon:'🌲',stats:{nature:24}}
+ ],
+ population:[
+  {id:'hut',name:'小屋',icon:'⛺',stats:{population:5}},
+  {id:'house',name:'家',icon:'🏠',stats:{population:13,economy:2}},
+  {id:'settlement',name:'集落',icon:'🏘️',stats:{population:30,economy:5}}
+ ],
+ economy:[
+  {id:'stall',name:'屋台',icon:'🧺',stats:{economy:5}},
+  {id:'shop',name:'店',icon:'🏪',stats:{economy:13,population:2}},
+  {id:'market',name:'市場',icon:'🏬',stats:{economy:30,population:5}}
+ ],
+ culture:[
+  {id:'stone',name:'古い石',icon:'🪨',stats:{culture:5}},
+  {id:'monument',name:'石碑',icon:'🗿',stats:{culture:13,nature:2}},
+  {id:'ruins',name:'遺跡',icon:'🏛️',stats:{culture:30,nature:5}}
+ ]
+};
+const OBJECTS={};
+for(const [branch,chain] of Object.entries(CHAINS)) chain.forEach((o,level)=>OBJECTS[o.id]={...o,branch,level});
+const BASE_DECK=['sapling','hut','stall','stone'];
+const ACHS={
+ firstForest:{label:'🌲 First Forest',test:()=>countObj('forest')>0,reward:'能力：手札全交換（1ゲーム1回）'},
+ villageFounder:{label:'🏘️ Village Founder',test:()=>countObj('settlement')>0,reward:'実績'},
+ marketMaker:{label:'🏬 Market Maker',test:()=>countObj('market')>0,reward:'実績'},
+ ancientDiscovery:{label:'🏛️ Ancient Discovery',test:()=>countObj('ruins')>0,reward:'実績'},
+ perfectBalance:{label:'🌈 Perfect Balance',test:()=>state.finished&&Math.min(...Object.values(state.stats))>=35,reward:'実績'}
+};
+
+let state;
+function blankCell(){return {terrain:'water',object:null,pop:false};}
+function initialLandIndices(){
+ const a=Math.floor(N/2)-1,b=Math.floor(N/2);
+ return [a*N+a,a*N+b,b*N+a,b*N+b];
+}
+function loadProgress(){
+ try{return JSON.parse(localStorage.getItem('blockIslandProgressV1')||'{}');}catch{return {};}
+}
+function saveProgress(){localStorage.setItem('blockIslandProgressV1',JSON.stringify(state.progress));}
+function freshState(){
+ const cells=Array.from({length:N*N},blankCell); initialLandIndices().forEach(i=>cells[i].terrain='land');
+ const progress=loadProgress(); if(!progress.achievements)progress.achievements={};
+ return {cells,turn:0,hand:[drawCard(),drawCard(),drawCard()],selected:null,mergeMode:null,stats:{population:0,economy:0,nature:0,culture:0},finished:false,finalPhase:false,progress,redrawUsed:false,lastPop:-1};
+}
+function drawCard(){return BASE_DECK[Math.floor(Math.random()*BASE_DECK.length)];}
+function idxXY(i){return [i%N,Math.floor(i/N)];}
+function neighbors(i){const [x,y]=idxXY(i);return [[x-1,y],[x+1,y],[x,y-1],[x,y+1]].filter(([a,b])=>a>=0&&a<N&&b>=0&&b<N).map(([a,b])=>b*N+a);}
+function countObj(id){return state.cells.filter(c=>c.object===id).length;}
+function objectAt(i){return state.cells[i].object?OBJECTS[state.cells[i].object]:null;}
+function sameMergeNeighbors(i){
+ const o=objectAt(i); if(!o||o.level>=2)return [];
+ return neighbors(i).filter(j=>state.cells[j].object===o.id);
+}
+function canPlaceLand(i){return state.cells[i].terrain==='water'&&neighbors(i).some(j=>state.cells[j].terrain==='land');}
+function canPlaceObject(i){return state.cells[i].terrain==='land'&&!state.cells[i].object;}
+function canPlaceSelected(i){if(!state.selected||state.finished||state.finalPhase)return false;return state.selected.kind==='land'?canPlaceLand(i):canPlaceObject(i);}
+function selectCard(kind,index=null){if(state.finished||state.finalPhase)return;state.selected={kind,index};state.mergeMode=null;statusEl.textContent=kind==='land'?'海に接する場所へ陸地を置こう。':'空いている陸地に配置しよう。';render();}
+function place(i){
+ if(state.mergeMode){handleMergeClick(i);return;}
+ if(state.finished||state.finalPhase)return;
+ if(!state.selected){
+  if(sameMergeNeighbors(i).length){startMerge(i);return;}
+  statusEl.textContent='先にカードを選ぶか、光っているアイテムをタップして合体しよう。';return;
+ }
+ if(!canPlaceSelected(i)){statusEl.textContent=state.selected.kind==='land'?'陸地は既存の陸地に接する海へ置けるよ。':'ここには配置できないよ。';return;}
+ if(state.selected.kind==='land'){
+  state.cells[i].terrain='land';
+ }else{
+  const cardId=state.hand[state.selected.index]; state.cells[i].object=cardId; state.cells[i].pop=true;
+  state.hand.splice(state.selected.index,1,drawCard());
+ }
+ state.turn++; state.selected=null; recomputeStats(); checkAchievements();
+ const mergeCount=allMergeableCells().length;
+ if(state.turn>=MAX_TURNS){state.finalPhase=true;finishBtn.hidden=false;statusEl.textContent=mergeCount?'最終配置完了！ 合体・連鎖はまだできるよ。終わったら「島を完成させる」。':'最終配置完了！ 「島を完成させる」で結果を見よう。';}
+ else statusEl.textContent=mergeCount?'配置完了。黄色く光るアイテムは好きなタイミングで合体できるよ。':'配置完了。次のカードを選ぼう。';
+ render();
+}
+function allMergeableCells(){const out=[];state.cells.forEach((c,i)=>{if(c.object&&sameMergeNeighbors(i).length)out.push(i);});return out;}
+function startMerge(i){
+ if(!state.cells[i].object||!sameMergeNeighbors(i).length)return;
+ state.selected=null; state.mergeMode={target:i,source:null};
+ const opts=sameMergeNeighbors(i);
+ if(opts.length===1){state.mergeMode.source=opts[0];statusEl.textContent=`${OBJECTS[state.cells[i].object].name}をどちらのマスに残す？ 残したい方をタップ。`;}
+ else statusEl.textContent='合体後を残したいマスを選択中。まず吸収する相手を選んで。';
+ render();
+}
+function handleMergeClick(i){
+ const m=state.mergeMode;if(!m)return;
+ const targetObj=state.cells[m.target].object;
+ if(!targetObj){cancelMerge();return;}
+ const options=sameMergeNeighbors(m.target);
+ if(m.source==null){
+  if(options.includes(i)){m.source=i;statusEl.textContent='進化後を残したい方のマスをタップ。';render();}
+  else if(i===m.target&&options.length===1){m.source=options[0];statusEl.textContent='進化後を残したい方のマスをタップ。';render();}
+  return;
+ }
+ if(i!==m.target&&i!==m.source)return;
+ const keep=i,remove=i===m.target?m.source:m.target;
+ mergePair(keep,remove);
+}
+function mergePair(keep,remove){
+ const id=state.cells[keep].object;const o=OBJECTS[id];if(!o||state.cells[remove].object!==id)return cancelMerge();
+ const next=CHAINS[o.branch][o.level+1];if(!next)return cancelMerge();
+ state.cells[keep].object=next.id;state.cells[keep].pop=true;state.cells[remove].object=null;
+ state.mergeMode=null;recomputeStats();checkAchievements();
+ const chained=sameMergeNeighbors(keep).length>0;
+ statusEl.textContent=chained?`✨ ${o.name}×2 → ${next.name}！ さらに連鎖できる！`:`✨ ${o.name}×2 → ${next.name}！`;
+ render();
+}
+function cancelMerge(){state.mergeMode=null;statusEl.textContent='合体選択をキャンセル。';render();}
+function recomputeStats(){
+ const s={population:0,economy:0,nature:0,culture:0};
+ state.cells.forEach(c=>{if(!c.object)return;const o=OBJECTS[c.object];for(const [k,v] of Object.entries(o.stats))s[k]+=v;});
+ // Pair bonuses are counted once per adjacent pair.
+ for(let i=0;i<state.cells.length;i++){
+  const a=state.cells[i].object;if(!a)continue;
+  for(const j of neighbors(i)){if(j<=i)continue;const b=state.cells[j].object;if(!b)continue;
+   const pair=[a,b].sort().join('|');
+   if(pair==='forest|ruins'){s.nature+=5;s.culture+=5;}
+   if(pair==='house|market'){s.population+=5;s.economy+=5;}
+  }
+ }
+ state.stats=s;
+}
+function checkAchievements(){
+ for(const [id,a] of Object.entries(ACHS)){
+  if(!state.progress.achievements[id]&&a.test()){
+   state.progress.achievements[id]=true;saveProgress();statusEl.textContent=`🏆 実績解除：${a.label}｜${a.reward}`;
+  }
+ }
+ renderAchievements();
+}
+function renderAchievements(){
+ const el=document.getElementById('achievements');el.innerHTML='';
+ for(const [id,a] of Object.entries(ACHS)){
+  const d=document.createElement('span');const unlocked=!!state.progress.achievements[id];d.className='badge'+(unlocked?'':' locked');d.textContent=(unlocked?'✓ ':'🔒 ')+a.label;d.title=a.reward;el.appendChild(d);
+ }
+}
+function renderHand(){
+ handEl.innerHTML='';
+ const land=document.createElement('button');land.className='card fixed'+(state.selected?.kind==='land'?' selected':'');land.disabled=state.finished||state.finalPhase;land.innerHTML='<span class="icon">🟩</span><span class="name">陸地</span><span class="tag">固定カード</span>';land.onclick=()=>selectCard('land');handEl.appendChild(land);
+ state.hand.forEach((id,idx)=>{const o=OBJECTS[id];const b=document.createElement('button');b.className='card'+(state.selected?.kind==='object'&&state.selected.index===idx?' selected':'');b.disabled=state.finished||state.finalPhase;b.innerHTML=`<span class="icon">${o.icon}</span><span class="name">${o.name}</span><span class="tag">${branchJP(o.branch)}</span>`;b.onclick=()=>selectCard('object',idx);handEl.appendChild(b);});
+}
+function branchJP(b){return {nature:'Nature',population:'Population',economy:'Economy',culture:'Culture'}[b]||b;}
+function renderBoard(){
+ boardEl.innerHTML='';const mergeables=new Set(allMergeableCells());
+ state.cells.forEach((c,i)=>{const b=document.createElement('button');b.className='cell '+(c.terrain==='land'?'land':'');
+  if(canPlaceSelected(i))b.classList.add('valid');
+  if(!state.selected&&mergeables.has(i))b.classList.add('mergeable');
+  if(state.mergeMode){if(i===state.mergeMode.target)b.classList.add('merge-target');const opts=sameMergeNeighbors(state.mergeMode.target);if(opts.includes(i))b.classList.add('merge-source');}
+  const o=c.object?OBJECTS[c.object]:null;b.innerHTML=o?`<span class="obj">${o.icon}</span><span class="terrainDot">●</span>`:'';
+  b.setAttribute('aria-label',`${i+1}番 ${c.terrain==='water'?'海':'陸地'}${o?' '+o.name:''}`);b.onclick=()=>place(i);boardEl.appendChild(b);c.pop=false;
+ });
+}
+function renderStats(){for(const [k,e] of Object.entries(statEls))e.textContent=state.stats[k];turnNow.textContent=state.turn;}
+function render(){renderHand();renderBoard();renderStats();renderAchievements();cancelMergeBtn.hidden=!state.mergeMode;
+ const redrawUnlocked=!!state.progress.achievements.firstForest;redrawBtn.hidden=!redrawUnlocked||state.redrawUsed||state.finished||state.finalPhase;
+ finishBtn.hidden=!state.finalPhase||state.finished;
+}
+function redraw(){if(!state.progress.achievements.firstForest||state.redrawUsed||state.finished||state.finalPhase)return;state.hand=[drawCard(),drawCard(),drawCard()];state.redrawUsed=true;state.selected=null;statusEl.textContent='🔄 手札を全交換した！';render();}
+function finishIsland(){
+ if(!state.finalPhase||state.finished)return;state.finished=true;recomputeStats();checkAchievements();
+ const vals=state.stats,arr=Object.entries(vals).sort((a,b)=>b[1]-a[1]);const max=arr[0][1],min=arr[arr.length-1][1];let type,text;
+ if(min>=35 && max-min<=18){type='🌈 Balanced Island';text='人口・経済・自然・文化が調和した島になりました。';}
+ else {const k=arr[0][0];({population:[type,text]=['🏘️ People Island','多くの人が暮らす、活気ある島になりました。'],economy:[type,text]=['💰 Trading Island','商いが栄える、にぎやかな交易の島になりました。'],nature:[type,text]=['🌳 Green Island','緑が広がる、自然豊かな島になりました。'],culture:[type,text]=['🏛️ Ancient Island','石碑と遺跡が物語を残す、歴史ある島になりました。']}[k]);}
+ document.getElementById('islandType').textContent=type;document.getElementById('islandText').textContent=text;document.getElementById('rPop').textContent=vals.population;document.getElementById('rEco').textContent=vals.economy;document.getElementById('rNat').textContent=vals.nature;document.getElementById('rCul').textContent=vals.culture;resultEl.classList.add('show');statusEl.textContent='島が完成！ 次は違う育て方も試してみよう。';render();
+}
+function reset(){state=freshState();recomputeStats();resultEl.classList.remove('show');finishBtn.hidden=true;statusEl.textContent='カードを選んでスタート。合体はいつでも任意でできるよ。';render();}
+resetBtn.onclick=reset;cancelMergeBtn.onclick=cancelMerge;redrawBtn.onclick=redraw;finishBtn.onclick=finishIsland;reset();
+})();
+</script>
+</body>
+</html>
