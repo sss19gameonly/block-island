@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>Block Island Ver.1.2.4</title>
+<title>Block Island Ver.1.3.0 Prototype</title>
 <style>
 :root{--sea:#8fd6e8;--land:#b9d98c;--land2:#d7e9ad;--ink:#17313a;--muted:#607780;--panel:#ffffff;--accent:#ef8f35;--accent2:#2f7f77;--border:#cddde1;--glow:#ffd166;--danger:#c94f4f}
 *{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef8fb;color:var(--ink);margin:0;padding:14px 12px 32px;text-align:center}main{max-width:720px;margin:0 auto}h1{font-size:26px;margin:4px 0 2px}.subtitle{font-size:13px;color:var(--muted);margin:0 0 10px}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:7px 4px;font-size:12px}.stat b{display:block;font-size:20px;margin-top:2px}.progress{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:14px}.handTitle{font-size:13px;color:var(--muted);text-align:left;margin:6px 2px}.hand{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}.card{min-height:74px;border:2px solid var(--border);background:#fff;border-radius:13px;padding:6px 4px;color:var(--ink);font-weight:700;touch-action:manipulation}.card .icon{font-size:27px;display:block;line-height:1.1}.card .name{font-size:12px;display:block;margin-top:4px}.card .tag{font-size:9px;color:var(--muted);display:block;font-weight:600}.card.selected{border-color:var(--accent);background:#fff4e8;box-shadow:0 0 0 2px rgba(239,143,53,.15)}.card.fixed{border-style:dashed}.forecast{font-size:12px;color:var(--muted);margin:-2px 0 9px}.cell.forecastCell{box-shadow:inset 0 0 0 3px rgba(255,255,255,.82),0 0 0 2px rgba(69,135,167,.55);animation:forecastPulse 1.45s infinite}.forecastMark{position:absolute;right:4px;top:2px;font-size:13px;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35)}.floatDelta{position:absolute;left:50%;top:8%;transform:translateX(-50%);z-index:20;pointer-events:none;font-size:12px;font-weight:900;white-space:nowrap;background:rgba(255,255,255,.94);border:1px solid rgba(23,49,58,.12);border-radius:999px;padding:3px 6px;animation:floatUp 1.15s ease forwards}.landBurst{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;pointer-events:none;animation:landPop .8s ease forwards}.card:disabled{opacity:.45}.boardWrap{background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px;margin:0 auto}.board{display:grid;gap:4px;justify-content:center;margin:auto}.cell{position:relative;width:min(13.9vw,58px);aspect-ratio:1;border:1px solid rgba(31,75,83,.16);border-radius:10px;background:var(--sea);font-size:28px;padding:0;touch-action:manipulation;overflow:visible}.cell.land{background:linear-gradient(145deg,var(--land2),var(--land))}.cell.valid{outline:3px solid rgba(47,127,119,.45);outline-offset:-3px}.cell.mergeable{animation:pulse 1.1s infinite;box-shadow:0 0 0 3px rgba(255,209,102,.7)}.cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8);animation:none}.cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65);animation:pulse 1s infinite}.cell .terrainDot{position:absolute;left:4px;bottom:3px;font-size:8px;opacity:.5}.levelBadge{position:absolute;right:3px;bottom:2px;z-index:7;font-size:9px;font-weight:900;line-height:1;background:rgba(255,255,255,.82);color:var(--ink);border-radius:5px;padding:3px 4px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}.cell .obj{display:inline-block;transition:transform .18s ease,opacity .18s ease}.cell.pop .obj{animation:pop .28s ease}.status{min-height:54px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:10px 0 8px;font-size:14px;display:flex;align-items:center;justify-content:center}.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.action{border:0;border-radius:10px;padding:10px 14px;background:var(--accent2);color:#fff;font-weight:700}.action.secondary{background:#738a92}.action.warn{background:var(--accent)}.action:disabled{opacity:.4}.legend{font-size:11px;color:var(--muted);margin-top:8px}.achievement{margin-top:10px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}.achievement h2{font-size:14px;margin:0 0 6px}.achList{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:11px;background:#edf4f4;border-radius:999px;padding:5px 8px}.badge.locked{opacity:.35}.result{display:none;background:#fff8e9;border:2px solid #f2c56b;border-radius:16px;padding:16px;margin-top:12px}.result.show{display:block}.result h2{margin:0 0 4px}.result .islandType{font-size:24px;font-weight:900}.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.mini{background:#fff;border-radius:9px;padding:6px 2px;font-size:11px}.mini b{display:block;font-size:17px}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}@keyframes forecastPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.1)}}@keyframes floatUp{0%{opacity:0;transform:translate(-50%,8px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-28px) scale(1.05)}}@keyframes landPop{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1)}}@keyframes pop{0%{transform:scale(.65);opacity:.35}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
@@ -23,11 +23,33 @@
 .cell.finalPairEnd .obj,.cell.finalPairEnd .levelBadge,.cell.finalPairEnd .terrainDot{visibility:hidden}
 .cell.finalPairStart>.obj,.cell.finalPairStart>.levelBadge,.cell.finalPairStart>.terrainDot{visibility:hidden}
 @media(max-width:380px){body{padding-left:8px;padding-right:8px}.cell{width:min(13.5vw,52px);font-size:25px}.card{min-height:70px}.card .icon{font-size:24px}}
+
+.mother{display:none;margin-top:14px;text-align:left}.mother.show{display:block}
+.motherHead{background:#fff;border:2px solid var(--accent2);border-radius:16px;padding:14px;margin-bottom:10px}
+.motherHead h2{margin:0 0 4px;font-size:22px}.motherHead p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.motherGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}
+.motherStat{background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 4px;text-align:center;font-size:11px}
+.motherStat b{display:block;font-size:19px;margin-top:2px}
+.motherSection{background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px;margin-top:10px}
+.motherSection h3{font-size:14px;margin:0 0 8px}
+.facilityGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.facilityCard{border:1px solid var(--border);border-radius:12px;padding:10px;background:#fbfefe;min-height:150px}
+.facilityCard.locked{opacity:.58;background:#f2f5f6}.facilityCard.built{border-color:#8dbf9e;background:#f1faf3}
+.facilityTitle{font-weight:900;font-size:15px}.facilityMeta{font-size:11px;color:var(--muted);line-height:1.5;margin:5px 0}
+.facilityCost{font-size:12px;font-weight:800;margin:6px 0}.facilityEffect{font-size:11px;margin:6px 0}
+.facilityCard button{width:100%;border:0;border-radius:9px;padding:9px;background:var(--accent2);color:#fff;font-weight:800}
+.facilityCard button:disabled{opacity:.45}
+.harvest{background:#fff8e9;border:1px solid #f2c56b;border-radius:12px;padding:9px 10px;font-size:12px;line-height:1.6;margin-top:10px}
+.portSite{display:none;background:#eef9ff;border:2px dashed #69a9c4;border-radius:13px;padding:12px;margin-top:10px;text-align:center;font-weight:900}
+.portSite.show{display:block}
+.motherActions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+@media(max-width:520px){.facilityGrid{grid-template-columns:1fr}.motherGrid{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body>
 <main>
-<h1>🏝️ Block Island <small style="font-size:12px;color:#607780">Ver.1.2.4</small></h1>
+<h1>🏝️ Block Island <small style="font-size:12px;color:#607780">Ver.1.3.0 Prototype</small></h1>
 <p class="subtitle">島は2ターンごとに成長。配置・仕込み・連鎖、そしてFinal Developmentで最終進化。</p>
 <div class="topbar">
   <div class="stat">👥 Population<b id="popStat">0</b></div>
@@ -66,6 +88,45 @@
   <div class="resultGrid">
     <div class="mini">👥<b id="rPop"></b></div><div class="mini">💰<b id="rEco"></b></div><div class="mini">🌿<b id="rNat"></b></div><div class="mini">🏺<b id="rCul"></b></div>
   </div>
+  <div class="actions" style="margin-top:12px"><button class="action" id="returnMother">母島へ帰る</button></div>
+</section>
+<section class="mother" id="mother">
+  <div class="motherHead">
+    <h2>🏡 母島</h2>
+    <p>探索で持ち帰った4資源を使って施設を建築。建築すると母島ステータスが上がり、新しい施設や機能が解放される。</p>
+    <div class="harvest" id="lastHarvest">まだ探索成果はありません。</div>
+  </div>
+
+  <div class="motherSection">
+    <h3>持ち帰り資源</h3>
+    <div class="motherGrid">
+      <div class="motherStat">🏠 暮らし<b id="resLife">0</b></div>
+      <div class="motherStat">🛠️ 産業<b id="resIndustry">0</b></div>
+      <div class="motherStat">🌿 自然<b id="resNature">0</b></div>
+      <div class="motherStat">🏺 文化<b id="resCulture">0</b></div>
+    </div>
+  </div>
+
+  <div class="motherSection">
+    <h3>母島ステータス</h3>
+    <div class="motherGrid">
+      <div class="motherStat">🏠 暮らし<b id="mLife">0</b></div>
+      <div class="motherStat">🛠️ 産業<b id="mIndustry">0</b></div>
+      <div class="motherStat">🌿 自然<b id="mNature">0</b></div>
+      <div class="motherStat">🏺 文化<b id="mCulture">0</b></div>
+    </div>
+    <div class="portSite" id="portSite">⚓ 港予定地を発見！<br><span style="font-size:11px;font-weight:600">4ステータスがすべて3以上になったため、次の発展先が見えた。</span></div>
+  </div>
+
+  <div class="motherSection">
+    <h3>建築</h3>
+    <div class="facilityGrid" id="facilityGrid"></div>
+  </div>
+
+  <div class="motherActions">
+    <button class="action" id="nextExpedition">次の探索へ</button>
+    <button class="action secondary" id="resetMother">母島だけリセット</button>
+  </div>
 </section>
 </main>
 <script>
@@ -76,6 +137,9 @@ const boardEl=document.getElementById('board'), handEl=document.getElementById('
 const statEls={population:document.getElementById('popStat'),economy:document.getElementById('ecoStat'),nature:document.getElementById('natStat'),culture:document.getElementById('culStat')};
 const turnNow=document.getElementById('turnNow'),turnMax=document.getElementById('turnMax'),finishBtn=document.getElementById('finish'),resetBtn=document.getElementById('reset'),cancelMergeBtn=document.getElementById('cancelMerge'),redrawBtn=document.getElementById('redraw');
 const resultEl=document.getElementById('result');
+const motherEl=document.getElementById('mother'),returnMotherBtn=document.getElementById('returnMother'),nextExpeditionBtn=document.getElementById('nextExpedition'),resetMotherBtn=document.getElementById('resetMother'),facilityGrid=document.getElementById('facilityGrid'),lastHarvestEl=document.getElementById('lastHarvest'),portSiteEl=document.getElementById('portSite');
+const motherResEls={life:document.getElementById('resLife'),industry:document.getElementById('resIndustry'),nature:document.getElementById('resNature'),culture:document.getElementById('resCulture')};
+const motherStatEls={life:document.getElementById('mLife'),industry:document.getElementById('mIndustry'),nature:document.getElementById('mNature'),culture:document.getElementById('mCulture')};
 const detailPanel=document.getElementById('detailPanel'),detailIcon=document.getElementById('detailIcon'),detailTitle=document.getElementById('detailTitle'),detailBranch=document.getElementById('detailBranch'),detailStats=document.getElementById('detailStats'),detailEvolution=document.getElementById('detailEvolution'),detailSynergy=document.getElementById('detailSynergy'),detailCloseBtn=document.getElementById('detailCloseBtn');
 turnMax.textContent=MAX_TURNS; boardEl.style.gridTemplateColumns=`repeat(${N}, min-content)`;
 
@@ -122,6 +186,86 @@ function initialLandIndices(){const a=Math.floor(N/2)-1,b=Math.floor(N/2);return
 function loadProgress(){try{return JSON.parse(localStorage.getItem('blockIslandProgressV11')||'{}');}catch{return {};}}
 function saveProgress(){try{localStorage.setItem('blockIslandProgressV11',JSON.stringify(state.progress));}catch{}}
 function drawCard(){return BASE_DECK[Math.floor(Math.random()*BASE_DECK.length)];}
+
+const MOTHER_FACILITIES={
+ motherShelter:{name:'簡易住居',icon:'⛺',cost:{life:4,industry:2},gain:{life:3,industry:1},unlock:()=>true,unlockText:'初期解放'},
+ motherLumber:{name:'木こり小屋',icon:'🪵',cost:{industry:4,nature:2},gain:{industry:3,nature:1},unlock:()=>true,unlockText:'初期解放'},
+ motherSapling:{name:'苗木',icon:'🌱',cost:{nature:4,life:2},gain:{nature:3,life:1},unlock:()=>true,unlockText:'初期解放'},
+ motherStone:{name:'石碑',icon:'🗿',cost:{culture:4,industry:2},gain:{culture:3,industry:1},unlock:()=>true,unlockText:'初期解放'},
+ motherWell:{name:'井戸',icon:'🪣',cost:{life:5,nature:2},gain:{life:3,nature:2},unlock:()=>motherBuilt('motherShelter')&&motherState.stats.life>=3,unlockText:'簡易住居＋暮らし3'},
+ motherWorkshop:{name:'作業小屋',icon:'🔨',cost:{industry:5,life:2},gain:{industry:3,life:2},unlock:()=>motherBuilt('motherLumber')&&motherBuilt('motherShelter')&&motherState.stats.industry>=3,unlockText:'木こり小屋＋簡易住居＋産業3'},
+ motherSpring:{name:'泉',icon:'💧',cost:{nature:5,culture:2},gain:{nature:3,culture:2},unlock:()=>motherBuilt('motherSapling')&&motherBuilt('motherStone')&&motherState.stats.nature>=3,unlockText:'苗木＋石碑＋自然3'},
+ motherShrine:{name:'小さな祠',icon:'⛩️',cost:{culture:5,nature:2},gain:{culture:3,nature:2},unlock:()=>motherBuilt('motherStone')&&motherBuilt('motherSapling')&&motherState.stats.culture>=3,unlockText:'石碑＋苗木＋文化3'}
+};
+let motherState=loadMother();
+function blankMother(){return {resources:{life:0,industry:0,nature:0,culture:0},stats:{life:0,industry:0,nature:0,culture:0},built:{},lastHarvest:null,portDiscovered:false};}
+function loadMother(){try{const v=JSON.parse(localStorage.getItem('blockIslandMotherV1')||'null');return v&&v.resources&&v.stats&&v.built?v:blankMother();}catch{return blankMother();}}
+function saveMother(){try{localStorage.setItem('blockIslandMotherV1',JSON.stringify(motherState));}catch{}}
+function motherBuilt(id){return !!motherState.built[id];}
+function costText(cost){const meta={life:'🏠暮らし',industry:'🛠️産業',nature:'🌿自然',culture:'🏺文化'};return Object.entries(cost).map(([k,v])=>`${meta[k]} ${v}`).join(' ＋ ');}
+function gainText(gain){const meta={life:'暮らし',industry:'産業',nature:'自然',culture:'文化'};return Object.entries(gain).map(([k,v])=>`${meta[k]} +${v}`).join(' / ');}
+function canAfford(cost){return Object.entries(cost).every(([k,v])=>motherState.resources[k]>=v);}
+function recomputeMotherStats(){
+ const s={life:0,industry:0,nature:0,culture:0};
+ for(const id of Object.keys(motherState.built)){if(!motherState.built[id]||!MOTHER_FACILITIES[id])continue;for(const [k,v] of Object.entries(MOTHER_FACILITIES[id].gain))s[k]+=v;}
+ motherState.stats=s;
+ motherState.portDiscovered=Object.values(s).every(v=>v>=3);
+}
+function renderMother(){
+ recomputeMotherStats();
+ for(const [k,e] of Object.entries(motherResEls))e.textContent=motherState.resources[k]||0;
+ for(const [k,e] of Object.entries(motherStatEls))e.textContent=motherState.stats[k]||0;
+ if(motherState.lastHarvest){
+   const h=motherState.lastHarvest;
+   lastHarvestEl.textContent=`今回の持ち帰り：🏠暮らし +${h.life} / 🛠️産業 +${h.industry} / 🌿自然 +${h.nature} / 🏺文化 +${h.culture}　※プロトタイプ用の仮換算`;
+ }else lastHarvestEl.textContent='まだ探索成果はありません。';
+ portSiteEl.classList.toggle('show',motherState.portDiscovered);
+ facilityGrid.innerHTML='';
+ for(const [id,f] of Object.entries(MOTHER_FACILITIES)){
+   const unlocked=f.unlock(),built=motherBuilt(id),afford=canAfford(f.cost);
+   const d=document.createElement('div');d.className='facilityCard'+(built?' built':'')+(!unlocked?' locked':'');
+   d.innerHTML=`<div class="facilityTitle">${f.icon} ${f.name}</div>
+   <div class="facilityMeta">${built?'✅ 建築済み':unlocked?'🔓 建築可能':`🔒 ${f.unlockText}`}</div>
+   <div class="facilityCost">必要：${costText(f.cost)}</div>
+   <div class="facilityEffect">効果：${gainText(f.gain)}</div>
+   <button ${built||!unlocked||!afford?'disabled':''}>${built?'建築済み':!unlocked?'未解放':afford?'建築する':'資源不足'}</button>`;
+   const btn=d.querySelector('button');if(!built&&unlocked&&afford)btn.onclick=()=>buildMotherFacility(id);
+   facilityGrid.appendChild(d);
+ }
+ saveMother();
+}
+function buildMotherFacility(id){
+ const f=MOTHER_FACILITIES[id];if(!f||motherBuilt(id)||!f.unlock()||!canAfford(f.cost))return;
+ for(const [k,v] of Object.entries(f.cost))motherState.resources[k]-=v;
+ motherState.built[id]=true;recomputeMotherStats();saveMother();renderMother();
+}
+function haulFromPuzzle(){
+ // ループ確認を優先した仮換算。バランスは後でシミュレーション調整。
+ const v=state.stats;
+ return {
+   life:Math.max(2,Math.floor(v.population/8)),
+   industry:Math.max(2,Math.floor(v.economy/8)),
+   nature:Math.max(2,Math.floor(v.nature/8)),
+   culture:Math.max(2,Math.floor(v.culture/8))
+ };
+}
+function returnToMother(){
+ if(!state.finished)return;
+ const haul=haulFromPuzzle();
+ for(const [k,v] of Object.entries(haul))motherState.resources[k]+=v;
+ motherState.lastHarvest=haul;saveMother();
+ document.querySelectorAll('main > *:not(#mother)').forEach(el=>el.style.display='none');
+ motherEl.classList.add('show');motherEl.style.display='block';renderMother();window.scrollTo({top:0,behavior:'smooth'});
+}
+function startNextExpedition(){
+ motherEl.classList.remove('show');motherEl.style.display='none';
+ document.querySelectorAll('main > *:not(#mother)').forEach(el=>el.style.display='');
+ reset();window.scrollTo({top:0,behavior:'smooth'});
+}
+function resetMotherOnly(){
+ motherState=blankMother();saveMother();renderMother();
+}
+
 function freshState(){
  const cells=Array.from({length:N*N},blankCell);initialLandIndices().forEach(i=>cells[i].terrain='land');
  const progress=loadProgress();if(!progress.achievements)progress.achievements={};
@@ -303,7 +447,7 @@ function finishIsland(){
  document.getElementById('islandType').textContent=type;document.getElementById('islandText').textContent=text;document.getElementById('rPop').textContent=vals.population;document.getElementById('rEco').textContent=vals.economy;document.getElementById('rNat').textContent=vals.nature;document.getElementById('rCul').textContent=vals.culture;resultEl.classList.add('show');statusEl.textContent='島が完成！ 次は違う育て方も試してみよう。';render();
 }
 function reset(){state=freshState();recomputeStats();resultEl.classList.remove('show');detailPanel.classList.remove('show');statusEl.textContent='カードを選んでスタート。◇の海マスは次の陸地候補。';render();}
-resetBtn.onclick=reset;cancelMergeBtn.onclick=cancelMerge;redrawBtn.onclick=redraw;finishBtn.onclick=finishIsland;detailCloseBtn.onclick=closeDetails;reset();
+resetBtn.onclick=reset;cancelMergeBtn.onclick=cancelMerge;redrawBtn.onclick=redraw;finishBtn.onclick=finishIsland;detailCloseBtn.onclick=closeDetails;returnMotherBtn.onclick=returnToMother;nextExpeditionBtn.onclick=startNextExpedition;resetMotherBtn.onclick=resetMotherOnly;reset();
 })();
 </script>
 </body>
