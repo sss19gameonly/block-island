@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>Block Island v1.7.0 地形・Lv1仮グラ試験版</title>
+<title>Block Island v1.7.1 地形グラフィック改善試験版</title>
 <style>
 :root{--sea:#8fd6e8;--land:#b9d98c;--land2:#d7e9ad;--ink:#17313a;--muted:#607780;--panel:#ffffff;--accent:#ef8f35;--accent2:#2f7f77;--border:#cddde1;--glow:#ffd166;--danger:#c94f4f}
 *{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef8fb;color:var(--ink);margin:0;padding:14px 12px 32px;text-align:center}main{max-width:720px;margin:0 auto}h1{font-size:26px;margin:4px 0 2px}.subtitle{font-size:13px;color:var(--muted);margin:0 0 10px}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:7px 4px;font-size:12px}.stat b{display:block;font-size:20px;margin-top:2px}.progress{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:14px}.handTitle{font-size:13px;color:var(--muted);text-align:left;margin:6px 2px}.hand{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}.card{min-height:74px;border:2px solid var(--border);background:#fff;border-radius:13px;padding:6px 4px;color:var(--ink);font-weight:700;touch-action:manipulation}.card .icon{font-size:27px;display:block;line-height:1.1}.card .name{font-size:12px;display:block;margin-top:4px}.card .tag{font-size:9px;color:var(--muted);display:block;font-weight:600}.card.selected{border-color:var(--accent);background:#fff4e8;box-shadow:0 0 0 2px rgba(239,143,53,.15)}.card.fixed{border-style:dashed}.forecast{font-size:12px;color:var(--muted);margin:-2px 0 9px}.cell.forecastCell{box-shadow:inset 0 0 0 3px rgba(255,255,255,.82),0 0 0 2px rgba(69,135,167,.55);animation:forecastPulse 1.45s infinite}.forecastMark{position:absolute;right:4px;top:2px;font-size:13px;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35)}.floatDelta{position:absolute;left:50%;top:8%;transform:translateX(-50%);z-index:20;pointer-events:none;font-size:12px;font-weight:900;white-space:nowrap;background:rgba(255,255,255,.94);border:1px solid rgba(23,49,58,.12);border-radius:999px;padding:3px 6px;animation:floatUp 1.15s ease forwards}.landBurst{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;pointer-events:none;animation:landPop .8s ease forwards}.card:disabled{opacity:.45}.boardWrap{background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px;margin:0 auto}.board{display:grid;gap:4px;justify-content:center;margin:auto}.cell{position:relative;width:min(13.9vw,58px);aspect-ratio:1;border:1px solid rgba(31,75,83,.16);border-radius:10px;background:var(--sea);font-size:28px;padding:0;touch-action:manipulation;overflow:visible}.cell.land{background:linear-gradient(145deg,var(--land2),var(--land))}.cell.valid{outline:3px solid rgba(47,127,119,.45);outline-offset:-3px}.cell.mergeable{animation:pulse 1.1s infinite;box-shadow:0 0 0 3px rgba(255,209,102,.7)}.cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8);animation:none}.cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65);animation:pulse 1s infinite}.cell .terrainDot{position:absolute;left:4px;bottom:3px;font-size:8px;opacity:.5}.levelBadge{position:absolute;right:3px;bottom:2px;z-index:7;font-size:9px;font-weight:900;line-height:1;background:rgba(255,255,255,.82);color:var(--ink);border-radius:5px;padding:3px 4px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}.objName{position:absolute;left:50%;top:2px;z-index:7;transform:translateX(-50%);max-width:92%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7px;font-weight:900;line-height:1.15;background:rgba(255,255,255,.78);color:var(--ink);border-radius:4px;padding:2px 3px;pointer-events:none}.cell .obj{display:inline-block;transition:transform .18s ease,opacity .18s ease}.cell.pop .obj{animation:pop .28s ease}.status{min-height:54px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:10px 0 8px;font-size:14px;display:flex;align-items:center;justify-content:center}.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.action{border:0;border-radius:10px;padding:10px 14px;background:var(--accent2);color:#fff;font-weight:700}.action.secondary{background:#738a92}.action.warn{background:var(--accent)}.action:disabled{opacity:.4}.legend{font-size:11px;color:var(--muted);margin-top:8px}.achievement{margin-top:10px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}.achievement h2{font-size:14px;margin:0 0 6px}.achList{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:11px;background:#edf4f4;border-radius:999px;padding:5px 8px}.badge.locked{opacity:.35}.result{display:none;background:#fff8e9;border:2px solid #f2c56b;border-radius:16px;padding:16px;margin-top:12px}.result.show{display:block}.result h2{margin:0 0 4px}.result .islandType{font-size:24px;font-weight:900}.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.mini{background:#fff;border-radius:9px;padding:6px 2px;font-size:11px}.mini b{display:block;font-size:17px}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}@keyframes forecastPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.1)}}@keyframes floatUp{0%{opacity:0;transform:translate(-50%,8px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-28px) scale(1.05)}}@keyframes landPop{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1)}}@keyframes pop{0%{transform:scale(.65);opacity:.35}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
@@ -178,10 +178,41 @@ main{max-width:510px;margin:auto}
 @media(min-width:600px){.cell .obj{width:79%;height:79%}.card .cardArt{height:57px}}
 @media(prefers-reduced-motion:reduce){.cell.forecastCell,.cell.mergeable,.hudDelta,.statBump b{animation:none!important}}
 </style>
+<style id="v171-terrain-css">
+/* v1.7.1: one landmass outline derived solely from playable 6x6 land cells.
+   No decorative island surrounding sea cells; gameplay cells remain separate hit targets. */
+.boardWrap{background:#78bfd0;border:2px solid #c6e4d5;padding:7px;box-shadow:inset 0 0 0 2px #ffffff9c,0 5px 12px #416d671a}
+.board{isolation:isolate;overflow:hidden;
+ background-color:#67bbcb;
+ background-image:
+ radial-gradient(ellipse at 15% 12%,#d4f2e736,transparent 32%),
+ radial-gradient(ellipse at 85% 85%,#d7fff62a,transparent 36%),
+ repeating-linear-gradient(162deg,#c6f5ee00 0px,#c6f5ee00 41px,#e1ffff12 42px,#d2fcf500 45px,#d2fcf500 88px);
+}
+.biTerrainLayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;display:block}
+.board .cell{position:relative;z-index:1;background:transparent!important;border-radius:0!important;
+ box-shadow:inset 0 0 0 .55px #e0ffff25!important}
+.board .cell.land{background:transparent!important;box-shadow:inset 0 0 0 .55px #7bb07830!important}
+.board .cell.land::before{display:none!important}
+.board .cell:has(.level-population){box-shadow:inset 0 0 0 2px #d9786a9b!important}
+.board .cell:has(.level-industry){box-shadow:inset 0 0 0 2px #d4b139b5!important}
+.board .cell:has(.level-nature){box-shadow:inset 0 0 0 2px #68a769ae!important}
+.board .cell:has(.level-culture){box-shadow:inset 0 0 0 2px #8070b4b0!important}
+.board .cell.valid{outline:3px solid rgba(68,148,113,.75);outline-offset:-4px}
+.board .cell.mergeable{box-shadow:inset 0 0 0 2px #efbb4f,0 0 0 2px #ffe69f!important}
+.board .cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8)!important}
+.board .cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65)!important}
+.board .cell.forecastCell{box-shadow:inset 0 0 0 2px #fffffff2,inset 0 0 0 4px #34779586!important}
+.board .cell.detail-selected{outline:3px solid rgba(47,127,119,.7)}
+.board .cell.eventTarget{box-shadow:0 0 0 4px rgba(239,143,53,.85)!important}
+.board .cell.eventSource{box-shadow:0 0 0 4px rgba(96,93,168,.72)!important}
+.board .cell .shore{display:none!important}
+/* Actual land / sea border comes only from the shared silhouette. */
+</style>
 </head>
 <body>
 <main>
-<header class="puzzleHeader"><div class="brand"><span class="brandMark">🏝️</span> Block Island <small>v1.7.0 / グラ試験</small></div><button class="action secondary headerMenu" id="menuBtn">メニュー</button></header>
+<header class="puzzleHeader"><div class="brand"><span class="brandMark">🏝️</span> Block Island <small>v1.7.1 / 地形試験</small></div><button class="action secondary headerMenu" id="menuBtn">メニュー</button></header>
 <div class="topbar">
   <div class="stat stat-population"><span class="statLabel"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-5 3.3-8 8-8s8 3 8 8"/></svg><span>人口</span></span><b id="popStat">0</b></div>
   <div class="stat stat-industry"><span class="statLabel"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M10 2h4l.6 2.4 2 .9 2.1-1.4 2.8 2.8-1.4 2.1.9 2L23 11v3l-2.4.6-.9 2 1.4 2.1-2.8 2.8-2.1-1.4-2 .9L14 23h-4l-.6-2.4-2-.9-2.1 1.4-2.8-2.8 1.4-2.1-.9-2L1 14v-3l2.4-.6.9-2L2.9 6.3l2.8-2.8 2.1 1.4 2-.9z"/><circle cx="12" cy="12" r="4" fill="white" stroke="none"/></svg><span>産業</span></span><b id="ecoStat">0</b></div>
@@ -468,8 +499,78 @@ function statsHTML(o){return Object.entries(o.stats).map(([k,v])=>`<span class="
 function showDetails(i){const o=objectAt(i);if(!o)return;state.detailIndex=i;detailIcon.textContent=o.icon;detailTitle.textContent=o.name;detailBranch.textContent=`${META[o.branch].icon} ${META[o.branch].name} / ${o.finalOnly?'Final・2マス大型施設':`Lv.${o.level+1}`}`;detailStats.innerHTML=statsHTML(o);const next=CHAINS[o.branch][o.level+1];if(!next)detailEvolution.textContent='進化：このルートの最終段階。';else if(next.finalOnly&&!state.finalPhase)detailEvolution.textContent=`進化：${o.name}×2 → ${next.name}（探索終了後の仕上げで進化）`;else detailEvolution.textContent=`進化：${o.name}×2 → ${next.name}`;if(o.level===2)detailSynergy.textContent=`Lv3完成イベント：${{population:'開拓隊がランダムな隣接海域を1マス開拓',industry:'職人が手札1枚を別系統Lv1へ加工',nature:'森の精霊がランダムLv1をLv2へ成長',culture:'超古代技術で通常施設1つを移動（スキップ可）'}[o.branch]}`;else detailSynergy.textContent='同じ施設を上下左右に隣接させると進化できる。';detailPanel.classList.add('show');renderBoard()}
 function closeDetails(){state.detailIndex=null;detailPanel.classList.remove('show');renderBoard()}
 function renderHand(){handEl.innerHTML='';handTitle.textContent=state.finalPhase?'開拓完了':'手札から1枚選ぶ';handTitle.classList.toggle('done',state.finalPhase);handEl.classList.toggle('finalDone',state.finalPhase);state.hand.forEach((id,idx)=>{const o=OBJECTS[id],b=document.createElement('button');b.className='card card-'+o.branch+(state.selected===idx?' selected':'');b.disabled=state.finished||state.finalPhase||state.animating||!!state.specialEvent;b.innerHTML=`<span class="cardArt">${biArt(o)}</span><span class="name">${o.name}</span>`;b.onclick=()=>selectCard(idx);handEl.appendChild(b)})}
-function biShore(i){const x=i%N,y=Math.floor(i/N),sea=(dx,dy)=>{const a=x+dx,b=y+dy;return a<0||b<0||a>=N||b>=N||state.cells[b*N+a].terrain==='water'};let parts='';for(const [side,dx,dy] of [['n',0,-1],['s',0,1],['w',-1,0],['e',1,0]])if(sea(dx,dy))parts+=`<span class="shore shore-${side}"></span>`;return parts}
-function renderBoard(){boardEl.innerHTML='';const mergeables=new Set(allMergeableCells()),forecastSet=new Set(state.landCandidates);state.cells.forEach((c,i)=>{const b=document.createElement('button');b.className='cell '+(c.terrain==='land'?'land':'water');b.dataset.index=i;if(state.selected!==null&&canPlaceObject(i)&&!state.specialEvent)b.classList.add('valid');if(forecastSet.has(i)&&c.terrain==='water'&&!state.finalPhase)b.classList.add('forecastCell');if(state.selected===null&&mergeables.has(i)&&!state.specialEvent)b.classList.add('mergeable');if(state.detailIndex===i)b.classList.add('detail-selected');if(state.mergeMode){if(i===state.mergeMode.target)b.classList.add('merge-target');if(sameMergeNeighbors(state.mergeMode.target).includes(i))b.classList.add('merge-source')}if(state.specialEvent?.type==='population'&&c.terrain==='water'&&neighbors(i).some(j=>state.cells[j].terrain==='land'))b.classList.add('eventTarget');if(state.specialEvent?.type==='culture'){const ev=state.specialEvent;if(ev.mode==='from'&&c.object&&!c.finalGroup&&i!==ev.origin)b.classList.add('eventSource');if(ev.mode==='to'){if(i===ev.source)b.classList.add('eventSource');else if(c.terrain==='land'&&!c.object)b.classList.add('eventTarget')}}const o=c.object?OBJECTS[c.object]:null,mate=c.finalGroup?linkedFinalMate(i):null;let finalStart=false,finalHorizontal=false;if(c.finalGroup&&mate!==null){const[x1,y1]=idxXY(i),[x2,y2]=idxXY(mate);finalHorizontal=y1===y2;b.classList.add('finalPair',finalHorizontal?'finalPairH':'finalPairV');finalStart=(finalHorizontal&&x1<x2)||(!finalHorizontal&&y1<y2);b.classList.add(finalStart?'finalPairStart':'finalPairEnd')}const levelText=o?(o.finalOnly?'★':`${o.level+1}`):'';b.innerHTML=c.terrain==='land'?biShore(i):'';if(o&&o.finalOnly&&c.finalGroup&&mate!==null){if(finalStart)b.innerHTML+=`<span class="finalMegaVisual ${finalHorizontal?'h':'v'}"><span class="finalMegaIcon">${biArt(o)}</span><span class="finalMegaBadge">★</span></span>`}else if(o)b.innerHTML+=`<span class="obj">${biArt(o)}</span><span class="levelBadge level-${o.branch}">${levelText}</span>`;if(forecastSet.has(i)&&c.terrain==='water'&&!state.finalPhase)b.innerHTML+=`<span class="forecastMark">${BI_WAGON}</span>`;b.setAttribute('aria-label',o?`${o.name} レベル${levelText}`:(c.terrain==='land'?'空き陸地':'海'));b.onclick=()=>place(i);boardEl.appendChild(b)})}
+function biTerrainOutline(){
+  // Clockwise boundary edges of all actual land cells, independent of facility art.
+  // Coordinates use 100 units per cell so they scale with the live board.
+  const size=100, edges=[], land=(x,y)=> x>=0&&y>=0&&x<N&&y<N&&state.cells[y*N+x].terrain==='land';
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(land(x,y)){
+    const X=x*size,Y=y*size;
+    if(!land(x,y-1))edges.push([[X,Y],[X+size,Y]]);
+    if(!land(x+1,y))edges.push([[X+size,Y],[X+size,Y+size]]);
+    if(!land(x,y+1))edges.push([[X+size,Y+size],[X,Y+size]]);
+    if(!land(x-1,y))edges.push([[X,Y+size],[X,Y]]);
+  }
+  if(!edges.length)return '';
+  const key=p=>p[0]+','+p[1],starts=new Map(),used=new Set(),polys=[];
+  edges.forEach((e,i)=>{const k=key(e[0]);if(!starts.has(k))starts.set(k,[]);starts.get(k).push(i)});
+  for(let k=0;k<edges.length;k++){
+    if(used.has(k))continue;
+    const pts=[],start=edges[k][0];let i=k,steps=0;
+    while(i!==undefined&&!used.has(i)&&steps++<=edges.length+1){
+      used.add(i);const [a,b]=edges[i];pts.push(a);
+      if(key(b)===key(start))break;
+      const opts=(starts.get(key(b))||[]).filter(q=>!used.has(q));
+      if(!opts.length)break;
+      // At a diagonal-touching vertex, keep the outline along one landmass edge.
+      // Prefer clockwise/right turning edge over crossing into another contour.
+      const dx=b[0]-a[0],dy=b[1]-a[1];
+      const dirs=opts.map(q=>{const z=edges[q][1];const vx=z[0]-b[0],vy=z[1]-b[1];return {q,cross:dx*vy-dy*vx,dot:dx*vx+dy*vy}});
+      dirs.sort((aa,bb)=>bb.cross-aa.cross || bb.dot-aa.dot);
+      i=dirs[0].q;
+    }
+    if(pts.length>=4)polys.push(pts);
+  }
+  const outline=pts=>{
+    const r=10;let path='';
+    const coord=p=>p.map(v=>+v.toFixed(2)).join(' ');
+    for(let i=0;i<pts.length;i++){
+      const prev=pts[(i+pts.length-1)%pts.length],p=pts[i],next=pts[(i+1)%pts.length];
+      const v1=[prev[0]-p[0],prev[1]-p[1]],v2=[next[0]-p[0],next[1]-p[1]];
+      const L1=Math.hypot(...v1),L2=Math.hypot(...v2);
+      const before=[p[0]+v1[0]*r/L1,p[1]+v1[1]*r/L1],after=[p[0]+v2[0]*r/L2,p[1]+v2[1]*r/L2];
+      if(i===0)path+='M '+coord(after)+' ';
+      const j=(i+1)%pts.length,np=pts[j],nn=pts[(j+1)%pts.length],edge=[np[0]-p[0],np[1]-p[1]],len=Math.hypot(...edge);
+      const nextBefore=[np[0]-edge[0]*r/len,np[1]-edge[1]*r/len];
+      const waviness=((Math.round((p[0]*19+np[1]*23+np[0]*7)%11)-5)/5)*2.0;
+      const mid=[(after[0]+nextBefore[0])/2+(-edge[1]/len)*waviness,(after[1]+nextBefore[1])/2+(edge[0]/len)*waviness];
+      path+='Q '+coord(mid)+' '+coord(nextBefore)+' ';
+      path+='Q '+coord(np)+' '+coord([np[0]+(nn[0]-np[0])*r/Math.hypot(nn[0]-np[0],nn[1]-np[1]),np[1]+(nn[1]-np[1])*r/Math.hypot(nn[0]-np[0],nn[1]-np[1])])+' ';
+    }
+    return path+'Z';
+  };
+  return polys.map(outline).join(' ');
+}
+function biCreateTerrainLayer(){
+  const p=biTerrainOutline(),size=N*100;
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('class','biTerrainLayer');svg.setAttribute('viewBox',`0 0 ${size} ${size}`);
+  svg.setAttribute('preserveAspectRatio','none');svg.setAttribute('aria-hidden','true');
+  svg.innerHTML=`<defs>
+    <linearGradient id="bi171-grass" x1="0" y1="0" x2=".65" y2="1"><stop offset="0" stop-color="#c5e4a3"/><stop offset=".65" stop-color="#acd481"/><stop offset="1" stop-color="#9cc775"/></linearGradient>
+    <linearGradient id="bi171-rock" x1="0" y1="0" x2=".2" y2="1"><stop offset="0" stop-color="#c8bb8d"/><stop offset=".42" stop-color="#9d9e79"/><stop offset="1" stop-color="#678d80"/></linearGradient>
+    <pattern id="bi171-grass-speck" width="64" height="61" patternUnits="userSpaceOnUse"><circle cx="13" cy="17" r="3" fill="#f2e9b7" opacity=".40"/><circle cx="48" cy="41" r="3.7" fill="#6ba968" opacity=".25"/><path d="M33 9l2 -3m-2 3l-2 -2" stroke="#5da05c" stroke-width="1.5" opacity=".36" fill="none"/></pattern>
+    <clipPath id="bi171-clip"><path d="${p}"/></clipPath>
+  </defs>
+  <path d="${p}" fill="none" stroke="#e4fff2" stroke-width="24" opacity=".46" stroke-linejoin="round"/>
+  <path class="terrainShadow" d="${p}" transform="translate(0 15)" fill="#346f7d" opacity=".30"/>
+  <path d="${p}" transform="translate(0 13)" fill="url(#bi171-rock)" stroke="#658879" stroke-width="11" stroke-linejoin="round"/>
+  <path d="${p}" fill="#e3d39d" stroke="#f1e5be" stroke-width="13" stroke-linejoin="round"/>
+  <path d="${p}" fill="url(#bi171-grass)" stroke="#d1d99b" stroke-width="3" stroke-linejoin="round"/>
+  <g clip-path="url(#bi171-clip)"><rect width="${size}" height="${size}" fill="url(#bi171-grass-speck)"/></g>`;
+  return svg;
+}
+
+function renderBoard(){boardEl.innerHTML='';boardEl.appendChild(biCreateTerrainLayer());const mergeables=new Set(allMergeableCells()),forecastSet=new Set(state.landCandidates);state.cells.forEach((c,i)=>{const b=document.createElement('button');b.className='cell '+(c.terrain==='land'?'land':'water');b.dataset.index=i;if(state.selected!==null&&canPlaceObject(i)&&!state.specialEvent)b.classList.add('valid');if(forecastSet.has(i)&&c.terrain==='water'&&!state.finalPhase)b.classList.add('forecastCell');if(state.selected===null&&mergeables.has(i)&&!state.specialEvent)b.classList.add('mergeable');if(state.detailIndex===i)b.classList.add('detail-selected');if(state.mergeMode){if(i===state.mergeMode.target)b.classList.add('merge-target');if(sameMergeNeighbors(state.mergeMode.target).includes(i))b.classList.add('merge-source')}if(state.specialEvent?.type==='population'&&c.terrain==='water'&&neighbors(i).some(j=>state.cells[j].terrain==='land'))b.classList.add('eventTarget');if(state.specialEvent?.type==='culture'){const ev=state.specialEvent;if(ev.mode==='from'&&c.object&&!c.finalGroup&&i!==ev.origin)b.classList.add('eventSource');if(ev.mode==='to'){if(i===ev.source)b.classList.add('eventSource');else if(c.terrain==='land'&&!c.object)b.classList.add('eventTarget')}}const o=c.object?OBJECTS[c.object]:null,mate=c.finalGroup?linkedFinalMate(i):null;let finalStart=false,finalHorizontal=false;if(c.finalGroup&&mate!==null){const[x1,y1]=idxXY(i),[x2,y2]=idxXY(mate);finalHorizontal=y1===y2;b.classList.add('finalPair',finalHorizontal?'finalPairH':'finalPairV');finalStart=(finalHorizontal&&x1<x2)||(!finalHorizontal&&y1<y2);b.classList.add(finalStart?'finalPairStart':'finalPairEnd')}const levelText=o?(o.finalOnly?'★':`${o.level+1}`):'';b.innerHTML='';if(o&&o.finalOnly&&c.finalGroup&&mate!==null){if(finalStart)b.innerHTML+=`<span class="finalMegaVisual ${finalHorizontal?'h':'v'}"><span class="finalMegaIcon">${biArt(o)}</span><span class="finalMegaBadge">★</span></span>`}else if(o)b.innerHTML+=`<span class="obj">${biArt(o)}</span><span class="levelBadge level-${o.branch}">${levelText}</span>`;if(forecastSet.has(i)&&c.terrain==='water'&&!state.finalPhase)b.innerHTML+=`<span class="forecastMark">${BI_WAGON}</span>`;b.setAttribute('aria-label',o?`${o.name} レベル${levelText}`:(c.terrain==='land'?'空き陸地':'海'));b.onclick=()=>place(i);boardEl.appendChild(b)})}
 function renderStats(){for(const[k,e]of Object.entries(statEls))e.textContent=state.stats[k];turnNow.textContent=state.turn;modeLabel.textContent=state.finalPhase?'仕上げ':'探索中'}
 function renderForecast(){if(state.finalPhase){forecastEl.textContent='開拓完了。合体できる施設を仕上げよう。';return}if(!state.landCandidates.length){forecastEl.textContent='島は最大まで広がっています。';return}const until=CONFIG.landEvery-(state.turn%CONFIG.landEvery);forecastEl.textContent=motherState.rewards.s2?`🎯 開拓予測強化：候補を2マスまで絞り込み（狙い 33%→50%）｜ あと${until}ターン`:`◇ 次の陸地候補：3マス ｜ あと${until}ターン`}
 function render(){renderHand();renderBoard();renderStats();renderAchievements();renderForecast();renderSpecialEventPanel();if(state.detailIndex===null)detailPanel.classList.remove('show');cancelMergeBtn.hidden=!state.mergeMode;finishBtn.hidden=!state.finalPhase||state.finished;quitExploreBtn.hidden=state.finalPhase||state.finished;focusBtn.hidden=!motherState.rewards.s4||state.focusUsed||state.finalPhase||state.finished||!!state.specialEvent}
