@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.8</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.9</title><style>
 :root{--sea:#8fd6e8;--land:#b9d98c;--land2:#d7e9ad;--ink:#17313a;--muted:#607780;--panel:#ffffff;--accent:#ef8f35;--accent2:#2f7f77;--border:#cddde1;--glow:#ffd166;--danger:#c94f4f}
 *{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef8fb;color:var(--ink);margin:0;padding:14px 12px 32px;text-align:center}main{max-width:720px;margin:0 auto}h1{font-size:26px;margin:4px 0 2px}.subtitle{font-size:13px;color:var(--muted);margin:0 0 10px}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:7px 4px;font-size:12px}.stat b{display:block;font-size:20px;margin-top:2px}.progress{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:14px}.handTitle{font-size:13px;color:var(--muted);text-align:left;margin:6px 2px}.hand{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}.card{min-height:74px;border:2px solid var(--border);background:#fff;border-radius:13px;padding:6px 4px;color:var(--ink);font-weight:700;touch-action:manipulation}.card .icon{font-size:27px;display:block;line-height:1.1}.card .name{font-size:12px;display:block;margin-top:4px}.card .tag{font-size:9px;color:var(--muted);display:block;font-weight:600}.card.selected{border-color:var(--accent);background:#fff4e8;box-shadow:0 0 0 2px rgba(239,143,53,.15)}.card.fixed{border-style:dashed}.forecast{font-size:12px;color:var(--muted);margin:-2px 0 9px}.cell.forecastCell{box-shadow:inset 0 0 0 3px rgba(255,255,255,.82),0 0 0 2px rgba(69,135,167,.55);animation:forecastPulse 1.45s infinite}.forecastMark{position:absolute;right:4px;top:2px;font-size:13px;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35)}.floatDelta{position:absolute;left:50%;top:8%;transform:translateX(-50%);z-index:20;pointer-events:none;font-size:12px;font-weight:900;white-space:nowrap;background:rgba(255,255,255,.94);border:1px solid rgba(23,49,58,.12);border-radius:999px;padding:3px 6px;animation:floatUp 1.15s ease forwards}.landBurst{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;pointer-events:none;animation:landPop .8s ease forwards}.card:disabled{opacity:.45}.boardWrap{background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px;margin:0 auto}.board{display:grid;gap:4px;justify-content:center;margin:auto}.cell{position:relative;width:min(13.9vw,58px);aspect-ratio:1;border:1px solid rgba(31,75,83,.16);border-radius:10px;background:var(--sea);font-size:28px;padding:0;touch-action:manipulation;overflow:visible}.cell.land{background:linear-gradient(145deg,var(--land2),var(--land))}.cell.valid{outline:3px solid rgba(47,127,119,.45);outline-offset:-3px}.cell.mergeable{animation:pulse 1.1s infinite;box-shadow:0 0 0 3px rgba(255,209,102,.7)}.cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8);animation:none}.cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65);animation:pulse 1s infinite}.cell .terrainDot{position:absolute;left:4px;bottom:3px;font-size:8px;opacity:.5}.levelBadge{position:absolute;right:3px;bottom:2px;z-index:7;font-size:9px;font-weight:900;line-height:1;background:rgba(255,255,255,.82);color:var(--ink);border-radius:5px;padding:3px 4px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}.objName{position:absolute;left:50%;top:2px;z-index:7;transform:translateX(-50%);max-width:92%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7px;font-weight:900;line-height:1.15;background:rgba(255,255,255,.78);color:var(--ink);border-radius:4px;padding:2px 3px;pointer-events:none}.cell .obj{display:inline-block;transition:transform .18s ease,opacity .18s ease}.cell.pop .obj{animation:pop .28s ease}.status{min-height:54px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:10px 0 8px;font-size:14px;display:flex;align-items:center;justify-content:center}.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.action{border:0;border-radius:10px;padding:10px 14px;background:var(--accent2);color:#fff;font-weight:700}.action.secondary{background:#738a92}.action.warn{background:var(--accent)}.action:disabled{opacity:.4}.legend{font-size:11px;color:var(--muted);margin-top:8px}.achievement{margin-top:10px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}.achievement h2{font-size:14px;margin:0 0 6px}.achList{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:11px;background:#edf4f4;border-radius:999px;padding:5px 8px}.badge.locked{opacity:.35}.result{display:none;background:#fff8e9;border:2px solid #f2c56b;border-radius:16px;padding:16px;margin-top:12px}.result.show{display:block}.result h2{margin:0 0 4px}.result .islandType{font-size:24px;font-weight:900}.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.mini{background:#fff;border-radius:9px;padding:6px 2px;font-size:11px}.mini b{display:block;font-size:17px}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}@keyframes forecastPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.1)}}@keyframes floatUp{0%{opacity:0;transform:translate(-50%,8px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-28px) scale(1.05)}}@keyframes landPop{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1)}}@keyframes pop{0%{transform:scale(.65);opacity:.35}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
 .detailPanel{display:none;text-align:left;background:#fff;border:2px solid var(--accent2);border-radius:14px;padding:11px 12px;margin:10px 0 8px;position:relative}.detailPanel.show{display:block}.detailHead{display:flex;align-items:center;gap:10px}.detailIcon{font-size:32px}.detailTitle{font-weight:900;font-size:18px}.detailBranch{font-size:11px;color:var(--muted)}.detailStats{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.detailChip{background:#edf5f4;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:800}.detailText{font-size:12px;color:var(--muted);line-height:1.55;margin:5px 0}.detailActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.detailActions button{border:0;border-radius:9px;padding:9px 12px;font-weight:800}.detailMerge{background:var(--accent);color:#fff}.detailClose{background:#e7eff1;color:var(--ink)}.cell.detail-selected{outline:3px solid rgba(47,127,119,.7);outline-offset:-3px}.obj.merge-keep-prep{animation:mergeKeep .28s ease forwards}.obj.merge-source-fly{animation:mergeFly .28s ease forwards;z-index:25;position:relative}.obj.merge-result{animation:mergeResult .46s cubic-bezier(.2,.9,.3,1.35)}.obj.merge-result.final{animation:mergeFinal .72s cubic-bezier(.15,.9,.25,1.3)}@keyframes mergeKeep{0%{transform:scale(1)}60%{transform:scale(.58)}100%{transform:scale(.72)}}@keyframes mergeFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.28);opacity:.2}}@keyframes mergeResult{0%{transform:scale(.45);opacity:.25}55%{transform:scale(1.34);opacity:1}100%{transform:scale(1)}}@keyframes mergeFinal{0%{transform:scale(.35) rotate(-3deg);opacity:.2}48%{transform:scale(1.58) rotate(2deg);opacity:1}72%{transform:scale(.92)}100%{transform:scale(1)}}
@@ -622,9 +622,22 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
 @media(max-width:520px){.placementBackdrop{padding:0}.placementSheet{border-radius:0;width:100%;height:100dvh;max-height:100dvh;border:0;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);box-sizing:border-box}.placementMapWrap{flex-basis:300px}.placementBottom{padding-bottom:10px}}
 @media(prefers-reduced-motion:reduce){.placementSheet *{scroll-behavior:auto!important}}
 
+/* GROUND-01: scoped to the new editor; existing facility controls unchanged. */
+.motherLayoutTools{flex-wrap:wrap}.motherLayoutTools>span{flex:1 1 100%}
+.motherLayoutTools>#editMotherGround{margin-left:auto}
+.groundPalette{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:0 12px 8px;flex-shrink:0}
+.groundPalette button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;min-height:75px;border:1px solid #bdc6a8;border-radius:11px;background:#fffbef;color:#405b49;font:700 13px system-ui;padding:6px 2px}
+.groundPalette small{font:10px system-ui;line-height:1.3}.groundPalette button[aria-pressed=true]{border:2px solid #447e66;background:#e4ecd3;padding:5px 1px}
+.groundSwatch{display:block;width:35px;height:16px;border-radius:7px;box-shadow:inset 0 0 0 1px #405b4922}.groundSwatch.grass{background:#b8cd89}.groundSwatch.dirt{background:linear-gradient(125deg,#ead5aa,#d5bb8b)}.groundSwatch.cobble{background:radial-gradient(ellipse at 30% 25%,#c5c6bc 20%,transparent 23%),radial-gradient(ellipse at 80% 60%,#b0b3a8 26%,transparent 29%),#91948a}
+.groundModes{display:flex;gap:7px;padding:0 12px;flex-shrink:0}.groundModes button{flex:1;min-height:40px;border:1px solid #bac4a9;border-radius:9px;background:#fffbef;color:#456651;font:700 13px system-ui}.groundModes button[aria-pressed=true]{background:#447e69;color:#fffcef;border-color:#447e69}
+.groundHelp{margin:6px 12px 8px;font:11px system-ui;color:#66735e;flex-shrink:0}.groundInfo{font:12px system-ui;color:#456651;line-height:1.4;min-height:18px;margin-bottom:8px}
+.groundSheet .placementMapWrap{flex-basis:400px;min-height:140px}.groundSheet .placementMap{min-height:140px}
+.groundSheet button:focus-visible{outline:3px solid #d5a53e;outline-offset:2px}
+@media(max-height:560px){.groundSheet header{padding-top:5px;padding-bottom:4px}.groundSheet .placementSub{display:none}.groundPalette{padding-bottom:4px}.groundPalette button{min-height:48px}.groundSwatch{display:none}.groundHelp{margin:3px 12px}.groundSheet .placementBottom{padding-top:5px;padding-bottom:5px}.groundSheet .placementHint{display:none}.groundSheet .placementMapWrap,.groundSheet .placementMap{min-height:100px}}
+
 </style></head><body>
 <main>
-<header class="puzzleHeader"><div class="brand"><span class="brandMark">🏝️</span> Block Island <small>v2.0 α7.8</small></div><button class="action secondary headerMenu" id="menuBtn">メニュー</button></header>
+<header class="puzzleHeader"><div class="brand"><span class="brandMark">🏝️</span> Block Island <small>v2.0 α7.9</small></div><button class="action secondary headerMenu" id="menuBtn">メニュー</button></header>
 <div class="topbar">
   <div class="stat stat-population"><span class="statLabel"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-5 3.3-8 8-8s8 3 8 8"/></svg><span>人口</span></span><b id="popStat">0</b></div>
   <div class="stat stat-industry"><span class="statLabel"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M10 2h4l.6 2.4 2 .9 2.1-1.4 2.8 2.8-1.4 2.1.9 2L23 11v3l-2.4.6-.9 2 1.4 2.1-2.8 2.8-2.1-1.4-2 .9L14 23h-4l-.6-2.4-2-.9-2.1 1.4-2.8-2.8 1.4-2.1-.9-2L1 14v-3l2.4-.6.9-2L2.9 6.3l2.8-2.8 2.1 1.4 2-.9z"/><circle cx="12" cy="12" r="4" fill="white" stroke="none"/></svg><span>産業</span></span><b id="ecoStat">0</b></div>
@@ -1197,7 +1210,7 @@ renderMother=function(){
 const SLOT_ORDER=[17,18,24,25,16,19,23,26,10,11,12,9,15,22,29,30,31,32,33,8,13,20,27,34,14,21,28,7,6,5,4,3,2,1,0,35,36,37,38,39,40,41];
 function renderMotherScene(){renderPlacementScene()}
 
-openMenu=function(){showSimpleModal('Block Island v2.0 α7.8','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
+openMenu=function(){showSimpleModal('Block Island v2.0 α7.9','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
 function importSave(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=async()=>{try{const file=input.files[0];if(!file)return;const v=JSON.parse(await file.text());if(!validSnapshot(v))throw Error('invalid');showSimpleModal('セーブを読み込みますか？','現在のv2.0の進行を、選んだセーブの内容に置き換えます。',[{label:'キャンセル'},{label:'読み込む',fn:()=>{if(Platform.write(SAVE_KEY,JSON.stringify(v))){booting=true;location.reload();}else showUnlockToast('読み込みを保存できませんでした')}}])}catch{showUnlockToast('セーブを読み込めません','v2.0 αのセーブファイルを選んでください')}};input.click()}
 function enhanceResourceUI(){
  document.querySelectorAll('.resultTokens>.resultToken .tokenFace').forEach((e,i)=>{const k=KEYS[i];e.innerHTML=resourceIcon(k);e.setAttribute('aria-label',RESOURCE_COLORS[k]+'の資源トークン')});
@@ -1265,6 +1278,7 @@ function firstFreePosition(id,placements,preferred){
  return candidates.find(p=>!positionError(p,placements))||null;
 }
 function normalizeMotherLayout(m){
+ normalizeMotherGround(m);
  if(validMotherLayout(m))return false;
  const placements=[],old=Array.isArray(m.layout?.placements)?m.layout.placements:[];
  for(const f of FACILITIES)for(let i=1;i<=ctFor(m,f[0]);i++){
@@ -1279,7 +1293,8 @@ for(const [id,src] of Object.entries({...MOTHER_SPRITES,port:MOTHER_PORT_PARTS.h
 const motherCamera={scale:0,cx:12.8,cy:12.8};
 let inlineMotherMap=null,placementEditor=null;
 class MotherMap{
- constructor(canvas,{editor=false,ghost=()=>null,onTap=()=>{},onGhostMove=null,placements=()=>motherState.layout?.placements||[],camera=null}={}){
+ constructor(canvas,{editor=false,ghost=()=>null,onTap=()=>{},onGhostMove=null,placements=()=>motherState.layout?.placements||[],camera=null,ground=()=>motherState.ground}={}){
+  this.ground=ground;
   this.canvas=canvas;this.ctx=canvas.getContext('2d');this.editor=editor;this.ghost=ghost;this.placements=placements;this.onTap=onTap;this.onGhostMove=onGhostMove;this.camera=camera||{scale:0,cx:10,cy:10};this.pointers=new Map();this.hits=[];this.moved=false;this.disposed=false;this.draggingFacility=null;
   this.down=e=>{if(e.pointerType==='mouse'&&e.button!==0)return;canvas.setPointerCapture(e.pointerId);const p=this.local(e);this.pointers.set(e.pointerId,p);
    if(this.pointers.size===1){this.moved=false;const g=this.ghost(),hit=this.hit(p);this.draggingFacility=this.onGhostMove&&g&&hit?.uid===g.uid?{start:this.toWorld(p),x:g.x,y:g.y}:null;}
@@ -1326,6 +1341,7 @@ class MotherMap{
   this.polygon(pts.map(([x,y],i)=>[x,y+this.unit*coastHeight(i)]),'#989580');this.polygon(pts,'#d9c99c');
   this.polygon([this.point(0,0),this.point(20,0),this.point(20,20),this.point(0,20)],'#b8cd89');
   for(let y=0;y<20;y++)for(let x=0;x<20;x++){const seed=(x*97+y*53)%13;if(seed<4)this.tile({x,y,size:1},seed===0?'#adc68044':'#c8d89744');if(seed%3===0){const [px,py]=this.point(x+.35,y+.65);c.strokeStyle='#789f6138';c.lineWidth=.8;c.beginPath();c.moveTo(px,py);c.lineTo(px+this.unit*.06,py-this.unit*.07);c.stroke()}}
+  GroundRenderer.draw(this,this.ground());
   this.drawPortApproach();
   if(this.editor){for(let i=0;i<=20;i++){c.beginPath();c.moveTo(...this.point(i,0));c.lineTo(...this.point(i,20));c.moveTo(...this.point(0,i));c.lineTo(...this.point(20,i));c.strokeStyle='#4b74523b';c.lineWidth=.7;c.stroke()}}
   // Keep the old reward decoration as ambient edge planting, separate from occupied cells.
@@ -1414,16 +1430,17 @@ function renderPlacementScene(){
  scene.append(mapButtons(inlineMotherMap));
  const existing=$('motherLayoutTools');existing?.remove();const tools=document.createElement('div');tools.id='motherLayoutTools';tools.className='motherLayoutTools';
  const count=motherState.layout.placements.length;tools.innerHTML=`<span>ドラッグで移動 · ピンチで拡大</span><button type="button">施設の配置</button>`;tools.querySelector('button').hidden=motherPreviewMode;tools.querySelector('button').disabled=count===0&&!motherState.portComplete;tools.querySelector('button').onclick=()=>openPlacementEditor('move');scene.after(tools);
+ if(!motherPreviewMode){const b=document.createElement('button');b.type='button';b.id='editMotherGround';b.textContent='道・地面';b.onclick=openGroundEditor;tools.append(b);}
  $('sceneCaption').textContent=count?`${count+(motherState.portComplete?1:0)}の施設が、島の暮らしを育んでいます`:'まだ静かな島。探索で資源を集め、最初の施設を建てよう。';
 }
 const buildImmediately=buildMotherFacility;
 buildMotherFacility=function(id){
- if(motherPreviewMode||currentScreen!=='mother'||placementEditor||departureActive)return;
+ if(motherPreviewMode||currentScreen!=='mother'||placementEditor||groundEditor||departureActive)return;
  const f=facilityById(id);if(!f||!f[7]()||ct(id)>=f[4]||!canAfford(facilityCost(f)))return;
  openPlacementEditor('build',id);
 };
 function openPlacementEditor(mode,key){
- if(placementEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
+ if(placementEditor||groundEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
  normalizeMotherLayout(motherState);
  const previousFocus=document.activeElement,scrollYBefore=window.scrollY,oldOverflow=document.body.style.overflow;
  const dialog=document.createElement('div');dialog.className='placementBackdrop';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-labelledby','placementTitle');
@@ -1500,6 +1517,169 @@ installQA=function(){alpha7InstallQA();Object.assign(window.BI_QA,{
  focusPort:(inline=false)=>{const v=inline?inlineMotherMap:placementEditor?.view;v?.focus({id:'port',...PORT_SITE})},
  validateSnapshot:validSnapshot,artIds:()=>Object.keys(MOTHER_SPRITES)
 })};
+
+// GROUND-01. Data/rules only: 0 grass, 1 dirt, 2 cobble. No occupancy or costs.
+const GroundModel=Object.freeze({
+ size:20,
+ empty(){return {version:1,width:20,height:20,cells:Array(400).fill(0)}},
+ valid(g){return !!g&&g.version===1&&g.width===20&&g.height===20&&Array.isArray(g.cells)&&g.cells.length===400&&g.cells.every(v=>v===0||v===1||v===2)},
+ sanitize(g){
+  const out=this.empty();
+  if(g?.version===1&&g.width===20&&g.height===20&&Array.isArray(g.cells))for(let i=0;i<400;i++)out.cells[i]=g.cells[i]===1||g.cells[i]===2?g.cells[i]:0;
+  return out;
+ },
+ cobbleUnlocked(m){const rule=DECORS.find(d=>d[2]==='石畳の道');return !!rule&&m.stats[rule[0]]>=rule[1]},
+ paint(g,x,y,type){if(!Number.isInteger(x)||!Number.isInteger(y)||x<0||y<0||x>=20||y>=20||![0,1,2].includes(type))return false;const i=y*20+x;if(g.cells[i]===type)return false;g.cells[i]=type;return true},
+ // Sample the whole stroke, not only browser-delivered move events.
+ line(g,a,b,type){
+  const n=Math.ceil(Math.max(Math.abs(b.x-a.x),Math.abs(b.y-a.y))*8);let changed=false,prev=null;
+  for(let i=0;i<=n;i++){
+   const t=n?i/n:0,x=Math.floor(a.x+(b.x-a.x)*t),y=Math.floor(a.y+(b.y-a.y)*t);
+   // A corner crossing needs one orthogonal bridge. Tie-break is reversible,
+   // so repainting/erasing the same diagonal in reverse follows the same cells.
+   if(prev&&x!==prev.x&&y!==prev.y){const bridge=[{x:prev.x,y},{x,y:prev.y}].sort((a,b)=>a.x+a.y-b.x-b.y||a.x-b.x)[0];changed=this.paint(g,bridge.x,bridge.y,type)||changed}
+   changed=this.paint(g,x,y,type)||changed;prev={x,y};
+  }return changed;
+ }
+});
+function normalizeMotherGround(m){if(!GroundModel.valid(m.ground))m.ground=GroundModel.sanitize(m.ground)}
+
+// Replaceable provisional materials. World-space texture + connected shape mask:
+// no repeating per-cell stamps, no changes to the shoreline or harbor renderer.
+const GroundRenderer=(()=>{
+ const RES=64,SIDE=20*RES,textures=new Map(),cache=new WeakMap();
+ const noise=(x,y,s=0)=>{let n=Math.imul(x+719+s,374761393)^Math.imul(y+823,668265263);n=Math.imul(n^(n>>>13),1274126177);return ((n^(n>>>16))>>>0)/4294967295};
+ const canvas=()=>{const c=document.createElement('canvas');c.width=c.height=SIDE;return c};
+ function rounded(ctx,points){
+  const mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];ctx.beginPath();ctx.moveTo(...mid(points.at(-1),points[0]));
+  points.forEach((p,i)=>ctx.quadraticCurveTo(...p,...mid(p,points[(i+1)%points.length])));ctx.closePath();
+ }
+ function clip(poly,nx,ny,k){const out=[];for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],da=a[0]*nx+a[1]*ny-k,db=b[0]*nx+b[1]*ny-k;if(da<=0)out.push(a);if((da<=0)!==(db<=0)){const t=da/(da-db);out.push([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t])}}return out}
+ function texture(type){
+  if(textures.has(type))return textures.get(type);const out=canvas(),c=out.getContext('2d');
+  if(type===1){
+   c.fillStyle='#d9c397';c.fillRect(0,0,SIDE,SIDE);
+   for(let i=0;i<2200;i++){const x=noise(i,3)*SIDE,y=noise(i,5)*SIDE,r=3+noise(i,7)*21;const g=c.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,i%2?'#f6dfaf24':'#af946d17');g.addColorStop(1,'#d9c39700');c.fillStyle=g;c.fillRect(x-r,y-r,r*2,r*2)}
+   for(let i=0;i<3600;i++){const x=noise(i,11)*SIDE,y=noise(i,13)*SIDE;c.fillStyle=i%4?'#f4dfb528':'#9f896129';c.beginPath();c.ellipse(x,y,.3+noise(i,17)*1.0,.3+noise(i,19)*.7,noise(i,23)*6,0,Math.PI*2);c.fill()}
+  }else{
+   c.fillStyle='#91948a';c.fillRect(0,0,SIDE,SIDE);
+   // Jittered Voronoi stones: dense, rounded, irregular; never brick/tile rows.
+   const step=15,N=Math.ceil(SIDE/step)+2,seeds=[];
+   for(let y=-2;y<N;y++)for(let x=-2;x<N;x++)seeds.push({gx:x,gy:y,x:(x+.1+noise(x,y,29)*.8)*step,y:(y+.1+noise(x,y,31)*.8)*step});
+   const lookup=new Map(seeds.map(p=>[p.gx+','+p.gy,p]));
+   for(const p of seeds){
+    if(p.x<-step||p.y<-step||p.x>SIDE+step||p.y>SIDE+step)continue;
+    let poly=[[p.x-30,p.y-30],[p.x+30,p.y-30],[p.x+30,p.y+30],[p.x-30,p.y+30]];
+    for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++){const q=lookup.get((p.gx+dx)+','+(p.gy+dy));if(!q||q===p)continue;poly=clip(poly,q.x-p.x,q.y-p.y,(q.x*q.x+q.y*q.y-p.x*p.x-p.y*p.y)/2)}
+    if(poly.length<3)continue;poly=poly.map(([x,y])=>[p.x+(x-p.x)*.96,p.y+(y-p.y)*.96]);
+    const v=154+Math.floor(noise(p.gx,p.gy,37)*35),g=c.createLinearGradient(p.x-8,p.y-8,p.x+8,p.y+8);g.addColorStop(0,`rgb(${v+14},${v+15},${v+9})`);g.addColorStop(1,`rgb(${v-9},${v-8},${v-11})`);rounded(c,poly);c.fillStyle=g;c.fill();c.strokeStyle='#e3e4dc45';c.lineWidth=.65;c.stroke();
+   }
+  }
+  textures.set(type,out);return out;
+ }
+ function maskPath(g,type){
+  const path=new Path2D(),at=(x,y)=>x>=0&&y>=0&&x<20&&y<20?g.cells[y*20+x]:0;
+  for(let y=0;y<20;y++)for(let x=0;x<20;x++){
+   if(at(x,y)!==type)continue;
+   const open=[!at(x,y-1),!at(x+1,y),!at(x,y+1),!at(x-1,y)];
+   const corners=[[x,y],[x+1,y],[x+1,y+1],[x,y+1]],dirs=[[1,0],[0,1],[-1,0],[0,-1]],ins=[[0,1],[-1,0],[0,-1],[1,0]];
+   const radius=i=>open[(i+3)%4]&&open[i]?0.14:0;
+   const r0=radius(0);path.moveTo((x+r0)*RES,y*RES);
+   for(let side=0;side<4;side++){
+    const a=corners[side],b=corners[(side+1)%4],d=dirs[side],inward=ins[side],ra=radius(side),rb=radius((side+1)%4);
+    if(open[side])for(let j=1;j<8;j++){const t=ra+(1-ra-rb)*j/8,w=.018+.020*noise(x*11+j,y*13+side,41);path.lineTo((a[0]+d[0]*t+inward[0]*w)*RES,(a[1]+d[1]*t+inward[1]*w)*RES)}
+    path.lineTo((b[0]-d[0]*rb)*RES,(b[1]-d[1]*rb)*RES);
+    if(rb){const next=dirs[(side+1)%4];path.quadraticCurveTo(b[0]*RES,b[1]*RES,(b[0]+next[0]*rb)*RES,(b[1]+next[1]*rb)*RES)}
+   }path.closePath();
+  }return path;
+ }
+ function layer(g){
+  const key=g.cells.join(''),prev=cache.get(g);if(prev?.key===key)return prev.image;
+  const image=prev?.image||canvas(),c=image.getContext('2d');c.clearRect(0,0,SIDE,SIDE);
+  for(const type of [1,2])if(g.cells.includes(type)){
+   const mask=maskPath(g,type);c.save();c.clip(mask);c.drawImage(texture(type),0,0);c.restore();
+  }
+  cache.set(g,{key,image});return image;
+ }
+ return {draw(view,g){
+  if(!g?.cells?.some(v=>v===1||v===2))return;const c=view.ctx,u=view.unit,[x,y]=view.point(0,0);
+  c.save();c.transform(u/(2*RES),u/(4*RES),-u/(2*RES),u/(4*RES),x,y);c.imageSmoothingEnabled=true;c.drawImage(layer(g),0,0);c.restore();
+ },texture,maskPath,layer};
+})();
+
+// A separate pointer controller leaves facility drag/flip behavior untouched.
+let groundEditor=null;
+class GroundMap extends MotherMap{
+ constructor(canvas,options){
+  super(canvas,{...options,editor:true});this.paint=options.paint;this.beginStroke=options.beginStroke;this.cancelStroke=options.cancelStroke;this.endStroke=options.endStroke;this.mode='paint';this.blockPaint=false;
+  for(const [event,fn]of [['pointerdown',this.down],['pointermove',this.move],['pointerup',this.up],['pointercancel',this.cancel]])canvas.removeEventListener(event,fn);
+  this.down=e=>{
+   if(e.pointerType==='mouse'&&e.button!==0)return;e.preventDefault();canvas.setPointerCapture(e.pointerId);const p=this.local(e);this.pointers.set(e.pointerId,p);
+   if(this.pointers.size===1&&!this.blockPaint&&this.mode==='paint'){this.beginStroke();this.stroke=true;this.lastWorld=this.toWorld(p);this.paint(this.lastWorld,this.lastWorld)}
+   else if(this.pointers.size>1){this.abortStroke();this.blockPaint=true}
+   this.resetGesture();this.draw();
+  };
+  this.move=e=>{
+   if(!this.pointers.has(e.pointerId))return;e.preventDefault();const p=this.local(e);this.pointers.set(e.pointerId,p);const ps=[...this.pointers.values()];
+   if(ps.length===2&&this.gesture?.anchor){const d=Math.hypot(ps[0].x-ps[1].x,ps[0].y-ps[1].y),mid={x:(ps[0].x+ps[1].x)/2,y:(ps[0].y+ps[1].y)/2};this.setScale(this.gesture.u*d/Math.max(1,this.gesture.distance));this.centerAt(this.gesture.anchor,mid)}
+   else if(ps.length===1&&this.mode==='pan'&&!this.blockPaint&&this.gesture){const dx=p.x-this.gesture.start.x,dy=p.y-this.gesture.start.y;this.camera.cx=this.gesture.cx-dx/this.unit-2*dy/this.unit;this.camera.cy=this.gesture.cy+dx/this.unit-2*dy/this.unit;this.clampCenter()}
+   else if(ps.length===1&&this.stroke&&!this.blockPaint){const w=this.toWorld(p);this.paint(this.lastWorld,w);this.lastWorld=w}
+   this.draw();
+  };
+  this.up=e=>{
+   if(!this.pointers.has(e.pointerId))return;
+   if(this.stroke&&!this.blockPaint){const w=this.toWorld(this.local(e));this.paint(this.lastWorld,w);this.endStroke();this.stroke=false;this.lastWorld=null}
+   this.pointers.delete(e.pointerId);if(!this.pointers.size)this.blockPaint=false;this.resetGesture();this.draw();
+  };
+  this.cancel=e=>{if(!this.pointers.has(e.pointerId))return;this.abortStroke();this.pointers.delete(e.pointerId);this.blockPaint=this.pointers.size>0;this.resetGesture();this.draw()};
+  for(const [event,fn]of [['pointerdown',this.down],['pointermove',this.move],['pointerup',this.up],['pointercancel',this.cancel],['lostpointercapture',this.cancel]])canvas.addEventListener(event,fn);
+  // A wheel zoom during a stroke must not paint a line across different cameras.
+  canvas.removeEventListener('wheel',this.wheel);const baseWheel=this.wheel;this.wheel=e=>{this.abortStroke();this.blockPaint=this.pointers.size>0;baseWheel(e)};canvas.addEventListener('wheel',this.wheel,{passive:false});
+ }
+ abortStroke(){if(this.stroke)this.cancelStroke();this.stroke=false;this.lastWorld=null}
+ setMode(mode){this.abortStroke();this.blockPaint=this.pointers.size>0;this.mode=mode;this.draw()}
+ destroy(){this.canvas.removeEventListener('lostpointercapture',this.cancel);super.destroy()}
+}
+function openGroundEditor(){
+ if(groundEditor||placementEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
+ normalizeMotherGround(motherState);
+ const original=JSON.stringify(motherState.ground),draft=GroundModel.sanitize(motherState.ground),previousFocus=document.activeElement,oldOverflow=document.body.style.overflow,scroll=window.scrollY;
+ let material=1,strokeBefore=null,closed=false;
+ const dialog=document.createElement('div');dialog.className='placementBackdrop groundBackdrop';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-labelledby','groundTitle');
+ dialog.innerHTML=`<section class="placementSheet groundSheet"><header><div><h2 id="groundTitle">道・地面</h2><p class="placementSub">無料・無制限 · 施設の下にも敷けます</p></div><button class="placementClose" aria-label="地面編集をキャンセルして閉じる">×</button></header><div class="groundPalette" role="group" aria-label="地面の素材"><button data-ground="0"><i class="groundSwatch grass"></i>草地<small>道を消す</small></button><button data-ground="1"><i class="groundSwatch dirt"></i>土の道<small>使用可能</small></button><button data-ground="2"><i class="groundSwatch cobble"></i>石畳<small></small></button></div><div class="groundModes" role="group" aria-label="地図操作"><button data-mode="paint">塗る</button><button data-mode="pan">地図移動</button></div><p class="groundHelp" id="groundHelp"></p><div class="placementMapWrap"><canvas class="placementMap groundMap" aria-label="地面編集用の母島" aria-describedby="groundHelp"></canvas></div><div class="placementBottom"><div class="groundInfo" aria-live="polite"></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">確定</button></div><p class="placementHint">確定まで保存しません · キャンセルで全変更を取り消し</p></div></section>`;
+ document.body.append(dialog);document.body.style.overflow='hidden';
+ const info=dialog.querySelector('.groundInfo'),confirm=dialog.querySelector('.placementConfirm'),stone=dialog.querySelector('[data-ground="2"]');
+ stone.disabled=!GroundModel.cobbleUnlocked(motherState);stone.querySelector('small').textContent=stone.disabled?'文化の発展値190で解放':'使用可能';stone.setAttribute('aria-label',stone.disabled?'石畳。文化の母島発展値190で解放':'石畳');
+ const changed=()=>draft.cells.reduce((n,v,i)=>n+(v!==motherState.ground.cells[i]?1:0),0);
+ function refresh(){const n=changed();info.textContent=n?`${n}マス変更 · 確定で保存`:'タップで1マス、なぞって続けて塗れます';confirm.disabled=!n;dialog.querySelectorAll('[data-ground]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.ground)===material)))}
+ const paint=(a,b)=>{if(material===2&&!GroundModel.cobbleUnlocked(motherState))return;if(GroundModel.line(draft,a,b,material))refresh()};
+ const view=new GroundMap(dialog.querySelector('canvas'),{ground:()=>draft,camera:{...motherCamera},paint,beginStroke:()=>{strokeBefore=draft.cells.slice()},cancelStroke:()=>{if(strokeBefore)draft.cells=strokeBefore;strokeBefore=null;refresh()},endStroke:()=>{strokeBefore=null;refresh()}});
+ dialog.querySelector('.placementMapWrap').append(mapButtons(view));
+ function mode(value){view.setMode(value);dialog.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===value)));dialog.querySelector('.groundHelp').textContent=value==='paint'?'1本指で塗る · 2本指で移動／拡大':'1本指で地図移動 · 2本指で拡大';view.canvas.style.cursor=value==='paint'?'crosshair':'grab'}
+ const close=()=>{if(closed)return;closed=true;view.destroy();dialog.remove();document.body.style.overflow=oldOverflow;document.removeEventListener('keydown',keys);groundEditor=null;previousFocus?.focus?.({preventScroll:true});window.scrollTo({top:scroll,behavior:'instant'})};
+ const keys=e=>{if(e.key==='Escape'){e.preventDefault();close()}if(e.key==='Tab'){const bs=[...dialog.querySelectorAll('button')].filter(b=>!b.disabled&&b.getClientRects().length),first=bs[0],last=bs.at(-1);if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault()}else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault()}}};document.addEventListener('keydown',keys);
+ dialog.querySelectorAll('[data-ground]').forEach(b=>b.onclick=()=>{if(b.disabled)return;view.abortStroke();material=Number(b.dataset.ground);refresh();mode('paint')});
+ dialog.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>mode(b.dataset.mode));
+ dialog.querySelector('.placementClose').onclick=close;dialog.querySelector('.placementCancel').onclick=close;
+ confirm.onclick=()=>{
+  if(closed||motherPreviewMode||currentScreen!=='mother'||!changed()||state.animating)return;
+  if(JSON.stringify(motherState.ground)!==original){info.textContent='地面が更新されました。閉じてから編集し直してください';confirm.disabled=true;return}
+  if(!GroundModel.valid(draft)||(!GroundModel.cobbleUnlocked(motherState)&&draft.cells.some((v,i)=>v===2&&motherState.ground.cells[i]!==2)))return;
+  const count=changed(),before=motherState.ground;motherState.ground=GroundModel.sanitize(draft);saveSnapshot();
+  let saved=false;try{saved=JSON.stringify(JSON.parse(Platform.read(SAVE_KEY))?.mother?.ground)===JSON.stringify(motherState.ground)}catch{}
+  if(!saved){motherState.ground=before;info.textContent='保存できませんでした。編集は保持しています。再試行してください';return}
+  Object.assign(motherCamera,view.camera);close();renderMother();$('sceneCaption').textContent=`${count}マスの地面を変更しました`;
+ };
+ groundEditor={view,draft,close,paint,mode,material:value=>{dialog.querySelector(`[data-ground="${value}"]`)?.click()},confirm:()=>confirm.click()};
+ mode('paint');refresh();dialog.querySelector('.placementClose').focus({preventScroll:true});
+}
+const groundInstallQA=installQA;
+installQA=function(){groundInstallQA();window.BI_QA.ground={
+ open:openGroundEditor,cancel:()=>groundEditor?.close(),confirm:()=>groundEditor?.confirm(),draft:()=>groundEditor?GroundModel.sanitize(groundEditor.draft):null,
+ material:v=>groundEditor?.material(v),mode:v=>groundEditor?.mode(v),paint:(a,b=a)=>{groundEditor?.paint(a,b);groundEditor?.view.draw()},
+ point:(x,y)=>groundEditor?.view.point(x,y),camera:()=>({...groundEditor?.view.camera}),focus:(x,y)=>groundEditor?.view.focus({x,y,size:1}),
+ unlocked:()=>GroundModel.cobbleUnlocked(motherState),sanitize:g=>GroundModel.sanitize(g),valid:g=>GroundModel.valid(g)
+}};
 
 boot();
 })();</script></body></html>
