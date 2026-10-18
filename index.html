@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.10c</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.11 FENCE-01</title><style>
 :root{--sea:#8fd6e8;--land:#b9d98c;--land2:#d7e9ad;--ink:#17313a;--muted:#607780;--panel:#ffffff;--accent:#ef8f35;--accent2:#2f7f77;--border:#cddde1;--glow:#ffd166;--danger:#c94f4f}
 *{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef8fb;color:var(--ink);margin:0;padding:14px 12px 32px;text-align:center}main{max-width:720px;margin:0 auto}h1{font-size:26px;margin:4px 0 2px}.subtitle{font-size:13px;color:var(--muted);margin:0 0 10px}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:7px 4px;font-size:12px}.stat b{display:block;font-size:20px;margin-top:2px}.progress{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:14px}.handTitle{font-size:13px;color:var(--muted);text-align:left;margin:6px 2px}.hand{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}.card{min-height:74px;border:2px solid var(--border);background:#fff;border-radius:13px;padding:6px 4px;color:var(--ink);font-weight:700;touch-action:manipulation}.card .icon{font-size:27px;display:block;line-height:1.1}.card .name{font-size:12px;display:block;margin-top:4px}.card .tag{font-size:9px;color:var(--muted);display:block;font-weight:600}.card.selected{border-color:var(--accent);background:#fff4e8;box-shadow:0 0 0 2px rgba(239,143,53,.15)}.card.fixed{border-style:dashed}.forecast{font-size:12px;color:var(--muted);margin:-2px 0 9px}.cell.forecastCell{box-shadow:inset 0 0 0 3px rgba(255,255,255,.82),0 0 0 2px rgba(69,135,167,.55);animation:forecastPulse 1.45s infinite}.forecastMark{position:absolute;right:4px;top:2px;font-size:13px;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35)}.floatDelta{position:absolute;left:50%;top:8%;transform:translateX(-50%);z-index:20;pointer-events:none;font-size:12px;font-weight:900;white-space:nowrap;background:rgba(255,255,255,.94);border:1px solid rgba(23,49,58,.12);border-radius:999px;padding:3px 6px;animation:floatUp 1.15s ease forwards}.landBurst{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;pointer-events:none;animation:landPop .8s ease forwards}.card:disabled{opacity:.45}.boardWrap{background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px;margin:0 auto}.board{display:grid;gap:4px;justify-content:center;margin:auto}.cell{position:relative;width:min(13.9vw,58px);aspect-ratio:1;border:1px solid rgba(31,75,83,.16);border-radius:10px;background:var(--sea);font-size:28px;padding:0;touch-action:manipulation;overflow:visible}.cell.land{background:linear-gradient(145deg,var(--land2),var(--land))}.cell.valid{outline:3px solid rgba(47,127,119,.45);outline-offset:-3px}.cell.mergeable{animation:pulse 1.1s infinite;box-shadow:0 0 0 3px rgba(255,209,102,.7)}.cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8);animation:none}.cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65);animation:pulse 1s infinite}.cell .terrainDot{position:absolute;left:4px;bottom:3px;font-size:8px;opacity:.5}.levelBadge{position:absolute;right:3px;bottom:2px;z-index:7;font-size:9px;font-weight:900;line-height:1;background:rgba(255,255,255,.82);color:var(--ink);border-radius:5px;padding:3px 4px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}.objName{position:absolute;left:50%;top:2px;z-index:7;transform:translateX(-50%);max-width:92%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7px;font-weight:900;line-height:1.15;background:rgba(255,255,255,.78);color:var(--ink);border-radius:4px;padding:2px 3px;pointer-events:none}.cell .obj{display:inline-block;transition:transform .18s ease,opacity .18s ease}.cell.pop .obj{animation:pop .28s ease}.status{min-height:54px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:10px 0 8px;font-size:14px;display:flex;align-items:center;justify-content:center}.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.action{border:0;border-radius:10px;padding:10px 14px;background:var(--accent2);color:#fff;font-weight:700}.action.secondary{background:#738a92}.action.warn{background:var(--accent)}.action:disabled{opacity:.4}.legend{font-size:11px;color:var(--muted);margin-top:8px}.achievement{margin-top:10px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}.achievement h2{font-size:14px;margin:0 0 6px}.achList{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:11px;background:#edf4f4;border-radius:999px;padding:5px 8px}.badge.locked{opacity:.35}.result{display:none;background:#fff8e9;border:2px solid #f2c56b;border-radius:16px;padding:16px;margin-top:12px}.result.show{display:block}.result h2{margin:0 0 4px}.result .islandType{font-size:24px;font-weight:900}.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.mini{background:#fff;border-radius:9px;padding:6px 2px;font-size:11px}.mini b{display:block;font-size:17px}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}@keyframes forecastPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.1)}}@keyframes floatUp{0%{opacity:0;transform:translate(-50%,8px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-28px) scale(1.05)}}@keyframes landPop{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1)}}@keyframes pop{0%{transform:scale(.65);opacity:.35}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
 .detailPanel{display:none;text-align:left;background:#fff;border:2px solid var(--accent2);border-radius:14px;padding:11px 12px;margin:10px 0 8px;position:relative}.detailPanel.show{display:block}.detailHead{display:flex;align-items:center;gap:10px}.detailIcon{font-size:32px}.detailTitle{font-weight:900;font-size:18px}.detailBranch{font-size:11px;color:var(--muted)}.detailStats{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.detailChip{background:#edf5f4;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:800}.detailText{font-size:12px;color:var(--muted);line-height:1.55;margin:5px 0}.detailActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.detailActions button{border:0;border-radius:9px;padding:9px 12px;font-weight:800}.detailMerge{background:var(--accent);color:#fff}.detailClose{background:#e7eff1;color:var(--ink)}.cell.detail-selected{outline:3px solid rgba(47,127,119,.7);outline-offset:-3px}.obj.merge-keep-prep{animation:mergeKeep .28s ease forwards}.obj.merge-source-fly{animation:mergeFly .28s ease forwards;z-index:25;position:relative}.obj.merge-result{animation:mergeResult .46s cubic-bezier(.2,.9,.3,1.35)}.obj.merge-result.final{animation:mergeFinal .72s cubic-bezier(.15,.9,.25,1.3)}@keyframes mergeKeep{0%{transform:scale(1)}60%{transform:scale(.58)}100%{transform:scale(.72)}}@keyframes mergeFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.28);opacity:.2}}@keyframes mergeResult{0%{transform:scale(.45);opacity:.25}55%{transform:scale(1.34);opacity:1}100%{transform:scale(1)}}@keyframes mergeFinal{0%{transform:scale(.35) rotate(-3deg);opacity:.2}48%{transform:scale(1.58) rotate(2deg);opacity:1}72%{transform:scale(.92)}100%{transform:scale(1)}}
@@ -590,6 +590,25 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
 @media(max-width:350px){.portIllustration{width:74px;height:74px}.portSite b{font-size:16px}.portSite{padding:9px;gap:7px}.portActions{gap:5px}.portBtns{gap:4px}.portBtns button{font-size:11px}.portOwned{font-size:10px}}
 
 .portBtns button{min-height:44px}
+
+/* FENCE-01 boundary editor; independent from Ground and facility placement */
+.fenceSheet .placementMapWrap{flex-basis:390px;min-height:130px}
+.fencePalette{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:0 12px 8px;flex-shrink:0}
+.fencePalette button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-width:0;min-height:66px;border:1px solid #bec8aa;border-radius:11px;background:#fffbef;color:#425d49;font:800 12px system-ui;padding:4px}
+.fencePalette button>span{font-size:20px}.fencePalette small{font:10px system-ui;color:#718472}
+.fencePalette button[aria-pressed=true]{border:3px solid #46836a;background:#e7edd6}
+.fencePalette button:disabled{opacity:.48}
+.fenceBottom{display:grid;gap:7px;flex:0 0 auto;padding:8px 14px 10px}
+.fenceInfo{font-size:11px;font-weight:800;color:#476d55;min-height:16px}
+.fenceSelect{display:grid;grid-template-columns:minmax(75px,.75fr) minmax(0,2fr);gap:8px}
+.fenceDirection{display:flex;flex-direction:column;gap:5px}
+.fenceDirection button,.fenceArrows button{border:1px solid #b8c9b7;border-radius:9px;background:#fffaf0;color:#395f4d;min-height:36px;font:800 12px system-ui}
+.fenceDirection button[aria-pressed=true]{background:#d8e8d3;border:2px solid #568974}
+.fenceArrows{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.fenceArrows .fencePlace{grid-column:span 1;background:#4b816d;color:#fff;font-size:10px}
+.fenceMap{min-height:140px}
+@media(max-width:520px){.fenceSheet .placementMapWrap{flex-basis:280px}.motherLayoutTools{flex-wrap:wrap}.fencePalette button{min-height:55px}.fenceBottom{gap:5px;padding-top:5px}.fenceSheet .placementHint{margin:0;font-size:10px}}
+@media(max-height:670px){.fenceSheet .placementSub,.fenceSheet .placementHint{display:none}.fenceSheet .placementMapWrap{min-height:120px;flex-basis:180px}.fenceSheet .fenceBottom{padding-top:3px;padding-bottom:4px}}
 </style><style>
 /* alpha7 mother-island scene and touch placement sheet */
 .placementSheet{position:relative}
@@ -1210,7 +1229,7 @@ renderMother=function(){
 const SLOT_ORDER=[17,18,24,25,16,19,23,26,10,11,12,9,15,22,29,30,31,32,33,8,13,20,27,34,14,21,28,7,6,5,4,3,2,1,0,35,36,37,38,39,40,41];
 function renderMotherScene(){renderPlacementScene()}
 
-openMenu=function(){showSimpleModal('Block Island v2.0 α7.10c','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
+openMenu=function(){showSimpleModal('Block Island v2.0 α7.11 FENCE-01','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
 function importSave(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=async()=>{try{const file=input.files[0];if(!file)return;const v=JSON.parse(await file.text());if(!validSnapshot(v))throw Error('invalid');showSimpleModal('セーブを読み込みますか？','現在のv2.0の進行を、選んだセーブの内容に置き換えます。',[{label:'キャンセル'},{label:'読み込む',fn:()=>{if(Platform.write(SAVE_KEY,JSON.stringify(v))){booting=true;location.reload();}else showUnlockToast('読み込みを保存できませんでした')}}])}catch{showUnlockToast('セーブを読み込めません','v2.0 αのセーブファイルを選んでください')}};input.click()}
 function enhanceResourceUI(){
  document.querySelectorAll('.resultTokens>.resultToken .tokenFace').forEach((e,i)=>{const k=KEYS[i];e.innerHTML=resourceIcon(k);e.setAttribute('aria-label',RESOURCE_COLORS[k]+'の資源トークン')});
@@ -1291,10 +1310,90 @@ function normalizeMotherLayout(m){
 const mapImages={},mapViews=new Set();
 for(const [id,src] of Object.entries({...MOTHER_SPRITES,port:MOTHER_PORT_PARTS.harbor,portCog:MOTHER_PORT_PARTS.cog,portMerchant:MOTHER_PORT_PARTS.merchant})){const im=new Image();mapImages[id]=im;im.onload=()=>mapViews.forEach(v=>v.draw());im.src=src}
 const motherCamera={scale:0,cx:12.8,cy:12.8};
-let inlineMotherMap=null,placementEditor=null;
+// FENCE-01: dedicated boundary layer independent of 20x20 occupancy and GROUND-01.
+const BoundaryModel=Object.freeze({
+ empty(){return{version:1,width:20,height:20,items:[]}},
+ key(o,x,y){return `${o}:${x}:${y}`},
+ edge(o,x,y,type='fence'){return{o,x,y,type}},
+ validEdge(e){return !!e&&['h','v'].includes(e.o)&&Number.isInteger(e.x)&&Number.isInteger(e.y)&&e.x>=0&&e.y>=0&&e.x<=(e.o==='h'?19:20)&&e.y<=(e.o==='h'?20:19)&&['fence','gate'].includes(e.type)},
+ sanitize(data){
+  const out=this.empty(),seen=new Set();let gates=0;
+  if(data?.version===1&&data.width===20&&data.height===20&&Array.isArray(data.items))for(const item of data.items){
+   if(!this.validEdge(item))continue;
+   const k=this.key(item.o,item.x,item.y);if(seen.has(k))continue;
+   if(item.type==='gate'&&++gates>1)continue;
+   seen.add(k);out.items.push(this.edge(item.o,item.x,item.y,item.type));
+  }return out;
+ },
+ valid(data){return !!data&&data.version===1&&data.width===20&&data.height===20&&Array.isArray(data.items)&&data.items.length<=840&&data.items.every(e=>this.validEdge(e))&&new Set(data.items.map(e=>this.key(e.o,e.x,e.y))).size===data.items.length&&data.items.filter(e=>e.type==='gate').length<=1},
+ unlocked(m,type){const label=type==='gate'?'門':'木柵',rule=DECORS.find(d=>d[2]===label);return !!rule&&(m.stats?.[rule[0]]||0)>=rule[1]},
+ set(data,o,x,y,type){
+  if(!['fence','gate','none'].includes(type)||!this.validEdge({o,x,y,type:'fence'}))return false;
+  const k=this.key(o,x,y),before=JSON.stringify(data.items);
+  if(type==='gate')data.items=data.items.filter(e=>e.type!=='gate'||this.key(e.o,e.x,e.y)===k);
+  const at=data.items.findIndex(e=>this.key(e.o,e.x,e.y)===k);
+  if(at>=0)data.items.splice(at,1);
+  if(type!=='none')data.items.push(this.edge(o,x,y,type));
+  return before!==JSON.stringify(data.items);
+ },
+ nearest(view,world){
+  // Measure in actual isometric screen coordinates instead of naive world distance.
+  if(!Number.isFinite(world.x)||!Number.isFinite(world.y)||world.x<-.25||world.y<-.25||world.x>20.25||world.y>20.25)return null;
+  const px=view.point(world.x,world.y);let best=null,dist=Infinity;
+  for(const o of ['h','v'])for(let y=Math.max(0,Math.floor(world.y)-2);y<=Math.min(o==='h'?20:19,Math.ceil(world.y)+2);y++)for(let x=Math.max(0,Math.floor(world.x)-2);x<=Math.min(o==='h'?19:20,Math.ceil(world.x)+2);x++){
+   const a=view.point(x,y),b=o==='h'?view.point(x+1,y):view.point(x,y+1);
+   const vx=b[0]-a[0],vy=b[1]-a[1],t=Math.min(1,Math.max(0,((px[0]-a[0])*vx+(px[1]-a[1])*vy)/(vx*vx+vy*vy)));
+   const d=Math.hypot(px[0]-(a[0]+t*vx),px[1]-(a[1]+t*vy));
+   if(d<dist){dist=d;best={o,x,y}}
+  }
+  return dist<=Math.max(11,view.unit*.34)?best:null;
+ }
+});
+function normalizeMotherBoundaries(m){if(!BoundaryModel.valid(m.boundaries))m.boundaries=BoundaryModel.sanitize(m.boundaries)}
+const BoundaryRenderer=Object.freeze({
+ parts(data){const b=BoundaryModel.sanitize(data),posts=new Map();const add=(x,y,gate)=>{const k=`${x},${y}`,p=posts.get(k);if(p){p.gate=p.gate||gate}else posts.set(k,{x,y,gate});};
+  const result=b.items.map(e=>{const a=[e.x,e.y],end=e.o==='h'?[e.x+1,e.y]:[e.x,e.y+1];add(...a,e.type==='gate');add(...end,e.type==='gate');return{...e,a,b:end,depth:e.x+e.y+.5}});
+  return [...result.map(p=>({...p,kind:'rail'})),...[...posts.values()].map(p=>({...p,kind:'post',depth:p.x+p.y+.09}))];
+ },
+ stroke(v,a,b,z,color,width){const c=v.ctx,pa=v.point(a[0],a[1]),pb=v.point(b[0],b[1]);c.strokeStyle=color;c.lineWidth=Math.max(.7,v.unit*width);c.lineCap='round';c.beginPath();c.moveTo(pa[0],pa[1]-v.unit*z);c.lineTo(pb[0],pb[1]-v.unit*z);c.stroke()},
+ paint(v,p){const c=v.ctx,u=v.unit;
+  c.save();c.lineJoin='round';c.lineCap='round';
+  if(p.kind==='rail'){
+   const a=p.a,b=p.b;
+   if(p.type==='fence'){
+    for(const h of [.17,.36]){this.stroke(v,a,b,h,'#65452c',.102);this.stroke(v,a,b,h+.013,'#ac7549',.075);this.stroke(v,a,b,h+.032,'#d3aa78',.023)}
+    // Short irregular woodgrain, deliberately subdued at low zoom.
+    if(u>33){const mid=[(a[0]+b[0])/2,(a[1]+b[1])/2];const q=v.point(...mid);c.strokeStyle='#6d4b35a0';c.lineWidth=.6;c.beginPath();c.moveTo(q[0]-u*.07,q[1]-u*.17);c.lineTo(q[0]+u*.05,q[1]-u*.17);c.stroke()}
+   }else{
+    this.stroke(v,a,b,.80,'#65422b',.175);this.stroke(v,a,b,.815,'#bb8554',.121);this.stroke(v,a,b,.85,'#e3b780',.038);
+    for(let t of [0,1]){const start=t?b:a,end=t?a:b,mid=[start[0]+(end[0]-start[0])*.24,start[1]+(end[1]-start[1])*.24];
+     const p1=v.point(...start),p2=v.point(...mid);c.strokeStyle='#65412d';c.lineWidth=Math.max(2,u*.085);c.beginPath();c.moveTo(p1[0],p1[1]-u*.57);c.lineTo(p2[0],p2[1]-u*.80);c.stroke();c.strokeStyle='#cda06f';c.lineWidth=Math.max(1,u*.034);c.stroke();}
+    // A small unlettered hanging timber plaque, under the crossbar.
+    const pa=v.point(...a),pb=v.point(...b),mx=(pa[0]+pb[0])/2,my=(pa[1]+pb[1])/2;
+    const dx=pb[0]-pa[0],dy=pb[1]-pa[1],m=Math.hypot(dx,dy)||1,ux=dx/m,uy=dy/m,half=Math.min(u*.18,m*.21);
+    const corners=(z,off)=>[mx+ux*off,my+uy*off-u*z];
+    for(const t of [-.12,.12]){const x=mx+ux*u*t,y=my+uy*u*t;c.strokeStyle='#674932';c.lineWidth=Math.max(.8,u*.02);c.beginPath();c.moveTo(x,y-u*.78);c.lineTo(x,y-u*.60);c.stroke()}
+    const q1=corners(.64,-half),q2=corners(.64,half),q3=corners(.48,half),q4=corners(.48,-half);
+    v.polygon([q1,q2,q3,q4],'#a8784b','#68472f',Math.max(.8,u*.022));
+    c.strokeStyle='#d8ac77';c.lineWidth=Math.max(.8,u*.02);c.beginPath();c.moveTo(q1[0]+1,q1[1]+u*.025);c.lineTo(q2[0]-1,q2[1]+u*.025);c.stroke();
+   }
+  }else{
+   const pt=v.point(p.x,p.y),high=p.gate?.92:.54,wd=p.gate?.17:.12;
+   c.fillStyle='#66463148';c.beginPath();c.ellipse(pt[0]+u*.018,pt[1]+u*.03,u*.10,u*.045,0,0,Math.PI*2);c.fill();
+   c.strokeStyle='#67442c';c.lineWidth=Math.max(2,u*wd);c.beginPath();c.moveTo(pt[0],pt[1]);c.lineTo(pt[0],pt[1]-u*high);c.stroke();
+   c.strokeStyle='#b88655';c.lineWidth=Math.max(1,u*wd*.57);c.beginPath();c.moveTo(pt[0]-u*.025,pt[1]-u*.03);c.lineTo(pt[0]-u*.025,pt[1]-u*(high-.035));c.stroke();
+   c.strokeStyle='#e3bb86';c.lineWidth=Math.max(1,u*.027);c.beginPath();c.moveTo(pt[0]-u*.042,pt[1]-u*.16);c.lineTo(pt[0]-u*.042,pt[1]-u*.39);c.stroke();
+   c.fillStyle='#8b613c';c.beginPath();c.ellipse(pt[0],pt[1]-u*high,u*wd*.62,u*.031,0,0,Math.PI*2);c.fill();
+  }
+  c.restore();
+ },
+ highlight(v,e){if(!e)return;const a=v.point(e.x,e.y),b=e.o==='h'?v.point(e.x+1,e.y):v.point(e.x,e.y+1),c=v.ctx;c.save();c.strokeStyle='#f4d56c';c.lineWidth=Math.max(5,v.unit*.18);c.lineCap='round';c.globalAlpha=.88;c.beginPath();c.moveTo(...a);c.lineTo(...b);c.stroke();c.strokeStyle='#846b30';c.lineWidth=1.4;c.stroke();c.restore()}
+});
+
+let inlineMotherMap=null,placementEditor=null,boundaryEditor=null;
 class MotherMap{
- constructor(canvas,{editor=false,ghost=()=>null,onTap=()=>{},onGhostMove=null,placements=()=>motherState.layout?.placements||[],camera=null,ground=()=>motherState.ground}={}){
-  this.ground=ground;
+ constructor(canvas,{editor=false,ghost=()=>null,onTap=()=>{},onGhostMove=null,placements=()=>motherState.layout?.placements||[],camera=null,ground=()=>motherState.ground,boundaries=()=>motherState.boundaries||BoundaryModel.empty(),boundarySelection=()=>null}={}){
+  this.ground=ground;this.boundaries=boundaries;this.boundarySelection=boundarySelection;
   this.canvas=canvas;this.ctx=canvas.getContext('2d');this.editor=editor;this.ghost=ghost;this.placements=placements;this.onTap=onTap;this.onGhostMove=onGhostMove;this.camera=camera||{scale:0,cx:10,cy:10};this.pointers=new Map();this.hits=[];this.moved=false;this.disposed=false;this.draggingFacility=null;
   this.down=e=>{if(e.pointerType==='mouse'&&e.button!==0)return;canvas.setPointerCapture(e.pointerId);const p=this.local(e);this.pointers.set(e.pointerId,p);
    if(this.pointers.size===1){this.moved=false;const g=this.ghost(),hit=this.hit(p);this.draggingFacility=this.onGhostMove&&g&&hit?.uid===g.uid?{start:this.toWorld(p),x:g.x,y:g.y}:null;}
@@ -1352,8 +1451,14 @@ class MotherMap{
   if(motherState.portComplete)rows=[...rows,{id:'port',uid:'port-1',...PORT_SITE,flipped:false}];
   if(this.editor)for(const p of rows)if(p.id!=='port'){const bad=positionError(p,placements,p.uid);this.tile(p,bad?'#d2605140':'#57744a12',bad?'#c44836':'#5e794b60');}
   if(ghost)rows=[...rows,{...ghost,isGhost:true}];
-  rows.sort((a,b)=>(this.editor?Number(!!a.isGhost)-Number(!!b.isGhost):0)||(a.x+a.y+a.size)-(b.x+b.y+b.size)||a.x-b.x);
-  for(const p of rows){if(p.id==='port'){this.drawFrontHarbor(p);continue;}const im=mapImages[p.id];if(!im?.complete||!im.naturalWidth)continue;const [x,y]=this.point(p.x+p.size/2,p.y+p.size/2);const bw=this.unit*p.size*(p.id==='lumber'?1.18:p.size===1?1.03:.90),bh=bw*im.naturalHeight/im.naturalWidth,top=y-bh+this.unit*p.size*.2;
+  // Sort boundary parts in the same depth order as facilities, not permanently on top.
+  // Draw the selection under the fence posts, not as a false third rail.
+  BoundaryRenderer.highlight(this,this.boundarySelection());
+  const combined=[...rows.map(p=>({kind:'facility',p,depth:p.x+p.y+p.size+.15})),...BoundaryRenderer.parts(this.boundaries())];
+  combined.sort((a,b)=>(this.editor&&a.kind==='facility'&&a.p.isGhost?10000:a.depth)-(this.editor&&b.kind==='facility'&&b.p.isGhost?10000:b.depth)||((a.kind==='post'?2:a.kind==='rail'?1:0)-(b.kind==='post'?2:b.kind==='rail'?1:0)));
+  for(const item of combined){
+   if(item.kind!=='facility'){BoundaryRenderer.paint(this,item);continue}
+   const p=item.p;if(p.id==='port'){this.drawFrontHarbor(p);continue;}const im=mapImages[p.id];if(!im?.complete||!im.naturalWidth)continue;const [x,y]=this.point(p.x+p.size/2,p.y+p.size/2);const bw=this.unit*p.size*(p.id==='lumber'?1.18:p.size===1?1.03:.90),bh=bw*im.naturalHeight/im.naturalWidth,top=y-bh+this.unit*p.size*.2;
    c.save();if(p.isGhost)c.globalAlpha=.82;const flipped=(p.id==='sawmill')!==!!p.flipped;if(flipped){c.translate(x,0);c.scale(-1,1);c.drawImage(im,-bw/2,top,bw,bh)}else c.drawImage(im,x-bw/2,top,bw,bh);c.restore();this.hits.push({p,x:x-bw/2,y:top,w:bw,h:bh});
   }
   if(this.editor)for(const p of placements)if(p.uid!==ghost?.uid&&positionError(p,placements,p.uid))this.tile(p,'#d2605130','#c44836');
@@ -1424,23 +1529,23 @@ function mapButtons(view){
  for(const [label,fn]of [['全体',()=>view.fit()],['−',()=>{view.setScale(view.unit/1.35);view.draw()}],['＋',()=>{view.setScale(view.unit*1.35);view.draw()}]]){const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-label',label==='＋'?'島を拡大':label==='−'?'島を縮小':'島全体を表示');b.onclick=fn;bar.append(b)}return bar;
 }
 function renderPlacementScene(){
- normalizeMotherLayout(motherState);inlineMotherMap?.destroy();
+ normalizeMotherLayout(motherState);normalizeMotherBoundaries(motherState);inlineMotherMap?.destroy();
  const scene=$('motherScene');scene.className='motherScene placementScene';scene.innerHTML='<canvas class="motherMapCanvas" aria-label="母島。ドラッグで移動、拡大して施設を選択できます"></canvas>';
  inlineMotherMap=new MotherMap(scene.querySelector('canvas'),{camera:motherCamera,onTap:(_,hit)=>{if(!hit)return;const name=hit.id==='port'?'港':facilityById(hit.id)[2];$('sceneCaption').textContent=name+(hit.id==='port'?' · 海岸に固定':` · ${hit.size}×${hit.size}`);if(!motherPreviewMode&&currentScreen==='mother')openPlacementEditor('move',hit.uid)}});
  scene.append(mapButtons(inlineMotherMap));
  const existing=$('motherLayoutTools');existing?.remove();const tools=document.createElement('div');tools.id='motherLayoutTools';tools.className='motherLayoutTools';
  const count=motherState.layout.placements.length;tools.innerHTML=`<span>ドラッグで移動 · ピンチで拡大</span><button type="button">施設の配置</button>`;tools.querySelector('button').hidden=motherPreviewMode;tools.querySelector('button').disabled=count===0&&!motherState.portComplete;tools.querySelector('button').onclick=()=>openPlacementEditor('move');scene.after(tools);
- if(!motherPreviewMode){const b=document.createElement('button');b.type='button';b.id='editMotherGround';b.textContent='道・地面';b.onclick=openGroundEditor;tools.append(b);}
+ if(!motherPreviewMode){const b=document.createElement('button');b.type='button';b.id='editMotherGround';b.textContent='道・地面';b.onclick=openGroundEditor;tools.append(b);const fb=document.createElement('button');fb.type='button';fb.id='editMotherBoundary';fb.textContent='木柵・門';fb.onclick=openBoundaryEditor;tools.append(fb);}
  $('sceneCaption').textContent=count?`${count+(motherState.portComplete?1:0)}の施設が、島の暮らしを育んでいます`:'まだ静かな島。探索で資源を集め、最初の施設を建てよう。';
 }
 const buildImmediately=buildMotherFacility;
 buildMotherFacility=function(id){
- if(motherPreviewMode||currentScreen!=='mother'||placementEditor||groundEditor||departureActive)return;
+ if(motherPreviewMode||currentScreen!=='mother'||placementEditor||groundEditor||boundaryEditor||departureActive)return;
  const f=facilityById(id);if(!f||!f[7]()||ct(id)>=f[4]||!canAfford(facilityCost(f)))return;
  openPlacementEditor('build',id);
 };
 function openPlacementEditor(mode,key){
- if(placementEditor||groundEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
+ if(placementEditor||groundEditor||boundaryEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
  normalizeMotherLayout(motherState);
  const previousFocus=document.activeElement,scrollYBefore=window.scrollY,oldOverflow=document.body.style.overflow;
  const dialog=document.createElement('div');dialog.className='placementBackdrop';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-labelledby','placementTitle');
@@ -1739,7 +1844,7 @@ class GroundMap extends MotherMap{
  destroy(){this.canvas.removeEventListener('lostpointercapture',this.cancel);super.destroy()}
 }
 function openGroundEditor(){
- if(groundEditor||placementEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
+ if(groundEditor||placementEditor||boundaryEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
  normalizeMotherGround(motherState);
  const original=JSON.stringify(motherState.ground),draft=GroundModel.sanitize(motherState.ground),previousFocus=document.activeElement,oldOverflow=document.body.style.overflow,scroll=window.scrollY;
  let material=1,strokeBefore=null,closed=false;
@@ -1778,6 +1883,78 @@ installQA=function(){groundInstallQA();window.BI_QA.ground={
  point:(x,y)=>groundEditor?.view.point(x,y),camera:()=>({...groundEditor?.view.camera}),focus:(x,y)=>groundEditor?.view.focus({x,y,size:1}),
  unlocked:()=>GroundModel.cobbleUnlocked(motherState),sanitize:g=>GroundModel.sanitize(g),valid:g=>GroundModel.valid(g)
 }};
+
+
+// FENCE-01 editor shares GroundMap's touch-safe brush/pan/pinch controller.
+function openBoundaryEditor(){
+ if(boundaryEditor||placementEditor||groundEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
+ normalizeMotherBoundaries(motherState);
+ const original=JSON.stringify(motherState.boundaries),draft=BoundaryModel.sanitize(motherState.boundaries);
+ const previousFocus=document.activeElement,oldOverflow=document.body.style.overflow,scroll=window.scrollY;
+ const unlockedFence=BoundaryModel.unlocked(motherState,'fence'),unlockedGate=BoundaryModel.unlocked(motherState,'gate');
+ let material=unlockedFence?'fence':'none',selected={o:'h',x:9,y:10},strokeBefore=null,closed=false,view=null;
+ const dialog=document.createElement('div');dialog.className='placementBackdrop fenceBackdrop';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-labelledby','fenceTitle');
+ dialog.innerHTML=`<section class="placementSheet fenceSheet"><header><div><h2 id="fenceTitle">木柵・門</h2><p class="placementSub">マスの境界に設置 · 木柵は無料・無制限</p></div><button class="placementClose" aria-label="木柵・門の編集をキャンセルして閉じる">×</button></header><div class="fencePalette" role="group" aria-label="境界の種類"><button data-fence="fence"><span>🪵</span>木柵<small></small></button><button data-fence="gate"><span>門</span>木製門<small></small></button><button data-fence="none"><span>✖</span>撤去<small>設置数は戻ります</small></button></div><div class="groundModes" role="group" aria-label="地図操作"><button data-mode="paint">設置・撤去</button><button data-mode="pan">地図移動</button></div><p class="groundHelp" id="fenceHelp">1本指で境界をタップ・なぞる · 2本指で移動／拡大</p><div class="placementMapWrap"><canvas class="placementMap fenceMap" aria-label="木柵・門の配置用母島" aria-describedby="fenceHelp"></canvas></div><div class="fenceBottom"><div class="fenceInfo" aria-live="polite"></div><div class="fenceSelect"><div class="fenceDirection"><button data-dir="h">横方向</button><button data-dir="v">縦方向</button></div><div class="fenceArrows"><button data-dx="-1" data-dy="0" aria-label="左奥へ">↖</button><button data-dx="0" data-dy="-1" aria-label="右奥へ">↗</button><button data-dx="0" data-dy="1" aria-label="左手前へ">↙</button><button data-dx="1" data-dy="0" aria-label="右手前へ">↘</button><button class="fencePlace">選択位置に配置</button></div></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">まとめて確定</button></div><p class="placementHint">未確定の変更は保存されません · キャンセルで全取消</p></div></section>`;
+ document.body.append(dialog);document.body.style.overflow='hidden';
+ const info=dialog.querySelector('.fenceInfo'),confirm=dialog.querySelector('.placementConfirm');
+ const fenceBtn=dialog.querySelector('[data-fence="fence"]'),gateBtn=dialog.querySelector('[data-fence="gate"]');
+ fenceBtn.disabled=!unlockedFence;gateBtn.disabled=!unlockedGate;
+ fenceBtn.querySelector('small').textContent=unlockedFence?'使用可能':'文化110で解放';
+ gateBtn.querySelector('small').textContent=unlockedGate?'無料1個・移動可':'文化270で解放';
+ const changed=()=>JSON.stringify(draft)!==original;
+ const count=type=>draft.items.filter(p=>p.type===type).length;
+ function refresh(){
+  info.textContent=`木柵 ${count('fence')}区間 · 門 ${count('gate')}/1個 ${changed()?'· 未保存の変更あり':''}`;
+  confirm.disabled=!changed();
+  dialog.querySelectorAll('[data-fence]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fence===material)));
+  dialog.querySelectorAll('[data-dir]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.dir===selected.o)));
+  dialog.querySelector('.fencePlace').disabled=material==='gate'&&!unlockedGate||material==='fence'&&!unlockedFence;
+  view?.draw();
+ }
+ function putAt(e){
+  if(!e||material==='gate'&&!unlockedGate||material==='fence'&&!unlockedFence)return false;
+  selected={...e};let before=JSON.stringify(draft.items);
+  BoundaryModel.set(draft,e.o,e.x,e.y,material);
+  if(before!==JSON.stringify(draft.items)){refresh();return true}return false;
+ }
+ const paint=(a,b)=>{
+  const n=Math.max(1,Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)*13));const used=new Set();
+  for(let i=0;i<=n;i++){
+   const t=i/n,e=BoundaryModel.nearest(view,{x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t});
+   if(!e)continue;const key=BoundaryModel.key(e.o,e.x,e.y);if(used.has(key))continue;used.add(key);
+   putAt(e);
+  }
+ };
+ view=new GroundMap(dialog.querySelector('canvas'),{ground:()=>motherState.ground,boundaries:()=>draft,boundarySelection:()=>selected,camera:{...motherCamera},paint,beginStroke:()=>{strokeBefore=draft.items.map(i=>({...i}))},cancelStroke:()=>{if(strokeBefore)draft.items=strokeBefore;strokeBefore=null;refresh()},endStroke:()=>{strokeBefore=null;refresh()}});
+ dialog.querySelector('.placementMapWrap').append(mapButtons(view));
+ function mode(value){view.setMode(value);dialog.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===value)));dialog.querySelector('#fenceHelp').textContent=value==='paint'?'1本指で柵を連続設置 · 2本指で移動／拡大':'1本指で地図移動 · 2本指で拡大';view.canvas.style.cursor=value==='paint'?'crosshair':'grab'}
+ const close=()=>{if(closed)return;closed=true;view.destroy();dialog.remove();document.body.style.overflow=oldOverflow;document.removeEventListener('keydown',keys);boundaryEditor=null;previousFocus?.focus?.({preventScroll:true});window.scrollTo({top:scroll,behavior:'instant'})};
+ const keys=e=>{if(e.key==='Escape'){e.preventDefault();close()}if(e.key==='Tab'){const bs=[...dialog.querySelectorAll('button')].filter(b=>!b.disabled&&b.getClientRects().length),first=bs[0],last=bs.at(-1);if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault()}else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault()}}};document.addEventListener('keydown',keys);
+ dialog.querySelectorAll('[data-fence]').forEach(b=>b.onclick=()=>{if(b.disabled)return;view.abortStroke();material=b.dataset.fence;refresh();mode('paint')});
+ dialog.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>mode(b.dataset.mode));
+ dialog.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>{selected={...selected,o:b.dataset.dir,x:Math.min(selected.x,b.dataset.dir==='h'?19:20),y:Math.min(selected.y,b.dataset.dir==='h'?20:19)};refresh()});
+ dialog.querySelectorAll('[data-dx]').forEach(b=>b.onclick=()=>{const dx=+b.dataset.dx,dy=+b.dataset.dy;selected={...selected,x:Math.min(selected.o==='h'?19:20,Math.max(0,selected.x+dx)),y:Math.min(selected.o==='h'?20:19,Math.max(0,selected.y+dy))};refresh()});
+ dialog.querySelector('.fencePlace').onclick=()=>putAt(selected);
+ dialog.querySelector('.placementClose').onclick=close;dialog.querySelector('.placementCancel').onclick=close;
+ confirm.onclick=()=>{
+  if(closed||currentScreen!=='mother'||motherPreviewMode||state.animating||!changed())return;
+  if(JSON.stringify(motherState.boundaries)!==original){info.textContent='島の柵が更新されました。閉じて編集し直してください';confirm.disabled=true;return}
+  if(!BoundaryModel.valid(draft))return;
+  if(draft.items.some(e=>!BoundaryModel.unlocked(motherState,e.type)&&!motherState.boundaries.items.some(b=>JSON.stringify(b)===JSON.stringify(e)))){info.textContent='未解放のアイテムは配置できません';return}
+  const previous=motherState.boundaries;motherState.boundaries=BoundaryModel.sanitize(draft);saveSnapshot();
+  let saved=false;try{saved=JSON.stringify(JSON.parse(Platform.read(SAVE_KEY))?.mother?.boundaries)===JSON.stringify(motherState.boundaries)}catch{}
+  if(!saved){motherState.boundaries=previous;info.textContent='保存に失敗しました。編集を保持しています。再試行してください';return}
+  Object.assign(motherCamera,view.camera);const total=draft.items.length;close();renderMother();$('sceneCaption').textContent=`木柵・門を更新しました（${total}区間）`;
+ };
+ boundaryEditor={view,draft,close,paint,mode,select:e=>{if(BoundaryModel.validEdge({...e,type:'fence'})){selected={...e};refresh()}},material:t=>dialog.querySelector(`[data-fence="${t}"]`)?.click(),put:e=>putAt(e),confirm:()=>confirm.click()};
+ mode('paint');refresh();dialog.querySelector('.placementClose').focus({preventScroll:true});
+}
+const fenceInstallQA=installQA;
+installQA=function(){fenceInstallQA();window.BI_QA.fence={
+ open:openBoundaryEditor,valid:BoundaryModel.valid,normalize:BoundaryModel.sanitize,nearest:(x,y)=>boundaryEditor?BoundaryModel.nearest(boundaryEditor.view,{x,y}):null,
+ unlocked:t=>BoundaryModel.unlocked(motherState,t),draft:()=>boundaryEditor?BoundaryModel.sanitize(boundaryEditor.draft):null,
+ material:t=>boundaryEditor?.material(t),select:e=>boundaryEditor?.select(e),put:e=>boundaryEditor?.put(e),confirm:()=>boundaryEditor?.confirm(),cancel:()=>boundaryEditor?.close(),camera:()=>({...boundaryEditor?.view.camera}),focus:(x,y)=>boundaryEditor?.view.focus({x,y,size:1}),zoom:u=>{if(boundaryEditor){boundaryEditor.view.setScale(u);boundaryEditor.view.draw()}}
+ }};
 
 boot();
 })();</script></body></html>
