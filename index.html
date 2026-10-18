@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.11d FENCE-01d</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.11e FENCE-01e</title><style>
 :root{--sea:#8fd6e8;--land:#b9d98c;--land2:#d7e9ad;--ink:#17313a;--muted:#607780;--panel:#ffffff;--accent:#ef8f35;--accent2:#2f7f77;--border:#cddde1;--glow:#ffd166;--danger:#c94f4f}
 *{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef8fb;color:var(--ink);margin:0;padding:14px 12px 32px;text-align:center}main{max-width:720px;margin:0 auto}h1{font-size:26px;margin:4px 0 2px}.subtitle{font-size:13px;color:var(--muted);margin:0 0 10px}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:7px 4px;font-size:12px}.stat b{display:block;font-size:20px;margin-top:2px}.progress{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:14px}.handTitle{font-size:13px;color:var(--muted);text-align:left;margin:6px 2px}.hand{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}.card{min-height:74px;border:2px solid var(--border);background:#fff;border-radius:13px;padding:6px 4px;color:var(--ink);font-weight:700;touch-action:manipulation}.card .icon{font-size:27px;display:block;line-height:1.1}.card .name{font-size:12px;display:block;margin-top:4px}.card .tag{font-size:9px;color:var(--muted);display:block;font-weight:600}.card.selected{border-color:var(--accent);background:#fff4e8;box-shadow:0 0 0 2px rgba(239,143,53,.15)}.card.fixed{border-style:dashed}.forecast{font-size:12px;color:var(--muted);margin:-2px 0 9px}.cell.forecastCell{box-shadow:inset 0 0 0 3px rgba(255,255,255,.82),0 0 0 2px rgba(69,135,167,.55);animation:forecastPulse 1.45s infinite}.forecastMark{position:absolute;right:4px;top:2px;font-size:13px;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35)}.floatDelta{position:absolute;left:50%;top:8%;transform:translateX(-50%);z-index:20;pointer-events:none;font-size:12px;font-weight:900;white-space:nowrap;background:rgba(255,255,255,.94);border:1px solid rgba(23,49,58,.12);border-radius:999px;padding:3px 6px;animation:floatUp 1.15s ease forwards}.landBurst{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;pointer-events:none;animation:landPop .8s ease forwards}.card:disabled{opacity:.45}.boardWrap{background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px;margin:0 auto}.board{display:grid;gap:4px;justify-content:center;margin:auto}.cell{position:relative;width:min(13.9vw,58px);aspect-ratio:1;border:1px solid rgba(31,75,83,.16);border-radius:10px;background:var(--sea);font-size:28px;padding:0;touch-action:manipulation;overflow:visible}.cell.land{background:linear-gradient(145deg,var(--land2),var(--land))}.cell.valid{outline:3px solid rgba(47,127,119,.45);outline-offset:-3px}.cell.mergeable{animation:pulse 1.1s infinite;box-shadow:0 0 0 3px rgba(255,209,102,.7)}.cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8);animation:none}.cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65);animation:pulse 1s infinite}.cell .terrainDot{position:absolute;left:4px;bottom:3px;font-size:8px;opacity:.5}.levelBadge{position:absolute;right:3px;bottom:2px;z-index:7;font-size:9px;font-weight:900;line-height:1;background:rgba(255,255,255,.82);color:var(--ink);border-radius:5px;padding:3px 4px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}.objName{position:absolute;left:50%;top:2px;z-index:7;transform:translateX(-50%);max-width:92%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7px;font-weight:900;line-height:1.15;background:rgba(255,255,255,.78);color:var(--ink);border-radius:4px;padding:2px 3px;pointer-events:none}.cell .obj{display:inline-block;transition:transform .18s ease,opacity .18s ease}.cell.pop .obj{animation:pop .28s ease}.status{min-height:54px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:10px 0 8px;font-size:14px;display:flex;align-items:center;justify-content:center}.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.action{border:0;border-radius:10px;padding:10px 14px;background:var(--accent2);color:#fff;font-weight:700}.action.secondary{background:#738a92}.action.warn{background:var(--accent)}.action:disabled{opacity:.4}.legend{font-size:11px;color:var(--muted);margin-top:8px}.achievement{margin-top:10px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}.achievement h2{font-size:14px;margin:0 0 6px}.achList{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:11px;background:#edf4f4;border-radius:999px;padding:5px 8px}.badge.locked{opacity:.35}.result{display:none;background:#fff8e9;border:2px solid #f2c56b;border-radius:16px;padding:16px;margin-top:12px}.result.show{display:block}.result h2{margin:0 0 4px}.result .islandType{font-size:24px;font-weight:900}.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.mini{background:#fff;border-radius:9px;padding:6px 2px;font-size:11px}.mini b{display:block;font-size:17px}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}@keyframes forecastPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.1)}}@keyframes floatUp{0%{opacity:0;transform:translate(-50%,8px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-28px) scale(1.05)}}@keyframes landPop{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1)}}@keyframes pop{0%{transform:scale(.65);opacity:.35}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
 .detailPanel{display:none;text-align:left;background:#fff;border:2px solid var(--accent2);border-radius:14px;padding:11px 12px;margin:10px 0 8px;position:relative}.detailPanel.show{display:block}.detailHead{display:flex;align-items:center;gap:10px}.detailIcon{font-size:32px}.detailTitle{font-weight:900;font-size:18px}.detailBranch{font-size:11px;color:var(--muted)}.detailStats{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.detailChip{background:#edf5f4;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:800}.detailText{font-size:12px;color:var(--muted);line-height:1.55;margin:5px 0}.detailActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.detailActions button{border:0;border-radius:9px;padding:9px 12px;font-weight:800}.detailMerge{background:var(--accent);color:#fff}.detailClose{background:#e7eff1;color:var(--ink)}.cell.detail-selected{outline:3px solid rgba(47,127,119,.7);outline-offset:-3px}.obj.merge-keep-prep{animation:mergeKeep .28s ease forwards}.obj.merge-source-fly{animation:mergeFly .28s ease forwards;z-index:25;position:relative}.obj.merge-result{animation:mergeResult .46s cubic-bezier(.2,.9,.3,1.35)}.obj.merge-result.final{animation:mergeFinal .72s cubic-bezier(.15,.9,.25,1.3)}@keyframes mergeKeep{0%{transform:scale(1)}60%{transform:scale(.58)}100%{transform:scale(.72)}}@keyframes mergeFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.28);opacity:.2}}@keyframes mergeResult{0%{transform:scale(.45);opacity:.25}55%{transform:scale(1.34);opacity:1}100%{transform:scale(1)}}@keyframes mergeFinal{0%{transform:scale(.35) rotate(-3deg);opacity:.2}48%{transform:scale(1.58) rotate(2deg);opacity:1}72%{transform:scale(.92)}100%{transform:scale(1)}}
@@ -656,7 +656,7 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
 
 </style></head><body>
 <main>
-<header class="puzzleHeader"><div class="brand"><span class="brandMark">🏝️</span> Block Island <small>v2.0 α7.11d</small></div><button class="action secondary headerMenu" id="menuBtn">メニュー</button></header>
+<header class="puzzleHeader"><div class="brand"><span class="brandMark">🏝️</span> Block Island <small>v2.0 α7.11e</small></div><button class="action secondary headerMenu" id="menuBtn">メニュー</button></header>
 <div class="topbar">
   <div class="stat stat-population"><span class="statLabel"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-5 3.3-8 8-8s8 3 8 8"/></svg><span>人口</span></span><b id="popStat">0</b></div>
   <div class="stat stat-industry"><span class="statLabel"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M10 2h4l.6 2.4 2 .9 2.1-1.4 2.8 2.8-1.4 2.1.9 2L23 11v3l-2.4.6-.9 2 1.4 2.1-2.8 2.8-2.1-1.4-2 .9L14 23h-4l-.6-2.4-2-.9-2.1 1.4-2.8-2.8 1.4-2.1-.9-2L1 14v-3l2.4-.6.9-2L2.9 6.3l2.8-2.8 2.1 1.4 2-.9z"/><circle cx="12" cy="12" r="4" fill="white" stroke="none"/></svg><span>産業</span></span><b id="ecoStat">0</b></div>
@@ -1229,7 +1229,7 @@ renderMother=function(){
 const SLOT_ORDER=[17,18,24,25,16,19,23,26,10,11,12,9,15,22,29,30,31,32,33,8,13,20,27,34,14,21,28,7,6,5,4,3,2,1,0,35,36,37,38,39,40,41];
 function renderMotherScene(){renderPlacementScene()}
 
-openMenu=function(){showSimpleModal('Block Island v2.0 α7.11d FENCE-01d','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
+openMenu=function(){showSimpleModal('Block Island v2.0 α7.11e FENCE-01e','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
 function importSave(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=async()=>{try{const file=input.files[0];if(!file)return;const v=JSON.parse(await file.text());if(!validSnapshot(v))throw Error('invalid');showSimpleModal('セーブを読み込みますか？','現在のv2.0の進行を、選んだセーブの内容に置き換えます。',[{label:'キャンセル'},{label:'読み込む',fn:()=>{if(Platform.write(SAVE_KEY,JSON.stringify(v))){booting=true;location.reload();}else showUnlockToast('読み込みを保存できませんでした')}}])}catch{showUnlockToast('セーブを読み込めません','v2.0 αのセーブファイルを選んでください')}};input.click()}
 function enhanceResourceUI(){
  document.querySelectorAll('.resultTokens>.resultToken .tokenFace').forEach((e,i)=>{const k=KEYS[i];e.innerHTML=resourceIcon(k);e.setAttribute('aria-label',RESOURCE_COLORS[k]+'の資源トークン')});
@@ -1358,12 +1358,12 @@ const BoundaryRenderer=Object.freeze({
  stroke(v,a,b,z,color,width){const c=v.ctx,pa=v.point(a[0],a[1]),pb=v.point(b[0],b[1]);c.strokeStyle=color;c.lineWidth=Math.max(.7,v.unit*width);c.lineCap='round';c.beginPath();c.moveTo(pa[0],pa[1]-v.unit*z);c.lineTo(pb[0],pb[1]-v.unit*z);c.stroke()},
  paint(v,p){const c=v.ctx,u=v.unit;
   c.save();c.lineJoin='round';c.lineCap='round';
-  // FENCE-01d: keep boundary endpoints and shared-post model unchanged.
+  // FENCE-01e: keep boundary endpoints and shared-post model unchanged.
   // Match the warmer, hand-painted timber used by the main buildings.
-  const wood={edge:'#7b5a31',shade:'#9b6f36',body:'#cd9a53',light:'#efc57e',glow:'#f7ddb0',grain:'#b98648',shadow:'rgba(103,73,39,.31)',deep:'rgba(88,60,30,.24)'};
+  const wood={edge:'#8a5927',shade:'#ad6d2e',body:'#d78f3f',light:'#efb55b',glow:'#f9d79b',grain:'#c37c33',shadow:'rgba(111,70,32,.27)',deep:'rgba(94,58,24,.20)'};
   const add=(pt,dx,dy)=>[pt[0]+dx,pt[1]+dy];
-  const timberTop=(pt,th)=>add(pt,u*.016,-u*th);
-  const drawBeam=(a,b,z,halfW=.022,th=.032)=>{
+  const timberTop=(pt,th)=>add(pt,u*.011,-u*th*.82);
+  const drawBeam=(a,b,z,halfW=.020,th=.026)=>{
    const pa=v.point(...a),pb=v.point(...b),lift=u*z;
    const dx=pb[0]-pa[0],dy=pb[1]-pa[1],len=Math.hypot(dx,dy)||1;
    const nx=-dy/len,ny=dx/len,ox=nx*u*halfW,oy=ny*u*halfW;
@@ -1372,30 +1372,30 @@ const BoundaryRenderer=Object.freeze({
    v.polygon([A,B,C,D],wood.body,wood.edge,Math.max(.55,u*.010));
    v.polygon([At,Bt,B,A],wood.light,wood.edge,Math.max(.45,u*.009));
    v.polygon([Bt,Ct,C,B],wood.shade,wood.edge,Math.max(.42,u*.008));
-   c.strokeStyle='rgba(181,132,72,.32)';c.lineWidth=Math.max(.34,u*.0066);
+   c.strokeStyle='rgba(187,118,46,.24)';c.lineWidth=Math.max(.34,u*.0066);
    c.beginPath();c.moveTo((A[0]+D[0])*.5,(A[1]+D[1])*.5-u*.003);c.lineTo((B[0]+C[0])*.5,(B[1]+C[1])*.5-u*.003);c.stroke();
   };
-  const drawPost=(gx,gy,h=.42,w=.070)=>{
-   const p0=v.point(gx,gy),hw=u*w*.5,ex=u*.020,ey=-u*.012,topY=p0[1]-u*h;
+  const drawPost=(gx,gy,h=.42,w=.064)=>{
+   const p0=v.point(gx,gy),hw=u*w*.5,ex=u*.012,ey=-u*.008,topY=p0[1]-u*h;
    const TL=[p0[0]-hw,topY],TR=[p0[0]+hw,topY],BR=[p0[0]+hw,p0[1]],BL=[p0[0]-hw,p0[1]];
    const TL2=add(TL,ex,ey),TR2=add(TR,ex,ey),BR2=add(BR,ex,ey);
-   c.fillStyle='rgba(98,68,35,.18)';c.beginPath();c.ellipse(p0[0]+u*.012,p0[1]+u*.023,u*.068,u*.028,0,0,Math.PI*2);c.fill();
+   c.fillStyle='rgba(101,63,28,.15)';c.beginPath();c.ellipse(p0[0]+u*.012,p0[1]+u*.023,u*.068,u*.028,0,0,Math.PI*2);c.fill();
    v.polygon([TL,TR,BR,BL],wood.body,wood.edge,Math.max(.52,u*.010));
    v.polygon([TR,TR2,BR2,BR],wood.shade,wood.edge,Math.max(.45,u*.009));
    v.polygon([TL,TR,TR2,TL2],wood.light,wood.edge,Math.max(.42,u*.008));
-   c.strokeStyle='rgba(245,220,174,.45)';c.lineWidth=Math.max(.40,u*.0075);c.beginPath();c.moveTo(TL[0]+u*.010,TL[1]+u*.020);c.lineTo(BL[0]+u*.010,BL[1]-u*.060);c.stroke();
+   c.strokeStyle='rgba(248,214,150,.34)';c.lineWidth=Math.max(.40,u*.0075);c.beginPath();c.moveTo(TL[0]+u*.010,TL[1]+u*.020);c.lineTo(BL[0]+u*.010,BL[1]-u*.060);c.stroke();
    if(h>.5){
-    const capH=u*.022,capOut=u*.008;
+    const capH=u*.018,capOut=u*.005;
     const CTL=[TL[0]-capOut,TL[1]-capH],CTR=[TR[0]+capOut,TR[1]-capH],CTL2=add(CTL,ex*.85,ey*.85),CTR2=add(CTR,ex*.85,ey*.85);
     v.polygon([CTL,CTR,TR,TL],wood.body,wood.edge,Math.max(.42,u*.008));
     v.polygon([CTL,CTR,CTR2,CTL2],wood.light,wood.edge,Math.max(.40,u*.007));
     v.polygon([CTR,CTR2,TR2,TR],wood.shade,wood.edge,Math.max(.40,u*.007));
    }
   };
-  const drawBoard=(a,b,z,half=.11,h=.095)=>{
+  const drawBoard=(a,b,z,half=.092,h=.082)=>{
    const pa=v.point(...a),pb=v.point(...b),mx=(pa[0]+pb[0])/2,my=(pa[1]+pb[1])/2;
    const dx=pb[0]-pa[0],dy=pb[1]-pa[1],m=Math.hypot(dx,dy)||1,ux=dx/m,uy=dy/m;
-   const ex=u*.014,ey=-u*.010;
+   const ex=u*.010,ey=-u*.007;
    const A=[mx-ux*u*half,my-uy*u*half-u*z],B=[mx+ux*u*half,my+uy*u*half-u*z],C=[mx+ux*u*half,my+uy*u*half-u*(z-h)],D=[mx-ux*u*half,my-uy*u*half-u*(z-h)];
    const D2=add(D,ex,ey),C2=add(C,ex,ey),B2=add(B,ex,ey);
    v.polygon([D,C,B,A],wood.body,wood.edge,Math.max(.42,u*.008));
@@ -1408,14 +1408,14 @@ const BoundaryRenderer=Object.freeze({
    const a=p.a,b=p.b;
    if(p.type==='fence'){
     // Angular timber rails with front / side / top faces.
-    drawBeam(a,b,.145,.019,.028);
-    drawBeam(a,b,.286,.018,.026);
+    drawBeam(a,b,.145,.017,.022);
+    drawBeam(a,b,.286,.016,.021);
    }else{
     // C gate: timber beam + angled braces + lighter hanging sign.
-    drawBeam(a,b,.616,.028,.030);
+    drawBeam(a,b,.616,.024,.024);
     for(const t of [0,1]){
      const start=t?b:a,end=t?a:b,mid=[start[0]+(end[0]-start[0])*.22,start[1]+(end[1]-start[1])*.22];
-     drawBeam(start,mid,.43,.013,.018);
+     drawBeam(start,mid,.43,.011,.014);
     }
     const pa=v.point(...a),pb=v.point(...b),mx=(pa[0]+pb[0])/2,my=(pa[1]+pb[1])/2;
     const dx=pb[0]-pa[0],dy=pb[1]-pa[1],m=Math.hypot(dx,dy)||1,ux=dx/m,uy=dy/m;
@@ -1423,11 +1423,11 @@ const BoundaryRenderer=Object.freeze({
      const x=mx+ux*u*t,y=my+uy*u*t;
      c.strokeStyle=wood.edge;c.lineWidth=Math.max(.50,u*.010);c.beginPath();c.moveTo(x,y-u*.605);c.lineTo(x,y-u*.515);c.stroke();
     }
-    drawBoard(a,b,.585,.088,.090);
+    drawBoard(a,b,.585,.080,.076);
    }
   }else{
    // One shared post per vertex, no duplicated posts at corners or gate joints.
-   drawPost(p.x,p.y,p.gate?.72:.42,p.gate?.118:.078);
+   drawPost(p.x,p.y,p.gate?.72:.42,p.gate?.108:.070);
   }
   c.restore();
  },
