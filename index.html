@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.11a FENCE-01a</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.11b FENCE-01b</title><style>
 :root{--sea:#8fd6e8;--land:#b9d98c;--land2:#d7e9ad;--ink:#17313a;--muted:#607780;--panel:#ffffff;--accent:#ef8f35;--accent2:#2f7f77;--border:#cddde1;--glow:#ffd166;--danger:#c94f4f}
 *{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef8fb;color:var(--ink);margin:0;padding:14px 12px 32px;text-align:center}main{max-width:720px;margin:0 auto}h1{font-size:26px;margin:4px 0 2px}.subtitle{font-size:13px;color:var(--muted);margin:0 0 10px}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:7px 4px;font-size:12px}.stat b{display:block;font-size:20px;margin-top:2px}.progress{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:14px}.handTitle{font-size:13px;color:var(--muted);text-align:left;margin:6px 2px}.hand{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}.card{min-height:74px;border:2px solid var(--border);background:#fff;border-radius:13px;padding:6px 4px;color:var(--ink);font-weight:700;touch-action:manipulation}.card .icon{font-size:27px;display:block;line-height:1.1}.card .name{font-size:12px;display:block;margin-top:4px}.card .tag{font-size:9px;color:var(--muted);display:block;font-weight:600}.card.selected{border-color:var(--accent);background:#fff4e8;box-shadow:0 0 0 2px rgba(239,143,53,.15)}.card.fixed{border-style:dashed}.forecast{font-size:12px;color:var(--muted);margin:-2px 0 9px}.cell.forecastCell{box-shadow:inset 0 0 0 3px rgba(255,255,255,.82),0 0 0 2px rgba(69,135,167,.55);animation:forecastPulse 1.45s infinite}.forecastMark{position:absolute;right:4px;top:2px;font-size:13px;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35)}.floatDelta{position:absolute;left:50%;top:8%;transform:translateX(-50%);z-index:20;pointer-events:none;font-size:12px;font-weight:900;white-space:nowrap;background:rgba(255,255,255,.94);border:1px solid rgba(23,49,58,.12);border-radius:999px;padding:3px 6px;animation:floatUp 1.15s ease forwards}.landBurst{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;pointer-events:none;animation:landPop .8s ease forwards}.card:disabled{opacity:.45}.boardWrap{background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px;margin:0 auto}.board{display:grid;gap:4px;justify-content:center;margin:auto}.cell{position:relative;width:min(13.9vw,58px);aspect-ratio:1;border:1px solid rgba(31,75,83,.16);border-radius:10px;background:var(--sea);font-size:28px;padding:0;touch-action:manipulation;overflow:visible}.cell.land{background:linear-gradient(145deg,var(--land2),var(--land))}.cell.valid{outline:3px solid rgba(47,127,119,.45);outline-offset:-3px}.cell.mergeable{animation:pulse 1.1s infinite;box-shadow:0 0 0 3px rgba(255,209,102,.7)}.cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8);animation:none}.cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65);animation:pulse 1s infinite}.cell .terrainDot{position:absolute;left:4px;bottom:3px;font-size:8px;opacity:.5}.levelBadge{position:absolute;right:3px;bottom:2px;z-index:7;font-size:9px;font-weight:900;line-height:1;background:rgba(255,255,255,.82);color:var(--ink);border-radius:5px;padding:3px 4px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}.objName{position:absolute;left:50%;top:2px;z-index:7;transform:translateX(-50%);max-width:92%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7px;font-weight:900;line-height:1.15;background:rgba(255,255,255,.78);color:var(--ink);border-radius:4px;padding:2px 3px;pointer-events:none}.cell .obj{display:inline-block;transition:transform .18s ease,opacity .18s ease}.cell.pop .obj{animation:pop .28s ease}.status{min-height:54px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:10px 0 8px;font-size:14px;display:flex;align-items:center;justify-content:center}.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.action{border:0;border-radius:10px;padding:10px 14px;background:var(--accent2);color:#fff;font-weight:700}.action.secondary{background:#738a92}.action.warn{background:var(--accent)}.action:disabled{opacity:.4}.legend{font-size:11px;color:var(--muted);margin-top:8px}.achievement{margin-top:10px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}.achievement h2{font-size:14px;margin:0 0 6px}.achList{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:11px;background:#edf4f4;border-radius:999px;padding:5px 8px}.badge.locked{opacity:.35}.result{display:none;background:#fff8e9;border:2px solid #f2c56b;border-radius:16px;padding:16px;margin-top:12px}.result.show{display:block}.result h2{margin:0 0 4px}.result .islandType{font-size:24px;font-weight:900}.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.mini{background:#fff;border-radius:9px;padding:6px 2px;font-size:11px}.mini b{display:block;font-size:17px}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}@keyframes forecastPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.1)}}@keyframes floatUp{0%{opacity:0;transform:translate(-50%,8px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-28px) scale(1.05)}}@keyframes landPop{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1)}}@keyframes pop{0%{transform:scale(.65);opacity:.35}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
 .detailPanel{display:none;text-align:left;background:#fff;border:2px solid var(--accent2);border-radius:14px;padding:11px 12px;margin:10px 0 8px;position:relative}.detailPanel.show{display:block}.detailHead{display:flex;align-items:center;gap:10px}.detailIcon{font-size:32px}.detailTitle{font-weight:900;font-size:18px}.detailBranch{font-size:11px;color:var(--muted)}.detailStats{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.detailChip{background:#edf5f4;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:800}.detailText{font-size:12px;color:var(--muted);line-height:1.55;margin:5px 0}.detailActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.detailActions button{border:0;border-radius:9px;padding:9px 12px;font-weight:800}.detailMerge{background:var(--accent);color:#fff}.detailClose{background:#e7eff1;color:var(--ink)}.cell.detail-selected{outline:3px solid rgba(47,127,119,.7);outline-offset:-3px}.obj.merge-keep-prep{animation:mergeKeep .28s ease forwards}.obj.merge-source-fly{animation:mergeFly .28s ease forwards;z-index:25;position:relative}.obj.merge-result{animation:mergeResult .46s cubic-bezier(.2,.9,.3,1.35)}.obj.merge-result.final{animation:mergeFinal .72s cubic-bezier(.15,.9,.25,1.3)}@keyframes mergeKeep{0%{transform:scale(1)}60%{transform:scale(.58)}100%{transform:scale(.72)}}@keyframes mergeFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.28);opacity:.2}}@keyframes mergeResult{0%{transform:scale(.45);opacity:.25}55%{transform:scale(1.34);opacity:1}100%{transform:scale(1)}}@keyframes mergeFinal{0%{transform:scale(.35) rotate(-3deg);opacity:.2}48%{transform:scale(1.58) rotate(2deg);opacity:1}72%{transform:scale(.92)}100%{transform:scale(1)}}
@@ -1229,7 +1229,7 @@ renderMother=function(){
 const SLOT_ORDER=[17,18,24,25,16,19,23,26,10,11,12,9,15,22,29,30,31,32,33,8,13,20,27,34,14,21,28,7,6,5,4,3,2,1,0,35,36,37,38,39,40,41];
 function renderMotherScene(){renderPlacementScene()}
 
-openMenu=function(){showSimpleModal('Block Island v2.0 α7.11a FENCE-01a','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
+openMenu=function(){showSimpleModal('Block Island v2.0 α7.11b FENCE-01b','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
 function importSave(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=async()=>{try{const file=input.files[0];if(!file)return;const v=JSON.parse(await file.text());if(!validSnapshot(v))throw Error('invalid');showSimpleModal('セーブを読み込みますか？','現在のv2.0の進行を、選んだセーブの内容に置き換えます。',[{label:'キャンセル'},{label:'読み込む',fn:()=>{if(Platform.write(SAVE_KEY,JSON.stringify(v))){booting=true;location.reload();}else showUnlockToast('読み込みを保存できませんでした')}}])}catch{showUnlockToast('セーブを読み込めません','v2.0 αのセーブファイルを選んでください')}};input.click()}
 function enhanceResourceUI(){
  document.querySelectorAll('.resultTokens>.resultToken .tokenFace').forEach((e,i)=>{const k=KEYS[i];e.innerHTML=resourceIcon(k);e.setAttribute('aria-label',RESOURCE_COLORS[k]+'の資源トークン')});
@@ -1358,65 +1358,77 @@ const BoundaryRenderer=Object.freeze({
  stroke(v,a,b,z,color,width){const c=v.ctx,pa=v.point(a[0],a[1]),pb=v.point(b[0],b[1]);c.strokeStyle=color;c.lineWidth=Math.max(.7,v.unit*width);c.lineCap='round';c.beginPath();c.moveTo(pa[0],pa[1]-v.unit*z);c.lineTo(pb[0],pb[1]-v.unit*z);c.stroke()},
  paint(v,p){const c=v.ctx,u=v.unit;
   c.save();c.lineJoin='round';c.lineCap='round';
-  // FENCE-01a: keep boundary endpoints and shared-post model unchanged.
-  // Scale back the visual weight ~20-25%; unify fence / gate wood palette.
-  const wood={edge:'#73523b',shade:'#896141',body:'#af8258',light:'#d2aa7c',grain:'#6e503b'};
+  // FENCE-01b: keep boundary endpoints and shared-post model unchanged.
+  // Match the warmer, hand-painted timber used by the main buildings.
+  const wood={edge:'#6f543c',shade:'#8a6948',body:'#bb9161',light:'#deb787',glow:'#edd0a7',grain:'#8c694a',shadow:'rgba(92,68,46,.33)'};
   if(p.kind==='rail'){
    const a=p.a,b=p.b;
    if(p.type==='fence'){
-    // Two simple rails: lower waist-high fence, lighter and thinner than FENCE-01.
-    for(const h of [.135,.29]){
-     this.stroke(v,a,b,h-.009,wood.edge,.082);
-     this.stroke(v,a,b,h,wood.body,.057);
-     this.stroke(v,a,b,h+.019,wood.light,.018);
-     if(u>29){
-      const q=v.point((a[0]+b[0])/2,(a[1]+b[1])/2);
-      const ux=b[0]-a[0],uy=b[1]-a[1],offset=((p.x*13+p.y*17)%5-2)*u*.004;
-      const norm=Math.hypot(ux,uy)||1,dir=(q2)=>q2/norm;
-      c.strokeStyle='#76543b70';c.lineWidth=Math.max(.42,u*.009);
-      c.beginPath();c.moveTo(q[0]-u*.11*dir(ux-uy)+offset,q[1]-u*h-u*.055*dir(ux+uy));
-      c.lineTo(q[0]+u*.10*dir(ux-uy)+offset,q[1]-u*h+u*.050*dir(ux+uy));c.stroke();
+    // Two simple rails: same gentle wood treatment as facility timber.
+    const railHeights=[.138,.286];
+    for(const h of railHeights){
+     this.stroke(v,a,b,h-.012,wood.shadow,.088);
+     this.stroke(v,a,b,h-.006,wood.edge,.074);
+     this.stroke(v,a,b,h,wood.body,.055);
+     this.stroke(v,a,b,h+.017,wood.light,.020);
+     this.stroke(v,a,b,h+.026,wood.glow,.0085);
+     this.stroke(v,a,b,h-.022,'rgba(102,74,48,.22)',.024);
+     if(u>26){
+      const sampleTs=[.26,.54,.79];
+      const dx=b[0]-a[0],dy=b[1]-a[1],norm=Math.hypot(dx,dy)||1;
+      const px=(dy/norm)*u*.012,py=(-dx/norm)*u*.012;
+      c.strokeStyle='rgba(126,90,60,.34)';c.lineWidth=Math.max(.34,u*.0068);
+      for(const t of sampleTs){
+       const gx=a[0]+dx*t,gy=a[1]+dy*t,pt=v.point(gx,gy),len=u*(.026+(((p.x+p.y+t*10)|0)%3)*.007);
+       c.beginPath();c.moveTo(pt[0]-px-len*.55,pt[1]-u*h-py-len*.15);c.lineTo(pt[0]+px+len*.48,pt[1]-u*h+py+len*.08);c.stroke();
+      }
      }
     }
    }else{
-    // C gate: legible silhouette and hanging plaque, but the same wood and shading.
-    this.stroke(v,a,b,.602,wood.edge,.132);
-    this.stroke(v,a,b,.612,wood.body,.097);
-    this.stroke(v,a,b,.635,wood.light,.028);
+    // C gate: same warm timber treatment as the fence, with a lighter hanging sign.
+    this.stroke(v,a,b,.596,wood.shadow,.142);
+    this.stroke(v,a,b,.602,wood.edge,.112);
+    this.stroke(v,a,b,.612,wood.body,.090);
+    this.stroke(v,a,b,.632,wood.light,.026);
+    this.stroke(v,a,b,.642,wood.glow,.010);
     for(const t of [0,1]){
-     const start=t?b:a,end=t?a:b,mid=[start[0]+(end[0]-start[0])*.23,start[1]+(end[1]-start[1])*.23];
+     const start=t?b:a,end=t?a:b,mid=[start[0]+(end[0]-start[0])*.22,start[1]+(end[1]-start[1])*.22];
      const p1=v.point(...start),p2=v.point(...mid);
-     c.strokeStyle=wood.edge;c.lineWidth=Math.max(1.15,u*.066);c.beginPath();c.moveTo(p1[0],p1[1]-u*.415);c.lineTo(p2[0],p2[1]-u*.603);c.stroke();
-     c.strokeStyle=wood.body;c.lineWidth=Math.max(.85,u*.038);c.stroke();
-     c.strokeStyle=wood.light;c.lineWidth=Math.max(.6,u*.012);c.beginPath();c.moveTo(p1[0]-u*.012,p1[1]-u*.428);c.lineTo(p2[0]-u*.012,p2[1]-u*.608);c.stroke();
+     c.strokeStyle=wood.shadow;c.lineWidth=Math.max(.95,u*.034);c.beginPath();c.moveTo(p1[0]+u*.01,p1[1]-u*.406);c.lineTo(p2[0]+u*.01,p2[1]-u*.572);c.stroke();
+     c.strokeStyle=wood.edge;c.lineWidth=Math.max(1.05,u*.056);c.beginPath();c.moveTo(p1[0],p1[1]-u*.412);c.lineTo(p2[0],p2[1]-u*.582);c.stroke();
+     c.strokeStyle=wood.body;c.lineWidth=Math.max(.82,u*.032);c.stroke();
+     c.strokeStyle=wood.light;c.lineWidth=Math.max(.52,u*.010);c.beginPath();c.moveTo(p1[0]-u*.012,p1[1]-u*.424);c.lineTo(p2[0]-u*.012,p2[1]-u*.588);c.stroke();
     }
-    // Single small blank wooden hanging sign, not an oversized decorative placard.
     const pa=v.point(...a),pb=v.point(...b),mx=(pa[0]+pb[0])/2,my=(pa[1]+pb[1])/2;
-    const dx=pb[0]-pa[0],dy=pb[1]-pa[1],m=Math.hypot(dx,dy)||1,ux=dx/m,uy=dy/m,half=Math.min(u*.175,m*.205);
+    const dx=pb[0]-pa[0],dy=pb[1]-pa[1],m=Math.hypot(dx,dy)||1,ux=dx/m,uy=dy/m,half=Math.min(u*.145,m*.17);
     const corner=(z,off)=>[mx+ux*off,my+uy*off-u*z];
-    for(const t of [-.115,.115]){
+    for(const t of [-.098,.098]){
      const x=mx+ux*u*t,y=my+uy*u*t;
-     c.strokeStyle=wood.edge;c.lineWidth=Math.max(.7,u*.018);
-     c.beginPath();c.moveTo(x,y-u*.59);c.lineTo(x,y-u*.455);c.stroke();
+     c.strokeStyle=wood.edge;c.lineWidth=Math.max(.56,u*.014);
+     c.beginPath();c.moveTo(x,y-u*.585);c.lineTo(x,y-u*.485);c.stroke();
     }
-    const q1=corner(.485,-half),q2=corner(.485,half),q3=corner(.35,half),q4=corner(.35,-half);
-    v.polygon([q1,q2,q3,q4],wood.body,wood.edge,Math.max(.65,u*.017));
-    c.strokeStyle=wood.light;c.lineWidth=Math.max(.65,u*.017);
-    c.beginPath();c.moveTo(q1[0]+.8,q1[1]+u*.02);c.lineTo(q2[0]-.8,q2[1]+u*.02);c.stroke();
-    c.strokeStyle='#86634877';c.lineWidth=Math.max(.45,u*.008);
-    c.beginPath();c.moveTo((q4[0]*.6+q3[0]*.4), (q4[1]*.6+q3[1]*.4)-u*.013);
-    c.lineTo((q4[0]*.25+q3[0]*.75), (q4[1]*.25+q3[1]*.75)-u*.018);c.stroke();
+    const q1=corner(.555,-half),q2=corner(.555,half),q3=corner(.445,half),q4=corner(.445,-half);
+    v.polygon([q1,q2,q3,q4],wood.body,wood.edge,Math.max(.52,u*.014));
+    c.strokeStyle=wood.light;c.lineWidth=Math.max(.46,u*.012);
+    c.beginPath();c.moveTo(q1[0]+1.1,q1[1]+u*.012);c.lineTo(q2[0]-1.1,q2[1]+u*.012);c.stroke();
+    c.strokeStyle=wood.glow;c.lineWidth=Math.max(.36,u*.007);
+    c.beginPath();c.moveTo(q1[0]+u*.01,q1[1]+u*.027);c.lineTo(q2[0]-u*.01,q2[1]+u*.027);c.stroke();
+    c.strokeStyle='rgba(131,95,64,.26)';c.lineWidth=Math.max(.34,u*.0066);
+    c.beginPath();c.moveTo((q4[0]*.58+q3[0]*.42), (q4[1]*.58+q3[1]*.42)-u*.010);
+    c.lineTo((q4[0]*.25+q3[0]*.75), (q4[1]*.25+q3[1]*.75)-u*.013);c.stroke();
    }
   }else{
    // One shared post per vertex, no duplicated posts at corners or gate joints.
-   const pt=v.point(p.x,p.y),high=p.gate?.72:.42,wd=p.gate?.122:.085;
-   c.fillStyle='#604e3930';c.beginPath();c.ellipse(pt[0]+u*.013,pt[1]+u*.025,u*.073,u*.032,0,0,Math.PI*2);c.fill();
-   c.strokeStyle=wood.edge;c.lineWidth=Math.max(1.35,u*wd);c.beginPath();c.moveTo(pt[0],pt[1]);c.lineTo(pt[0],pt[1]-u*high);c.stroke();
-   c.strokeStyle=wood.body;c.lineWidth=Math.max(.75,u*wd*.56);c.beginPath();c.moveTo(pt[0]-u*.015,pt[1]-u*.02);c.lineTo(pt[0]-u*.015,pt[1]-u*(high-.024));c.stroke();
-   c.strokeStyle=wood.light;c.lineWidth=Math.max(.52,u*.016);c.beginPath();c.moveTo(pt[0]-u*.029,pt[1]-u*.09);c.lineTo(pt[0]-u*.029,pt[1]-u*(high-.085));c.stroke();
-   if(u>31){c.strokeStyle='#7650396e';c.lineWidth=Math.max(.45,u*.01);c.beginPath();c.moveTo(pt[0]+u*.018,pt[1]-u*.095);c.lineTo(pt[0]+u*.021,pt[1]-u*(high-.08));c.stroke();}
-   c.fillStyle=wood.shade;c.beginPath();c.ellipse(pt[0],pt[1]-u*high,u*wd*.58,u*.025,0,0,Math.PI*2);c.fill();
-   c.strokeStyle=wood.light;c.lineWidth=Math.max(.48,u*.011);c.beginPath();c.moveTo(pt[0]-u*wd*.30,pt[1]-u*high-u*.006);c.lineTo(pt[0]+u*wd*.18,pt[1]-u*high-u*.006);c.stroke();
+   const pt=v.point(p.x,p.y),high=p.gate?.72:.42,wd=p.gate?.118:.082;
+   c.fillStyle='rgba(89,66,45,.20)';c.beginPath();c.ellipse(pt[0]+u*.013,pt[1]+u*.025,u*.070,u*.030,0,0,Math.PI*2);c.fill();
+   c.strokeStyle=wood.shadow;c.lineWidth=Math.max(1.15,u*wd*1.06);c.beginPath();c.moveTo(pt[0]+u*.01,pt[1]-u*.01);c.lineTo(pt[0]+u*.01,pt[1]-u*high);c.stroke();
+   c.strokeStyle=wood.edge;c.lineWidth=Math.max(1.18,u*wd);c.beginPath();c.moveTo(pt[0],pt[1]);c.lineTo(pt[0],pt[1]-u*high);c.stroke();
+   c.strokeStyle=wood.body;c.lineWidth=Math.max(.72,u*wd*.54);c.beginPath();c.moveTo(pt[0]-u*.014,pt[1]-u*.02);c.lineTo(pt[0]-u*.014,pt[1]-u*(high-.024));c.stroke();
+   c.strokeStyle=wood.light;c.lineWidth=Math.max(.52,u*.014);c.beginPath();c.moveTo(pt[0]-u*.028,pt[1]-u*.09);c.lineTo(pt[0]-u*.028,pt[1]-u*(high-.088));c.stroke();
+   c.strokeStyle=wood.glow;c.lineWidth=Math.max(.36,u*.008);c.beginPath();c.moveTo(pt[0]-u*.038,pt[1]-u*.10);c.lineTo(pt[0]-u*.038,pt[1]-u*(high-.12));c.stroke();
+   if(u>31){c.strokeStyle='rgba(128,94,64,.28)';c.lineWidth=Math.max(.40,u*.0088);c.beginPath();c.moveTo(pt[0]+u*.016,pt[1]-u*.10);c.lineTo(pt[0]+u*.018,pt[1]-u*(high-.09));c.stroke();}
+   c.fillStyle=wood.shade;c.beginPath();c.ellipse(pt[0],pt[1]-u*high,u*wd*.54,u*.022,0,0,Math.PI*2);c.fill();
+   c.strokeStyle=wood.light;c.lineWidth=Math.max(.44,u*.010);c.beginPath();c.moveTo(pt[0]-u*wd*.28,pt[1]-u*high-u*.006);c.lineTo(pt[0]+u*wd*.16,pt[1]-u*high-u*.006);c.stroke();
   }
   c.restore();
  },
