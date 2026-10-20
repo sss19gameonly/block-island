@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.12 FENCE-02</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.13 DECOR-01</title><style>
 :root{--sea:#8fd6e8;--land:#b9d98c;--land2:#d7e9ad;--ink:#17313a;--muted:#607780;--panel:#ffffff;--accent:#ef8f35;--accent2:#2f7f77;--border:#cddde1;--glow:#ffd166;--danger:#c94f4f}
 *{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef8fb;color:var(--ink);margin:0;padding:14px 12px 32px;text-align:center}main{max-width:720px;margin:0 auto}h1{font-size:26px;margin:4px 0 2px}.subtitle{font-size:13px;color:var(--muted);margin:0 0 10px}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:7px 4px;font-size:12px}.stat b{display:block;font-size:20px;margin-top:2px}.progress{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:14px}.handTitle{font-size:13px;color:var(--muted);text-align:left;margin:6px 2px}.hand{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}.card{min-height:74px;border:2px solid var(--border);background:#fff;border-radius:13px;padding:6px 4px;color:var(--ink);font-weight:700;touch-action:manipulation}.card .icon{font-size:27px;display:block;line-height:1.1}.card .name{font-size:12px;display:block;margin-top:4px}.card .tag{font-size:9px;color:var(--muted);display:block;font-weight:600}.card.selected{border-color:var(--accent);background:#fff4e8;box-shadow:0 0 0 2px rgba(239,143,53,.15)}.card.fixed{border-style:dashed}.forecast{font-size:12px;color:var(--muted);margin:-2px 0 9px}.cell.forecastCell{box-shadow:inset 0 0 0 3px rgba(255,255,255,.82),0 0 0 2px rgba(69,135,167,.55);animation:forecastPulse 1.45s infinite}.forecastMark{position:absolute;right:4px;top:2px;font-size:13px;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35)}.floatDelta{position:absolute;left:50%;top:8%;transform:translateX(-50%);z-index:20;pointer-events:none;font-size:12px;font-weight:900;white-space:nowrap;background:rgba(255,255,255,.94);border:1px solid rgba(23,49,58,.12);border-radius:999px;padding:3px 6px;animation:floatUp 1.15s ease forwards}.landBurst{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;pointer-events:none;animation:landPop .8s ease forwards}.card:disabled{opacity:.45}.boardWrap{background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px;margin:0 auto}.board{display:grid;gap:4px;justify-content:center;margin:auto}.cell{position:relative;width:min(13.9vw,58px);aspect-ratio:1;border:1px solid rgba(31,75,83,.16);border-radius:10px;background:var(--sea);font-size:28px;padding:0;touch-action:manipulation;overflow:visible}.cell.land{background:linear-gradient(145deg,var(--land2),var(--land))}.cell.valid{outline:3px solid rgba(47,127,119,.45);outline-offset:-3px}.cell.mergeable{animation:pulse 1.1s infinite;box-shadow:0 0 0 3px rgba(255,209,102,.7)}.cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8);animation:none}.cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65);animation:pulse 1s infinite}.cell .terrainDot{position:absolute;left:4px;bottom:3px;font-size:8px;opacity:.5}.levelBadge{position:absolute;right:3px;bottom:2px;z-index:7;font-size:9px;font-weight:900;line-height:1;background:rgba(255,255,255,.82);color:var(--ink);border-radius:5px;padding:3px 4px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}.objName{position:absolute;left:50%;top:2px;z-index:7;transform:translateX(-50%);max-width:92%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7px;font-weight:900;line-height:1.15;background:rgba(255,255,255,.78);color:var(--ink);border-radius:4px;padding:2px 3px;pointer-events:none}.cell .obj{display:inline-block;transition:transform .18s ease,opacity .18s ease}.cell.pop .obj{animation:pop .28s ease}.status{min-height:54px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:10px 0 8px;font-size:14px;display:flex;align-items:center;justify-content:center}.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.action{border:0;border-radius:10px;padding:10px 14px;background:var(--accent2);color:#fff;font-weight:700}.action.secondary{background:#738a92}.action.warn{background:var(--accent)}.action:disabled{opacity:.4}.legend{font-size:11px;color:var(--muted);margin-top:8px}.achievement{margin-top:10px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}.achievement h2{font-size:14px;margin:0 0 6px}.achList{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:11px;background:#edf4f4;border-radius:999px;padding:5px 8px}.badge.locked{opacity:.35}.result{display:none;background:#fff8e9;border:2px solid #f2c56b;border-radius:16px;padding:16px;margin-top:12px}.result.show{display:block}.result h2{margin:0 0 4px}.result .islandType{font-size:24px;font-weight:900}.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.mini{background:#fff;border-radius:9px;padding:6px 2px;font-size:11px}.mini b{display:block;font-size:17px}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}@keyframes forecastPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.1)}}@keyframes floatUp{0%{opacity:0;transform:translate(-50%,8px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-28px) scale(1.05)}}@keyframes landPop{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1)}}@keyframes pop{0%{transform:scale(.65);opacity:.35}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
 .detailPanel{display:none;text-align:left;background:#fff;border:2px solid var(--accent2);border-radius:14px;padding:11px 12px;margin:10px 0 8px;position:relative}.detailPanel.show{display:block}.detailHead{display:flex;align-items:center;gap:10px}.detailIcon{font-size:32px}.detailTitle{font-weight:900;font-size:18px}.detailBranch{font-size:11px;color:var(--muted)}.detailStats{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.detailChip{background:#edf5f4;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:800}.detailText{font-size:12px;color:var(--muted);line-height:1.55;margin:5px 0}.detailActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.detailActions button{border:0;border-radius:9px;padding:9px 12px;font-weight:800}.detailMerge{background:var(--accent);color:#fff}.detailClose{background:#e7eff1;color:var(--ink)}.cell.detail-selected{outline:3px solid rgba(47,127,119,.7);outline-offset:-3px}.obj.merge-keep-prep{animation:mergeKeep .28s ease forwards}.obj.merge-source-fly{animation:mergeFly .28s ease forwards;z-index:25;position:relative}.obj.merge-result{animation:mergeResult .46s cubic-bezier(.2,.9,.3,1.35)}.obj.merge-result.final{animation:mergeFinal .72s cubic-bezier(.15,.9,.25,1.3)}@keyframes mergeKeep{0%{transform:scale(1)}60%{transform:scale(.58)}100%{transform:scale(.72)}}@keyframes mergeFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.28);opacity:.2}}@keyframes mergeResult{0%{transform:scale(.45);opacity:.25}55%{transform:scale(1.34);opacity:1}100%{transform:scale(1)}}@keyframes mergeFinal{0%{transform:scale(.35) rotate(-3deg);opacity:.2}48%{transform:scale(1.58) rotate(2deg);opacity:1}72%{transform:scale(.92)}100%{transform:scale(1)}}
@@ -609,6 +609,24 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
 .fenceMap{min-height:140px}
 @media(max-width:520px){.fenceSheet .placementMapWrap{flex-basis:280px}.motherLayoutTools{flex-wrap:wrap}.fencePalette button{min-height:55px}.fenceBottom{gap:5px;padding-top:5px}.fenceSheet .placementHint{margin:0;font-size:10px}}
 @media(max-height:670px){.fenceSheet .placementSub,.fenceSheet .placementHint{display:none}.fenceSheet .placementMapWrap{min-height:120px;flex-basis:180px}.fenceSheet .fenceBottom{padding-top:3px;padding-bottom:4px}}
+
+
+/* DECOR-01: compact inventory/editor UI. Drawn sprites are provisional until art review. */
+@media(max-width:540px){.motherLayoutTools:has(#editMotherDecor){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.motherLayoutTools:has(#editMotherDecor)>span{grid-column:1/-1;text-align:left}.motherLayoutTools:has(#editMotherDecor) button{min-width:0}}
+.decorPalette{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:0 12px 7px;flex-shrink:0}
+.decorPalette button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;min-height:77px;border:1px solid #bbc7a9;border-radius:11px;background:#fffcf0;color:#405b49;font:800 12px system-ui;padding:5px 2px}
+.decorPalette button>span{font-size:23px}.decorPalette button small{font:10px system-ui;color:#617968}.decorPalette button[aria-pressed="true"]{border:2px solid #49856e;background:#e7efdb}
+.decorPalette button:disabled{opacity:.46}
+.decorSheet .decorHelp{margin:3px 14px 7px;font-size:11px;color:#60785e}
+.decorBottom{flex:0 0 auto;padding:8px 12px 12px;display:grid;gap:7px}
+.decorInfo{font-size:12px;font-weight:700;min-height:28px;line-height:1.45;color:#456454}
+.decorArrows{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.decorArrows button,.decorStore{padding:8px 1px;background:#fffdf2;border:1px solid #bdc9b2;border-radius:10px;color:#466354;font:800 12px system-ui;min-height:41px}
+.decorArrows .decorStore{background:#f5e8d8}
+.decorSheet .placementMapWrap{min-height:135px;flex-basis:295px}
+.decorSheet .placementActions{margin-top:0}
+@media(max-width:520px){.decorPalette button{min-height:67px}.decorBottom{padding-top:5px;gap:5px}.decorSheet .placementHint{margin:0}.decorSheet .decorHelp{margin:2px 12px 5px}}
+@media(max-height:610px){.decorPalette button{min-height:53px}.decorPalette button>span{font-size:17px}.decorSheet .placementMapWrap{min-height:110px;flex-basis:180px}.decorSheet .placementHint{display:none}}
 </style><style>
 /* alpha7 mother-island scene and touch placement sheet */
 .placementSheet{position:relative}
@@ -1229,7 +1247,7 @@ renderMother=function(){
 const SLOT_ORDER=[17,18,24,25,16,19,23,26,10,11,12,9,15,22,29,30,31,32,33,8,13,20,27,34,14,21,28,7,6,5,4,3,2,1,0,35,36,37,38,39,40,41];
 function renderMotherScene(){renderPlacementScene()}
 
-openMenu=function(){showSimpleModal('Block Island v2.0 α7.12 FENCE-02','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
+openMenu=function(){showSimpleModal('Block Island v2.0 α7.13 DECOR-01','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
 function importSave(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=async()=>{try{const file=input.files[0];if(!file)return;const v=JSON.parse(await file.text());if(!validSnapshot(v))throw Error('invalid');showSimpleModal('セーブを読み込みますか？','現在のv2.0の進行を、選んだセーブの内容に置き換えます。',[{label:'キャンセル'},{label:'読み込む',fn:()=>{if(Platform.write(SAVE_KEY,JSON.stringify(v))){booting=true;location.reload();}else showUnlockToast('読み込みを保存できませんでした')}}])}catch{showUnlockToast('セーブを読み込めません','v2.0 αのセーブファイルを選んでください')}};input.click()}
 function enhanceResourceUI(){
  document.querySelectorAll('.resultTokens>.resultToken .tokenFace').forEach((e,i)=>{const k=KEYS[i];e.innerHTML=resourceIcon(k);e.setAttribute('aria-label',RESOURCE_COLORS[k]+'の資源トークン')});
@@ -1242,8 +1260,8 @@ function enhanceResourceUI(){
 }
 
 function boot(){
- const saved=readSnapshot();if(saved?.schema===2&&!Platform.read('blockIslandV2Alpha_beforePlacement'))Platform.write('blockIslandV2Alpha_beforePlacement',JSON.stringify(saved));normalizeMotherLayout(motherState);enhanceResourceUI();resetPuzzle();renderMother();
- if(saved){motherState=saved.mother;normalizeMotherLayout(motherState);state=saved.puzzle;state.animating=false;state.progress??={achievements:{}};state.detailIndex=null;pendingHaul=saved.pendingHaul;currentScreen=saved.screen;motherRenderInitialized=false;render();
+ const saved=readSnapshot();if(saved?.schema===2&&!Platform.read('blockIslandV2Alpha_beforePlacement'))Platform.write('blockIslandV2Alpha_beforePlacement',JSON.stringify(saved));normalizeMotherDecor(motherState);normalizeMotherLayout(motherState);enhanceResourceUI();resetPuzzle();renderMother();
+ if(saved){motherState=saved.mother;normalizeMotherDecor(motherState);normalizeMotherLayout(motherState);state=saved.puzzle;state.animating=false;state.progress??={achievements:{}};state.detailIndex=null;pendingHaul=saved.pendingHaul;currentScreen=saved.screen;motherRenderInitialized=false;render();
   if(currentScreen==='result'&&state.finished&&!state.haulClaimed)showResult();
   else if(currentScreen==='preview'){motherPreviewMode=true;originalPeek()}
   else if(currentScreen==='explore'&&!state.finished){motherPreviewMode=false;originalBack()}
@@ -1274,16 +1292,17 @@ const PORT_RENDER=Object.freeze({x:23.7,y:23.7,width:3.25});
 const MASS_FACILITIES=new Set(['house','lumber','sap','stele']);
 const facilitySize=id=>id==='port'?3:MASS_FACILITIES.has(id)?1:2;
 const footprintOverlap=(a,b)=>a.x<b.x+b.size&&a.x+a.size>b.x&&a.y<b.y+b.size&&a.y+a.size>b.y;
-function positionError(p,placements,ignoreUid=null){
+function positionError(p,placements,ignoreUid=null,decors=motherState?.decorations?.items||[]){
  if(!Number.isInteger(p.x)||!Number.isInteger(p.y)||p.x<0||p.y<0||p.x+p.size>MOTHER_GRID||p.y+p.size>MOTHER_GRID)return '島の建築できる範囲を選んでください';
  if(placements.some(q=>q.uid!==ignoreUid&&footprintOverlap(p,q)))return 'ほかの施設と重なっています';
+  if(decors.some(q=>footprintOverlap(p,{x:q.x,y:q.y,size:1})))return '箱庭アイテムと重なっています';
  return '';
 }
 function validMotherLayout(m){
  const l=m.layout;if(!l||l.version!==1||l.width!==20||l.height!==20||!Array.isArray(l.placements)||l.placements.length>37)return false;
  const seen=new Set(),counts={},accepted=[];
  for(const p of l.placements){
-  const f=facilityById(p.id);if(!f||typeof p.uid!=='string'||!Number.isInteger(p.instance)||p.instance<1||p.instance>ctFor(m,p.id)||p.uid!==p.id+'-'+p.instance||seen.has(p.uid)||p.size!==facilitySize(p.id)||typeof p.flipped!=='boolean'||positionError(p,accepted))return false;
+  const f=facilityById(p.id);if(!f||typeof p.uid!=='string'||!Number.isInteger(p.instance)||p.instance<1||p.instance>ctFor(m,p.id)||p.uid!==p.id+'-'+p.instance||seen.has(p.uid)||p.size!==facilitySize(p.id)||typeof p.flipped!=='boolean'||positionError(p,accepted,null,m.decorations?.items||[]))return false;
   seen.add(p.uid);accepted.push(p);counts[p.id]=(counts[p.id]||0)+1;
  }
  return FACILITIES.every(f=>(counts[f[0]]||0)===ctFor(m,f[0]));
@@ -1414,9 +1433,9 @@ const BoundaryRenderer=Object.freeze({
 
 let inlineMotherMap=null,placementEditor=null,boundaryEditor=null;
 class MotherMap{
- constructor(canvas,{editor=false,ghost=()=>null,onTap=()=>{},onGhostMove=null,placements=()=>motherState.layout?.placements||[],camera=null,ground=()=>motherState.ground,boundaries=()=>motherState.boundaries||BoundaryModel.empty(),boundarySelection=()=>null}={}){
-  this.ground=ground;this.boundaries=boundaries;this.boundarySelection=boundarySelection;
-  this.canvas=canvas;this.ctx=canvas.getContext('2d');this.editor=editor;this.ghost=ghost;this.placements=placements;this.onTap=onTap;this.onGhostMove=onGhostMove;this.camera=camera||{scale:0,cx:10,cy:10};this.pointers=new Map();this.hits=[];this.moved=false;this.disposed=false;this.draggingFacility=null;
+ constructor(canvas,{editor=false,ghost=()=>null,onTap=()=>{},onGhostMove=null,placements=()=>motherState.layout?.placements||[],camera=null,ground=()=>motherState.ground,boundaries=()=>motherState.boundaries||BoundaryModel.empty(),boundarySelection=()=>null,decorations=()=>motherState.decorations?.items||[],decorationSelection=()=>null,decorGrid=false}={}){
+  this.ground=ground;this.boundaries=boundaries;this.boundarySelection=boundarySelection;this.decorations=decorations;this.decorationSelection=decorationSelection;this.decorGrid=decorGrid;
+  this.canvas=canvas;this.ctx=canvas.getContext('2d');this.editor=editor;this.ghost=ghost;this.placements=placements;this.onTap=onTap;this.onGhostMove=onGhostMove;this.camera=camera||{scale:0,cx:10,cy:10};this.pointers=new Map();this.hits=[];this.decorHits=[];this.moved=false;this.disposed=false;this.draggingFacility=null;
   this.down=e=>{if(e.pointerType==='mouse'&&e.button!==0)return;canvas.setPointerCapture(e.pointerId);const p=this.local(e);this.pointers.set(e.pointerId,p);
    if(this.pointers.size===1){this.moved=false;const g=this.ghost(),hit=this.hit(p);this.draggingFacility=this.onGhostMove&&g&&hit?.uid===g.uid?{start:this.toWorld(p),x:g.x,y:g.y}:null;}
    else {if(this.draggingFacility)this.onGhostMove({x:this.draggingFacility.x,y:this.draggingFacility.y});this.draggingFacility=null;this.moved=true;}this.resetGesture();};
@@ -1425,7 +1444,7 @@ class MotherMap{
    else if(ps.length===1&&this.gesture){const dx=ps[0].x-this.gesture.start.x,dy=ps[0].y-this.gesture.start.y;if(Math.abs(dx)+Math.abs(dy)>5)this.moved=true;
     if(this.draggingFacility){if(this.moved){const q=this.toWorld(ps[0]),d=this.draggingFacility;this.onGhostMove({x:d.x+Math.round(q.x-d.start.x),y:d.y+Math.round(q.y-d.start.y)});}}
     else{this.camera.cx=this.gesture.cx-dx/this.unit-2*dy/this.unit;this.camera.cy=this.gesture.cy+dx/this.unit-2*dy/this.unit;this.clampCenter();}}this.draw();};
-  this.up=e=>{const p=this.local(e),tap=this.pointers.size===1&&!this.moved;this.pointers.delete(e.pointerId);if(!this.pointers.size)this.draggingFacility=null;if(tap)this.onTap(this.toWorld(p),this.hit(p));this.resetGesture();};
+  this.up=e=>{const p=this.local(e),tap=this.pointers.size===1&&!this.moved;this.pointers.delete(e.pointerId);if(!this.pointers.size)this.draggingFacility=null;if(tap)this.onTap(this.toWorld(p),this.hit(p),this.hitDecoration(p));this.resetGesture();};
   this.cancel=e=>{if(this.draggingFacility)this.onGhostMove({x:this.draggingFacility.x,y:this.draggingFacility.y});this.draggingFacility=null;this.pointers.delete(e.pointerId);this.moved=true;this.resetGesture()};
   this.wheel=e=>{e.preventDefault();const p=this.local(e),a=this.toWorld(p);this.setScale(this.unit*(e.deltaY>0?.88:1.13));this.centerAt(a,p);this.draw()};
   canvas.addEventListener('pointerdown',this.down);canvas.addEventListener('pointermove',this.move);canvas.addEventListener('pointerup',this.up);canvas.addEventListener('pointercancel',this.cancel);canvas.addEventListener('wheel',this.wheel,{passive:false});
@@ -1446,12 +1465,13 @@ class MotherMap{
   if(!im.hitAlpha){const c=document.createElement('canvas');c.width=128;c.height=Math.max(1,Math.round(128*im.naturalHeight/im.naturalWidth));const ctx=c.getContext('2d',{willReadFrequently:true});ctx.drawImage(im,0,0,c.width,c.height);im.hitAlpha={w:c.width,h:c.height,data:ctx.getImageData(0,0,c.width,c.height).data};}
   const a=im.hitAlpha,flip=(q.p.id==='sawmill')!==!!q.p.flipped;let u=(p.x-q.x)/q.w;if(flip)u=1-u;const x=Math.min(a.w-1,Math.max(0,Math.floor(u*a.w))),y=Math.min(a.h-1,Math.max(0,Math.floor((p.y-q.y)/q.h*a.h)));return a.data[(y*a.w+x)*4+3]>30;
  }).map(q=>q.p).filter((p,i,a)=>a.findIndex(q=>q.uid===p.uid)===i)}
- hit(p){return this.hitAll(p)[0]||null}
+  hit(p){return this.hitAll(p)[0]||null}
+  hitDecoration(p){return [...this.decorHits].reverse().find(q=>p.x>=q.x&&p.x<=q.x+q.w&&p.y>=q.y&&p.y<=q.y+q.h)?.item||null}
  polygon(points,fill,stroke,width=1){const c=this.ctx;c.beginPath();points.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();if(fill){c.fillStyle=fill;c.fill()}if(stroke){c.strokeStyle=stroke;c.lineWidth=width;c.stroke()}}
  tile(p,fill,stroke){this.polygon([this.point(p.x,p.y),this.point(p.x+p.size,p.y),this.point(p.x+p.size,p.y+p.size),this.point(p.x,p.y+p.size)],fill,stroke,1.5)}
  draw(){
   if(this.disposed)return;const c=this.ctx,w=this.canvas.clientWidth,h=this.canvas.clientHeight;if(!w||!h)return;this.w=w;this.h=h;this.fitUnit=Math.min((w-22)/24,(h-30)/18.5);this.unit=this.camera.scale||this.fitUnit;
-  const dpr=Math.min(devicePixelRatio||1,2);if(this.canvas.width!==Math.round(w*dpr)||this.canvas.height!==Math.round(h*dpr)){this.canvas.width=Math.round(w*dpr);this.canvas.height=Math.round(h*dpr)}c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,w,h);this.hits=[];
+  const dpr=Math.min(devicePixelRatio||1,2);if(this.canvas.width!==Math.round(w*dpr)||this.canvas.height!==Math.round(h*dpr)){this.canvas.width=Math.round(w*dpr);this.canvas.height=Math.round(h*dpr)}c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,w,h);this.hits=[];this.decorHits=[];
   const sea=c.createLinearGradient(0,0,w,h);sea.addColorStop(0,'#7cc8cf');sea.addColorStop(1,'#3495ad');c.fillStyle=sea;c.fillRect(0,0,w,h);
   // All shoreline vertices remain outside the complete square of 400 cells.
   const edge=[[-.6,-.7],[3,-1.2],[8,-.8],[13,-1.4],[18,-1],[20.7,-.6],[21.3,4],[20.9,9],[21.3,14],[20.8,18],[20.7,20.7],[17.7,21.1],[13,20.9],[8,21.3],[3,20.9],[-.8,20.6],[-1.3,16],[-.7,11],[-1.3,6]];
@@ -1474,14 +1494,16 @@ class MotherMap{
   if(this.editor)for(const p of rows)if(p.id!=='port'){const bad=positionError(p,placements,p.uid);this.tile(p,bad?'#d2605140':'#57744a12',bad?'#c44836':'#5e794b60');}
   if(ghost)rows=[...rows,{...ghost,isGhost:true}];
   // Sort boundary parts in the same depth order as facilities, not permanently on top.
-  const combined=[...rows.map(p=>({kind:'facility',p,depth:p.x+p.y+p.size+.15})),...BoundaryRenderer.parts(this.boundaries())];
+  const combined=[...rows.map(p=>({kind:'facility',p,depth:p.x+p.y+p.size+.15})),...BoundaryRenderer.parts(this.boundaries()),...this.decorations().map(p=>({kind:'decor',p,depth:p.x+p.y+1+.11}))];
   combined.sort((a,b)=>(this.editor&&a.kind==='facility'&&a.p.isGhost?10000:a.depth)-(this.editor&&b.kind==='facility'&&b.p.isGhost?10000:b.depth)||((a.kind==='post'?2:a.kind==='rail'?1:0)-(b.kind==='post'?2:b.kind==='rail'?1:0)));
   for(const item of combined){
-   if(item.kind!=='facility'){BoundaryRenderer.paint(this,item);continue}
+   if(item.kind==='decor'){DecorRenderer.paint(this,item.p);continue}
+    if(item.kind!=='facility'){BoundaryRenderer.paint(this,item);continue}
    const p=item.p;if(p.id==='port'){this.drawFrontHarbor(p);continue;}const im=mapImages[p.id];if(!im?.complete||!im.naturalWidth)continue;const [x,y]=this.point(p.x+p.size/2,p.y+p.size/2);const bw=this.unit*p.size*(p.id==='lumber'?1.18:p.size===1?1.03:.90),bh=bw*im.naturalHeight/im.naturalWidth,top=y-bh+this.unit*p.size*.2;
    c.save();if(p.isGhost)c.globalAlpha=.82;const flipped=(p.id==='sawmill')!==!!p.flipped;if(flipped){c.translate(x,0);c.scale(-1,1);c.drawImage(im,-bw/2,top,bw,bh)}else c.drawImage(im,x-bw/2,top,bw,bh);c.restore();this.hits.push({p,x:x-bw/2,y:top,w:bw,h:bh});
   }
   BoundaryRenderer.highlight(this,this.boundarySelection());
+   const decorSelected=this.decorationSelection();if(decorSelected)this.tile({x:decorSelected.x,y:decorSelected.y,size:1},null,'#e6b943');
   if(this.editor)for(const p of placements)if(p.uid!==ghost?.uid&&positionError(p,placements,p.uid))this.tile(p,'#d2605130','#c44836');
   if(ghost){const bad=positionError(ghost,placements,ghost.uid);this.tile(ghost,bad?'#d2605140':'#65bd7440',bad?'#c44836':'#2b8546')}
  }
@@ -1550,13 +1572,13 @@ function mapButtons(view){
  for(const [label,fn]of [['全体',()=>view.fit()],['−',()=>{view.setScale(view.unit/1.35);view.draw()}],['＋',()=>{view.setScale(view.unit*1.35);view.draw()}]]){const b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('aria-label',label==='＋'?'島を拡大':label==='−'?'島を縮小':'島全体を表示');b.onclick=fn;bar.append(b)}return bar;
 }
 function renderPlacementScene(){
- normalizeMotherLayout(motherState);normalizeMotherBoundaries(motherState);inlineMotherMap?.destroy();
+ normalizeMotherDecor(motherState);normalizeMotherLayout(motherState);normalizeMotherBoundaries(motherState);inlineMotherMap?.destroy();
  const scene=$('motherScene');scene.className='motherScene placementScene';scene.innerHTML='<canvas class="motherMapCanvas" aria-label="母島。ドラッグで移動、拡大して施設を選択できます"></canvas>';
- inlineMotherMap=new MotherMap(scene.querySelector('canvas'),{camera:motherCamera,onTap:(_,hit)=>{if(!hit)return;const name=hit.id==='port'?'港':facilityById(hit.id)[2];$('sceneCaption').textContent=name+(hit.id==='port'?' · 海岸に固定':` · ${hit.size}×${hit.size}`);if(!motherPreviewMode&&currentScreen==='mother')openPlacementEditor('move',hit.uid)}});
+ inlineMotherMap=new MotherMap(scene.querySelector('canvas'),{camera:motherCamera,onTap:(_,hit,decor)=>{if(decor&&!motherPreviewMode&&currentScreen==='mother'){openDecorEditor(decor.uid);return}if(!hit)return;const name=hit.id==='port'?'港':facilityById(hit.id)[2];$('sceneCaption').textContent=name+(hit.id==='port'?' · 海岸に固定':` · ${hit.size}×${hit.size}`);if(!motherPreviewMode&&currentScreen==='mother')openPlacementEditor('move',hit.uid)}});
  scene.append(mapButtons(inlineMotherMap));
  const existing=$('motherLayoutTools');existing?.remove();const tools=document.createElement('div');tools.id='motherLayoutTools';tools.className='motherLayoutTools';
  const count=motherState.layout.placements.length;tools.innerHTML=`<span>ドラッグで移動 · ピンチで拡大</span><button type="button">施設の配置</button>`;tools.querySelector('button').hidden=motherPreviewMode;tools.querySelector('button').disabled=count===0&&!motherState.portComplete;tools.querySelector('button').onclick=()=>openPlacementEditor('move');scene.after(tools);
- if(!motherPreviewMode){const b=document.createElement('button');b.type='button';b.id='editMotherGround';b.textContent='道・地面';b.onclick=openGroundEditor;tools.append(b);const fb=document.createElement('button');fb.type='button';fb.id='editMotherBoundary';fb.textContent='木柵・門';fb.onclick=openBoundaryEditor;tools.append(fb);}
+ if(!motherPreviewMode){const b=document.createElement('button');b.type='button';b.id='editMotherGround';b.textContent='道・地面';b.onclick=openGroundEditor;tools.append(b);const fb=document.createElement('button');fb.type='button';fb.id='editMotherBoundary';fb.textContent='木柵・門';fb.onclick=openBoundaryEditor;tools.append(fb);const db=document.createElement('button');db.type='button';db.id='editMotherDecor';db.textContent='箱庭アイテム';db.onclick=openDecorEditor;tools.append(db);}
  $('sceneCaption').textContent=count?`${count+(motherState.portComplete?1:0)}の施設が、島の暮らしを育んでいます`:'まだ静かな島。探索で資源を集め、最初の施設を建てよう。';
 }
 const buildImmediately=buildMotherFacility;
@@ -1975,6 +1997,151 @@ installQA=function(){fenceInstallQA();window.BI_QA.fence={
  open:openBoundaryEditor,valid:BoundaryModel.valid,normalize:BoundaryModel.sanitize,nearest:(x,y)=>boundaryEditor?BoundaryModel.nearest(boundaryEditor.view,{x,y}):null,
  unlocked:t=>BoundaryModel.unlocked(motherState,t),draft:()=>boundaryEditor?BoundaryModel.sanitize(boundaryEditor.draft):null,
  material:t=>boundaryEditor?.material(t),select:e=>boundaryEditor?.select(e),put:e=>boundaryEditor?.put(e),confirm:()=>boundaryEditor?.confirm(),cancel:()=>boundaryEditor?.close(),camera:()=>({...boundaryEditor?.view.camera}),focus:(x,y)=>boundaryEditor?.view.focus({x,y,size:1}),zoom:u=>{if(boundaryEditor){boundaryEditor.view.setScale(u);boundaryEditor.view.draw()}}
+ }};
+
+
+// DECOR-01: starter item inventory / independent occupancy / reversible draft edits.
+// Final art and ticket exchange remain explicitly out of scope for this build.
+const DECOR_STARTERS=Object.freeze([
+ {id:'bench',name:'木のベンチ',icon:'🪑',stat:'population',threshold:80},
+ {id:'flowerbed',name:'花壇',icon:'🌼',stat:'nature',threshold:100},
+ {id:'streetTree',name:'街路樹',icon:'🌳',stat:'nature',threshold:260}
+]);
+const DecorModel=Object.freeze({
+ empty(){return{version:1,width:20,height:20,owned:{},items:[]}},
+ item(id){return DECOR_STARTERS.find(d=>d.id===id)},
+ unlocked(m,id){const d=this.item(id);return !!d&&(m.stats?.[d.stat]||0)>=d.threshold},
+ sanitize(data,m){
+  const out=this.empty(),owned=data?.owned&&typeof data.owned==='object'?data.owned:{};
+  for(const d of DECOR_STARTERS)out.owned[d.id]=this.unlocked(m,d.id)?1:0;
+  const seen=new Set(),counts={},facilities=Array.isArray(m.layout?.placements)?m.layout.placements:[];
+  if(Array.isArray(data?.items))for(const p of data.items){
+   if(!this.item(p?.id)||!this.unlocked(m,p.id)||typeof p.uid!=='string'||seen.has(p.uid)||p.uid!==p.id+'-1'||!Number.isInteger(p.x)||!Number.isInteger(p.y)||p.x<0||p.y<0||p.x>=20||p.y>=20||counts[p.id]>=out.owned[p.id])continue;
+   if(facilities.some(f=>footprintOverlap({x:p.x,y:p.y,size:1},f))||out.items.some(q=>q.x===p.x&&q.y===p.y))continue;
+   seen.add(p.uid);counts[p.id]=(counts[p.id]||0)+1;out.items.push({uid:p.uid,id:p.id,x:p.x,y:p.y});
+  }
+  return out;
+ },
+ valid(d,m){if(!d||d.version!==1||d.width!==20||d.height!==20||!Array.isArray(d.items)||!d.owned)return false;const clean=this.sanitize(d,m);return d.items.length===clean.items.length&&DECOR_STARTERS.every(p=>d.owned[p.id]===clean.owned[p.id])&&clean.items.every((p,i)=>Object.keys(p).every(k=>p[k]===d.items[i][k]))},
+ available(d,m,id){return Math.max(0,(this.unlocked(m,id)?1:0)-d.items.filter(p=>p.id===id).length)},
+ positionError(p,items,facilities){
+  if(!p||!Number.isInteger(p.x)||!Number.isInteger(p.y)||p.x<0||p.x>=20||p.y<0||p.y>=20)return '島の範囲内に置いてください';
+  if((facilities||[]).some(f=>footprintOverlap({x:p.x,y:p.y,size:1},f)))return '施設のあるマスには置けません';
+  if(items.some(q=>q.uid!==p.uid&&q.x===p.x&&q.y===p.y))return 'ほかの装飾と重なっています';
+  return '';
+ }
+});
+function normalizeMotherDecor(m){m.decorations=DecorModel.sanitize(m.decorations,m)}
+
+const DecorRenderer=Object.freeze({
+ // Purpose-built neutral preview shapes; never treat these as final cleared commercial art.
+ paint(view,p){
+  const c=view.ctx,u=view.unit,[cx,cy]=view.point(p.x+.5,p.y+.5),z=u;
+  c.save();c.lineCap='round';c.lineJoin='round';
+  c.fillStyle='rgba(57,64,31,.20)';c.beginPath();c.ellipse(cx,cy+z*.06,z*.28,z*.12,0,0,Math.PI*2);c.fill();
+  if(p.id==='bench'){
+   const poly=(arr,f,s)=>view.polygon(arr.map(([x,y])=>[cx+x*z,cy+y*z]),f,s,.6);
+   for(const sx of [-.20,.17]){
+    c.strokeStyle='#795333';c.lineWidth=Math.max(1,z*.035);
+    c.beginPath();c.moveTo(cx+sx*z,cy-z*.16);c.lineTo(cx+(sx-.025)*z,cy+z*.025);c.stroke();
+   }
+   poly([[-.27,-.22],[.15,-.22],[.28,-.15],[-.15,-.15]],'#dba35b','#8f6338');
+   poly([[-.27,-.22],[-.15,-.15],[-.15,-.09],[-.27,-.16]],'#ad7039');
+   poly([[-.26,-.37],[.13,-.37],[.22,-.32],[-.17,-.32]],'#e9b16a','#9f6a33');
+   c.strokeStyle='#bc7b3d';c.lineWidth=Math.max(.5,z*.012);c.beginPath();c.moveTo(cx-.075*z,cy-.36*z);c.lineTo(cx+.04*z,cy-.34*z);c.stroke();
+  }else if(p.id==='flowerbed'){
+   view.polygon([view.point(p.x+.10,p.y+.35),view.point(p.x+.58,p.y+.10),view.point(p.x+.92,p.y+.66),view.point(p.x+.38,p.y+.93)],'#9e936b','#87744c',.75);
+   for(let i=0;i<7;i++){
+    const dx=(((i*5)%7)-3)*.059,dy=(((i*3)%7)-3)*.026;
+    c.fillStyle=i%3?'#5f9852':'#407e45';c.beginPath();c.ellipse(cx+dx*z,cy+dy*z-z*.105,z*.055,z*.047,0,0,Math.PI*2);c.fill();
+    c.fillStyle=['#f6d27b','#e79aa2','#f7f0b3'][i%3];c.beginPath();c.arc(cx+(dx+.012)*z,cy+(dy-.045)*z-z*.105,Math.max(1,z*.024),0,Math.PI*2);c.fill();
+   }
+  }else if(p.id==='streetTree'){
+   c.strokeStyle='#6c4b2c';c.lineWidth=Math.max(2,z*.065);c.beginPath();c.moveTo(cx,cy);c.lineTo(cx,cy-z*.53);c.stroke();
+   c.strokeStyle='#bc8549';c.lineWidth=Math.max(1,z*.022);c.beginPath();c.moveTo(cx-z*.009,cy-z*.08);c.lineTo(cx-z*.009,cy-z*.51);c.stroke();
+   const blobs=[[-.13,-.60,.20], [.13,-.63,.20],[0,-.75,.21],[-.08,-.48,.18],[.12,-.49,.17]];
+   for(const [x,y,r] of blobs){let g=c.createRadialGradient(cx+(x-.045)*z,cy+(y-.06)*z,z*.01,cx+x*z,cy+y*z,r*z);g.addColorStop(0,'#b7d77b');g.addColorStop(.55,'#78aa52');g.addColorStop(1,'#497947');c.fillStyle=g;c.beginPath();c.arc(cx+x*z,cy+y*z,r*z,0,Math.PI*2);c.fill()}
+  }
+  c.restore();
+  let hit=[cx-z*.37,cy-z*.55,z*.74,z*.66];if(p.id==='streetTree')hit=[cx-z*.38,cy-z*.99,z*.76,z*1.05];
+  view.decorHits.push({item:p,x:hit[0],y:hit[1],w:hit[2],h:hit[3]});
+ }
+});
+let decorEditor=null;
+function openDecorEditor(focusUid=null){
+ if(decorEditor||placementEditor||boundaryEditor||groundEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
+ normalizeMotherDecor(motherState);
+ const original=JSON.stringify(motherState.decorations),originalLayout=JSON.stringify(motherState.layout);
+ const draft=DecorModel.sanitize(motherState.decorations,motherState);
+ const previousFocus=document.activeElement,oldOverflow=document.body.style.overflow,oldScroll=window.scrollY;
+ let active=DECOR_STARTERS.find(d=>DecorModel.unlocked(motherState,d.id))?.id||'bench';
+ let selected=draft.items.find(p=>p.uid===focusUid)||null;
+ if(selected)active=selected.id;
+ let target={x:selected?.x??9,y:selected?.y??9};let closed=false,view=null;
+ const dialog=document.createElement('div');dialog.className='placementBackdrop decorBackdrop';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-labelledby','decorTitle');
+ dialog.innerHTML=`<section class="placementSheet decorSheet"><header><div><h2 id="decorTitle">箱庭アイテム</h2><p class="placementSub">解放時に各1個無料 · 移動・収納も無料</p></div><button class="placementClose" aria-label="箱庭アイテム編集をキャンセル">×</button></header><div class="decorPalette" role="group" aria-label="所持アイテム一覧">${DECOR_STARTERS.map(d=>`<button data-decor="${d.id}"><span>${d.icon}</span>${d.name}<small></small></button>`).join('')}</div><p class="decorHelp">マスをタップして配置 · 配置済みをタップして移動 · ドラッグで地図移動</p><div class="placementMapWrap"><canvas class="placementMap decorMap" aria-label="箱庭アイテムの配置用母島"></canvas></div><div class="decorBottom"><div class="decorInfo" aria-live="polite"></div><div class="decorArrows"><button data-dx="-1" data-dy="0" aria-label="左奥に移動">↖</button><button data-dx="0" data-dy="-1" aria-label="右奥に移動">↗</button><button data-dx="0" data-dy="1" aria-label="左手前に移動">↙</button><button data-dx="1" data-dy="0" aria-label="右手前に移動">↘</button><button class="decorStore" type="button">収納</button></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">まとめて確定</button></div><p class="placementHint">確定まで保存しません · キャンセルで全変更を取り消し</p></div></section>`;
+ document.body.appendChild(dialog);document.body.style.overflow='hidden';
+ const info=dialog.querySelector('.decorInfo'),confirm=dialog.querySelector('.placementConfirm');
+ const changed=()=>JSON.stringify(draft)!==original;
+ function refresh(message=''){
+  for(const d of DECOR_STARTERS){
+   const b=dialog.querySelector(`[data-decor="${d.id}"]`),unlocked=DecorModel.unlocked(motherState,d.id),placed=draft.items.filter(p=>p.id===d.id).length;
+   b.disabled=!unlocked;b.querySelector('small').textContent=unlocked?`所持1 · 配置${placed} · 手元${1-placed}`:`${META[d.stat].name}${d.threshold}で解放`;
+   b.setAttribute('aria-pressed',String(d.id===active));
+  }
+  const invalid=draft.items.find(p=>DecorModel.positionError(p,draft.items,motherState.layout.placements));
+  const moved=changed();confirm.disabled=!moved||!!invalid;
+  dialog.querySelector('.decorStore').disabled=!selected;
+  info.textContent=message||(invalid?`配置エラー：${DecorModel.positionError(invalid,draft.items,motherState.layout.placements)}`:selected?`${DecorModel.item(selected.id).name}を選択中（${selected.x+1}, ${selected.y+1}）· 別のマスで移動`:`${DecorModel.item(active).name} · タップで配置（手元${DecorModel.available(draft,motherState,active)}個）`)+(moved?' · 未保存の変更あり':'');
+  view?.draw();
+ }
+ function setTarget(x,y){
+  target={x:Math.min(19,Math.max(0,x)),y:Math.min(19,Math.max(0,y))};
+  if(!DecorModel.unlocked(motherState,active)){refresh('まだ解放されていません');return}
+  const proposed={uid:selected?.uid||active+'-1',id:active,x:target.x,y:target.y};
+  const error=DecorModel.positionError(proposed,draft.items,motherState.layout.placements);
+  if(error){refresh(error);return}
+  if(selected){Object.assign(selected,{x:target.x,y:target.y})}
+  else{
+   if(!DecorModel.available(draft,motherState,active)){refresh('手元の在庫がありません。設置済みをタップして移動・収納できます');return}
+   draft.items.push(proposed);selected=proposed;
+  }
+  refresh();
+ }
+ function onMapTap(world,facility,decor){
+  if(decor){selected=draft.items.find(p=>p.uid===decor.uid)||null;if(selected){active=selected.id;target={x:selected.x,y:selected.y};refresh()}return}
+  const x=Math.floor(world.x),y=Math.floor(world.y);
+  if(facility){refresh('ここには施設があります。空きマスを選んでください');return}
+  if(x<0||y<0||x>=20||y>=20){refresh('島の範囲内を選んでください');return}
+  setTarget(x,y);
+ }
+ view=new MotherMap(dialog.querySelector('canvas'),{camera:{...motherCamera},decorations:()=>draft.items,decorationSelection:()=>selected,decorGrid:true,onTap:onMapTap});
+ dialog.querySelector('.placementMapWrap').append(mapButtons(view));
+ const close=()=>{if(closed)return;closed=true;view.destroy();dialog.remove();document.body.style.overflow=oldOverflow;document.removeEventListener('keydown',keys);decorEditor=null;previousFocus?.focus?.({preventScroll:true});window.scrollTo({top:oldScroll,behavior:'instant'})};
+ const keys=e=>{if(e.key==='Escape'){e.preventDefault();close()}if(e.key==='Tab'){const bs=[...dialog.querySelectorAll('button')].filter(b=>!b.disabled&&b.getClientRects().length),first=bs[0],last=bs.at(-1);if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault()}else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault()}}};document.addEventListener('keydown',keys);
+ dialog.querySelectorAll('[data-decor]').forEach(b=>b.onclick=()=>{if(b.disabled)return;active=b.dataset.decor;selected=null;refresh()});
+ dialog.querySelectorAll('[data-dx]').forEach(b=>b.onclick=()=>setTarget(target.x+Number(b.dataset.dx),target.y+Number(b.dataset.dy)));
+ dialog.querySelector('.decorStore').onclick=()=>{if(!selected)return;draft.items=draft.items.filter(p=>p.uid!==selected.uid);selected=null;refresh('収納しました。所持品に戻っています')};
+ dialog.querySelector('.placementClose').onclick=close;dialog.querySelector('.placementCancel').onclick=close;
+ confirm.onclick=()=>{
+  if(closed||motherPreviewMode||currentScreen!=='mother'||state.animating||!changed())return;
+  if(JSON.stringify(motherState.decorations)!==original||JSON.stringify(motherState.layout)!==originalLayout){refresh('島の配置が更新されました。閉じて編集し直してください');confirm.disabled=true;return}
+  if(!DecorModel.valid(draft,motherState)||draft.items.some(p=>DecorModel.positionError(p,draft.items,motherState.layout.placements))){refresh('配置エラーがあります。位置を確認してください');return}
+  const before=motherState.decorations;motherState.decorations=DecorModel.sanitize(draft,motherState);saveSnapshot();
+  let saved=false;try{saved=JSON.stringify(JSON.parse(Platform.read(SAVE_KEY))?.mother?.decorations)===JSON.stringify(motherState.decorations)}catch{}
+  if(!saved){motherState.decorations=before;refresh('保存に失敗しました。再試行してください');return}
+  Object.assign(motherCamera,view.camera);const count=draft.items.length;close();renderMother();$('sceneCaption').textContent=`箱庭アイテムを更新しました（配置${count}個）`;
+ };
+ decorEditor={close,view,draft,material:id=>dialog.querySelector(`[data-decor="${id}"]`)?.click(),place:(x,y)=>setTarget(x,y),select:uid=>{const p=draft.items.find(d=>d.uid===uid);if(p){selected=p;active=p.id;target={x:p.x,y:p.y};refresh()}},store:()=>dialog.querySelector('.decorStore').click(),confirm:()=>confirm.click()};
+ if(selected)view.focus({...selected,size:1});else view.fit();refresh();dialog.querySelector('.placementClose').focus({preventScroll:true});
+}
+const decorQAOriginal=installQA;
+installQA=function(){decorQAOriginal();window.BI_QA.decor={
+ open:openDecorEditor,valid:()=>DecorModel.valid(motherState.decorations,motherState),sanitize:d=>DecorModel.sanitize(d,motherState),
+ state:()=>JSON.parse(JSON.stringify(motherState.decorations)),draft:()=>decorEditor?JSON.parse(JSON.stringify(decorEditor.draft)):null,
+ unlocked:id=>DecorModel.unlocked(motherState,id),available:id=>DecorModel.available(motherState.decorations,motherState,id),
+ choose:id=>decorEditor?.material(id),put:(x,y)=>decorEditor?.place(x,y),select:uid=>decorEditor?.select(uid),store:()=>decorEditor?.store(),confirm:()=>decorEditor?.confirm(),cancel:()=>decorEditor?.close(),
+ camera:()=>({...decorEditor?.view.camera}),focus:(x,y)=>decorEditor?.view.focus({x,y,size:1}),point:(x,y)=>decorEditor?.view.point(x,y)
  }};
 
 boot();
