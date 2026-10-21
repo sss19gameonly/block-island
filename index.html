@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.16 MILESTONE-01</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#39796e"><title>Block Island v2.0 α7.17 CEREMONY-01</title><style>
 :root{--sea:#8fd6e8;--land:#b9d98c;--land2:#d7e9ad;--ink:#17313a;--muted:#607780;--panel:#ffffff;--accent:#ef8f35;--accent2:#2f7f77;--border:#cddde1;--glow:#ffd166;--danger:#c94f4f}
 *{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#eef8fb;color:var(--ink);margin:0;padding:14px 12px 32px;text-align:center}main{max-width:720px;margin:0 auto}h1{font-size:26px;margin:4px 0 2px}.subtitle{font-size:13px;color:var(--muted);margin:0 0 10px}.topbar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:7px 4px;font-size:12px}.stat b{display:block;font-size:20px;margin-top:2px}.progress{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:14px}.handTitle{font-size:13px;color:var(--muted);text-align:left;margin:6px 2px}.hand{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}.card{min-height:74px;border:2px solid var(--border);background:#fff;border-radius:13px;padding:6px 4px;color:var(--ink);font-weight:700;touch-action:manipulation}.card .icon{font-size:27px;display:block;line-height:1.1}.card .name{font-size:12px;display:block;margin-top:4px}.card .tag{font-size:9px;color:var(--muted);display:block;font-weight:600}.card.selected{border-color:var(--accent);background:#fff4e8;box-shadow:0 0 0 2px rgba(239,143,53,.15)}.card.fixed{border-style:dashed}.forecast{font-size:12px;color:var(--muted);margin:-2px 0 9px}.cell.forecastCell{box-shadow:inset 0 0 0 3px rgba(255,255,255,.82),0 0 0 2px rgba(69,135,167,.55);animation:forecastPulse 1.45s infinite}.forecastMark{position:absolute;right:4px;top:2px;font-size:13px;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35)}.floatDelta{position:absolute;left:50%;top:8%;transform:translateX(-50%);z-index:20;pointer-events:none;font-size:12px;font-weight:900;white-space:nowrap;background:rgba(255,255,255,.94);border:1px solid rgba(23,49,58,.12);border-radius:999px;padding:3px 6px;animation:floatUp 1.15s ease forwards}.landBurst{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;pointer-events:none;animation:landPop .8s ease forwards}.card:disabled{opacity:.45}.boardWrap{background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px;margin:0 auto}.board{display:grid;gap:4px;justify-content:center;margin:auto}.cell{position:relative;width:min(13.9vw,58px);aspect-ratio:1;border:1px solid rgba(31,75,83,.16);border-radius:10px;background:var(--sea);font-size:28px;padding:0;touch-action:manipulation;overflow:visible}.cell.land{background:linear-gradient(145deg,var(--land2),var(--land))}.cell.valid{outline:3px solid rgba(47,127,119,.45);outline-offset:-3px}.cell.mergeable{animation:pulse 1.1s infinite;box-shadow:0 0 0 3px rgba(255,209,102,.7)}.cell.merge-target{box-shadow:0 0 0 4px rgba(239,143,53,.8);animation:none}.cell.merge-source{box-shadow:0 0 0 4px rgba(47,127,119,.65);animation:pulse 1s infinite}.cell .terrainDot{position:absolute;left:4px;bottom:3px;font-size:8px;opacity:.5}.levelBadge{position:absolute;right:3px;bottom:2px;z-index:7;font-size:9px;font-weight:900;line-height:1;background:rgba(255,255,255,.82);color:var(--ink);border-radius:5px;padding:3px 4px;box-shadow:0 1px 2px rgba(0,0,0,.08);pointer-events:none}.objName{position:absolute;left:50%;top:2px;z-index:7;transform:translateX(-50%);max-width:92%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:7px;font-weight:900;line-height:1.15;background:rgba(255,255,255,.78);color:var(--ink);border-radius:4px;padding:2px 3px;pointer-events:none}.cell .obj{display:inline-block;transition:transform .18s ease,opacity .18s ease}.cell.pop .obj{animation:pop .28s ease}.status{min-height:54px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:8px 10px;margin:10px 0 8px;font-size:14px;display:flex;align-items:center;justify-content:center}.actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.action{border:0;border-radius:10px;padding:10px 14px;background:var(--accent2);color:#fff;font-weight:700}.action.secondary{background:#738a92}.action.warn{background:var(--accent)}.action:disabled{opacity:.4}.legend{font-size:11px;color:var(--muted);margin-top:8px}.achievement{margin-top:10px;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}.achievement h2{font-size:14px;margin:0 0 6px}.achList{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:11px;background:#edf4f4;border-radius:999px;padding:5px 8px}.badge.locked{opacity:.35}.result{display:none;background:#fff8e9;border:2px solid #f2c56b;border-radius:16px;padding:16px;margin-top:12px}.result.show{display:block}.result h2{margin:0 0 4px}.result .islandType{font-size:24px;font-weight:900}.resultGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.mini{background:#fff;border-radius:9px;padding:6px 2px;font-size:11px}.mini b{display:block;font-size:17px}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(.94)}}@keyframes forecastPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.1)}}@keyframes floatUp{0%{opacity:0;transform:translate(-50%,8px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-28px) scale(1.05)}}@keyframes landPop{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1)}}@keyframes pop{0%{transform:scale(.65);opacity:.35}70%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
 .detailPanel{display:none;text-align:left;background:#fff;border:2px solid var(--accent2);border-radius:14px;padding:11px 12px;margin:10px 0 8px;position:relative}.detailPanel.show{display:block}.detailHead{display:flex;align-items:center;gap:10px}.detailIcon{font-size:32px}.detailTitle{font-weight:900;font-size:18px}.detailBranch{font-size:11px;color:var(--muted)}.detailStats{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.detailChip{background:#edf5f4;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:800}.detailText{font-size:12px;color:var(--muted);line-height:1.55;margin:5px 0}.detailActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.detailActions button{border:0;border-radius:9px;padding:9px 12px;font-weight:800}.detailMerge{background:var(--accent);color:#fff}.detailClose{background:#e7eff1;color:var(--ink)}.cell.detail-selected{outline:3px solid rgba(47,127,119,.7);outline-offset:-3px}.obj.merge-keep-prep{animation:mergeKeep .28s ease forwards}.obj.merge-source-fly{animation:mergeFly .28s ease forwards;z-index:25;position:relative}.obj.merge-result{animation:mergeResult .46s cubic-bezier(.2,.9,.3,1.35)}.obj.merge-result.final{animation:mergeFinal .72s cubic-bezier(.15,.9,.25,1.3)}@keyframes mergeKeep{0%{transform:scale(1)}60%{transform:scale(.58)}100%{transform:scale(.72)}}@keyframes mergeFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.28);opacity:.2}}@keyframes mergeResult{0%{transform:scale(.45);opacity:.25}55%{transform:scale(1.34);opacity:1}100%{transform:scale(1)}}@keyframes mergeFinal{0%{transform:scale(.35) rotate(-3deg);opacity:.2}48%{transform:scale(1.58) rotate(2deg);opacity:1}72%{transform:scale(.92)}100%{transform:scale(1)}}
@@ -650,6 +650,50 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
 .decorSheet .placementActions{margin-top:0}
 @media(max-width:520px){.decorPalette button{min-height:67px}.decorBottom{padding-top:5px;gap:5px}.decorSheet .placementHint{margin:0}.decorSheet .decorHelp{margin:2px 12px 5px}}
 @media(max-height:610px){.decorPalette button{min-height:53px}.decorPalette button>span{font-size:17px}.decorSheet .placementMapWrap{min-height:110px;flex-basis:180px}.decorSheet .placementHint{display:none}}
+
+/* CEREMONY-01: self-contained port celebration. No new artwork / game state. */
+.portCeremonyOverlay{position:fixed;inset:0;z-index:17500;background:rgba(10,32,39,.88);display:flex;align-items:center;justify-content:center;padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain}
+.portCeremony{position:relative;width:min(100%,510px);max-height:100%;overflow:hidden;display:flex;flex-direction:column;background:#fcf4db;border:2px solid #e7bf74;border-radius:22px;box-shadow:0 24px 70px #071b2bbb;text-align:center;color:#42584e;isolation:isolate}
+.portCeremony *{box-sizing:border-box}
+.portCeremonyScene{position:relative;flex:0 1 auto;aspect-ratio:1.11;min-height:0;overflow:hidden;background:radial-gradient(ellipse at 50% 21%,#f3dfad 0%,#c6e0d1 22%,#8acbc9 50%,#348d9e 80%,#247084 100%)}
+.portCeremonyScene:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-10deg,transparent 0px,transparent 24px,#d2f5eb18 25px,#d2f5eb18 27px);opacity:.65;pointer-events:none}
+.portCeremonyGlow{position:absolute;left:16%;right:16%;top:8%;height:64%;background:radial-gradient(ellipse,#fff2ccaa 0%,#e8e9ba22 48%,transparent 72%);filter:blur(6px);pointer-events:none}
+.portCeremonyCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.portCeremonyHarbor{position:absolute;top:11%;left:18%;width:64%;height:65%;object-fit:contain;z-index:3;filter:drop-shadow(0 14px 9px #24586672);transform-origin:50% 80%}
+.portCeremonyShip{position:absolute;object-fit:contain;filter:drop-shadow(0 11px 5px #1c5972b0);z-index:4;transform-origin:50% 65%}
+.portCeremonyShip.left{width:37%;height:41%;bottom:0;left:5%}
+.portCeremonyShip.right{width:33%;height:38%;bottom:-3%;right:4%}
+.portCeremonySeaTrail{position:absolute;z-index:1;bottom:3%;left:5%;width:40%;height:15%;opacity:0;background:repeating-radial-gradient(ellipse at 15% 60%,transparent 0,transparent 7px,#c4f1e78a 9px,#c4f1e78a 11px,transparent 13px);transform:rotate(13deg)}
+.portCeremonyEyebrow{position:absolute;z-index:6;top:4%;left:5%;right:5%;font-size:clamp(12px,3vw,15px);letter-spacing:.17em;color:#315f5d;font-weight:900;text-shadow:0 1px 0 #fff9;opacity:0}
+.portCeremonyText{position:relative;z-index:5;flex:none;background:linear-gradient(#fff9e6,#faefd0);border-top:2px solid #d8bf8a;padding:12px 16px 14px}
+.portCeremonyText h3{font-size:clamp(23px,6.1vw,30px);line-height:1.15;margin:0 0 8px;color:#496e52;letter-spacing:.03em}
+.portCeremonyText p{margin:0;font-size:clamp(12px,3.1vw,14px);line-height:1.65;color:#687664}
+.portCeremonyHorizon{display:block;font-weight:800;color:#3f7674!important;margin-top:5px!important}
+.portCeremonyActions{display:flex;align-items:center;gap:9px;margin-top:11px}
+.portCeremonyActions button{min-height:44px;flex:1;border-radius:11px;font-weight:800;font-size:clamp(12px,3.4vw,15px)}
+.portCeremonyActions .portCeremonySkip{flex:0 0 auto;border:1px solid #c5d1be;background:#fffaf0;color:#6a7d68;padding:0 10px}
+.portCeremonyActions .portCeremonyClose{background:linear-gradient(#6e978b,#4a796c);border:1px solid #3a6d60;color:white;padding:0 9px}
+.portCeremony[aria-busy=true] .portCeremonyClose{opacity:.92}
+.portCeremonyHint{font-size:10px;color:#98896c;padding-top:6px}
+@media(max-height:660px){.portCeremonyScene{aspect-ratio:1.4}.portCeremonyText{padding:7px 12px 8px}.portCeremonyText h3{margin-bottom:3px}.portCeremonyText p{line-height:1.4}.portCeremonyHint{display:none}}
+@media(prefers-reduced-motion:no-preference){
+ .portCeremonyHarbor{animation:ceremonyHarborIn 1.8s cubic-bezier(.18,.75,.24,1) both}
+ .portCeremonyEyebrow{animation:ceremonyBanner .7s .7s ease-out both}
+ .portCeremonyShip.left{animation:ceremonyLaunch 3.9s 1.5s ease-in-out both}
+ .portCeremonyShip.right{animation:ceremonyBob 3.4s 1.1s ease-in-out infinite alternate}
+ .portCeremonySeaTrail{animation:ceremonyWake 3.1s 2.2s ease-out both}
+ .portCeremonyHorizon{animation:ceremonyCaption 1s 3.8s ease both}
+}
+@keyframes ceremonyHarborIn{0%{transform:translateY(10%) scale(.67);opacity:0}70%{transform:translateY(-2%) scale(1.06);opacity:1}100%{transform:translateY(0) scale(1);opacity:1}}
+@keyframes ceremonyBanner{from{transform:translateY(-12px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes ceremonyLaunch{0%,19%{transform:translate(0,0) rotate(0)}37%{transform:translate(-3%,2%) rotate(-1deg)}100%{transform:translate(-23%,17%) scale(.91) rotate(-5deg)}}
+@keyframes ceremonyBob{0%{transform:translateY(0) rotate(-.7deg)}100%{transform:translateY(3%) rotate(.7deg)}}
+@keyframes ceremonyWake{0%{opacity:0;transform:translateX(0) rotate(13deg)}45%{opacity:.8}100%{opacity:0;transform:translateX(-8%) rotate(13deg)}}
+@keyframes ceremonyCaption{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.portCeremony.finished .portCeremonyHarbor,.portCeremony.finished .portCeremonyShip,.portCeremony.finished .portCeremonySeaTrail,.portCeremony.finished .portCeremonyEyebrow,.portCeremony.finished .portCeremonyHorizon{animation:none!important;opacity:1!important;transform:none!important}
+.portCeremony.finished .portCeremonyShip.left{transform:translate(-23%,17%) scale(.91) rotate(-5deg)!important}
+@media(prefers-reduced-motion:reduce){.portCeremonyEyebrow,.portCeremonyHorizon{opacity:1}.portCeremonySeaTrail{display:none}}
+
 </style><style>
 /* alpha7 mother-island scene and touch placement sheet */
 .placementSheet{position:relative}
@@ -978,10 +1022,59 @@ const canBuildNow=FACILITIES.some(f=>f[7]()&&ct(f[0])<f[4]&&canAfford(facilityCo
 if(motherRenderInitialized&&!motherPreviewMode){const nf=[...nowFacilities].filter(x=>!lastUnlockedFacilities.has(x));const nd=DECORS.filter(([k,v,n])=>nowDecor.has(`${v}:${n}`)&&!lastDecorUnlocked.has(`${v}:${n}`));if(nf.length||nd.length)showUnlockBundle(nf,nd)}
 lastUnlockedFacilities=nowFacilities;lastDecorUnlocked=nowDecor;motherRenderInitialized=true;saveMother()}
 function renderPort(){const open=stageDone(S4),complete=motherState.portComplete;portSection.style.display=open?'':'none';portReq.innerHTML=open?'✅ 4施設完成：港建設プロジェクト開始':'';portProgress.innerHTML='';destinationUnlock.classList.remove('show');if(!open)return;for(const k of KEYS){const v=motherState.port[k]||0,d=document.createElement('div');d.className='portProgressRow';d.innerHTML=`<div class="portLine"><span>${META[k].icon} ${META[k].name}</span><span>${v}/40</span></div><div class="portBar"><div class="portFill" style="width:${Math.min(100,v/40*100)}%"></div></div><div class="portBtns"><button data-n="1">+1</button><button data-n="5">+5</button><button data-n="999">MAX</button></div>`;d.querySelectorAll('button').forEach(b=>{b.disabled=motherPreviewMode||complete||v>=40||(motherState.resources[k]||0)<=0;b.onclick=()=>investPort(k,+b.dataset.n)});portProgress.appendChild(d)}const note=document.createElement('div');note.className='smallMuted';note.textContent=complete?'⚓ 港完成！ 第二の島へ進める状態。':'投入した資源は母島ステータスにも加算される。4資源すべて40で完成。';portProgress.appendChild(note);destinationUnlock.classList.toggle('show',complete)}
+// CEREMONY-01: purely visual event. Uses the harbor/ship sprites already embedded in this file.
+// It does not alter state, saves, unlocks, resource amounts, or external assets.
 function showPortMilestone(){
- // Called only when the fourth resource reaches 40; never auto-replay on save load.
- showSimpleModal('⚓ 港が完成！','はじまりの島に港ができました。探索と建築で積み重ねた成果です。これが最初の大きな到達点。島づくりは続けられます。次の島は準備中です。',[{label:'完成した島を眺める'}]);
- const card=document.querySelector('.modalBackdrop .simpleModal');if(card)card.classList.add('portMilestoneCard');
+ const old=document.querySelector('.portCeremonyOverlay');if(old)old.remove();
+ const overlay=document.createElement('div');overlay.className='portCeremonyOverlay';
+ overlay.setAttribute('role','presentation');
+ const ceremony=document.createElement('section');ceremony.className='portCeremony';
+ ceremony.setAttribute('role','dialog');ceremony.setAttribute('aria-modal','true');
+ ceremony.setAttribute('aria-labelledby','portCeremonyTitle');ceremony.setAttribute('aria-busy','true');
+ ceremony.innerHTML=`<div class="portCeremonyScene" aria-hidden="true">
+  <div class="portCeremonyGlow"></div><canvas class="portCeremonyCanvas"></canvas>
+  <span class="portCeremonyEyebrow">はじまりの島　完成記念式典</span>
+  <div class="portCeremonySeaTrail"></div>
+  <img class="portCeremonyHarbor" src="${MOTHER_PORT_PARTS.harbor}" alt="">
+  <img class="portCeremonyShip left" src="${MOTHER_PORT_PARTS.cog}" alt="">
+  <img class="portCeremonyShip right" src="${MOTHER_PORT_PARTS.merchant}" alt="">
+  </div><div class="portCeremonyText"><h3 id="portCeremonyTitle">⚓ 港が完成！</h3>
+  <p>探索と建築の成果が、海への新しい一歩になりました。</p>
+  <p class="portCeremonyHorizon">次の島への航路は準備中です</p>
+  <div class="portCeremonyActions"><button type="button" class="portCeremonySkip">スキップ</button>
+  <button type="button" class="portCeremonyClose">完成した島を眺める</button></div>
+  <div class="portCeremonyHint">この演出は港の完成欄から何度でも見られます</div></div>`;
+ overlay.appendChild(ceremony);document.body.appendChild(overlay);
+ const previousFocus=document.activeElement;
+ const closeButton=ceremony.querySelector('.portCeremonyClose');
+ const skipButton=ceremony.querySelector('.portCeremonySkip');
+ const canvas=ceremony.querySelector('canvas');
+ const ctx=canvas.getContext('2d');
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let raf=0,started=performance.now(),closed=false;
+ // Seeded visuals for predictable, reusable celebration; all effects behind the port art.
+ let seed=73451;const rand=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
+ const paper=Array.from({length:reduced?0:65},()=>({x:rand(),y:-rand()*1.4-.1,speed:.095+rand()*.17,drift:(rand()-.5)*.14,size:3+rand()*3.2,turn:rand()*6.28,color:['#fff0b4','#f4be78','#f4ebcf','#dcecc4','#d6bbda'][Math.floor(rand()*5)]}));
+ const bursts=[[1.15,.14,.20],[2.15,.85,.17],[3.25,.48,.11]];
+ const sparks=[];
+ function resize(){if(!ctx)return;const w=canvas.clientWidth,h=canvas.clientHeight,ratio=Math.min(2,window.devicePixelRatio||1);canvas.width=Math.max(1,Math.round(w*ratio));canvas.height=Math.max(1,Math.round(h*ratio));ctx.setTransform(ratio,0,0,ratio,0,0)}
+ function finish(){if(closed)return;ceremony.classList.add('finished');ceremony.setAttribute('aria-busy','false');skipButton.hidden=true;cancelAnimationFrame(raf);raf=0;if(ctx)ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight)}
+ function dismiss(){if(closed)return;closed=true;cancelAnimationFrame(raf);window.removeEventListener('keydown',onKey);window.removeEventListener('resize',resize);overlay.remove();if(previousFocus?.isConnected&&previousFocus.focus)previousFocus.focus({preventScroll:true})}
+ function onKey(e){if(e.key==='Escape'){e.preventDefault();dismiss()}if(e.key==='Tab'){const buttons=[skipButton,closeButton].filter(b=>!b.hidden);if(e.shiftKey&&document.activeElement===buttons[0]){e.preventDefault();buttons[buttons.length-1].focus()}else if(!e.shiftKey&&document.activeElement===buttons[buttons.length-1]){e.preventDefault();buttons[0].focus()}}}
+ function frame(now){if(closed||ceremony.classList.contains('finished')||!ctx)return;
+  const t=(now-started)/1000,w=canvas.clientWidth,h=canvas.clientHeight;
+  ctx.clearRect(0,0,w,h);
+  // Confetti. Lightweight shapes, limited to celebration length.
+  for(const p of paper){const x=(p.x+p.drift*Math.sin(t*1.15+p.turn))*w,y=(p.y+t*p.speed)*h;if(y<0||y>h+12)continue;ctx.save();ctx.translate(x,y);ctx.rotate(t*2+p.turn);ctx.fillStyle=p.color;ctx.fillRect(-p.size/2,-p.size/3,p.size,p.size*.7);ctx.restore()}
+  bursts.forEach(([at,x,y],idx)=>{if(t>=at&&!bursts[idx].launched){bursts[idx].launched=true;for(let i=0;i<28;i++){const a=(i/28)*Math.PI*2,sp=38+rand()*57;sparks.push({x:x*w,y:y*h,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:.85+rand()*.32,color:idx===1?'#d8edec':'#ffe7a1',born:t})}}});
+  for(const p of sparks){let age=t-p.born;if(age<0||age>p.life)continue;const opacity=Math.max(0,1-age/p.life);ctx.globalAlpha=opacity;ctx.fillStyle=p.color;ctx.shadowColor=p.color;ctx.shadowBlur=4*opacity;ctx.beginPath();ctx.arc(p.x+p.vx*age,p.y+p.vy*age+age*age*17,Math.max(.45,2.8*opacity),0,Math.PI*2);ctx.fill()}ctx.shadowBlur=0;ctx.globalAlpha=1;
+  if(t>=5.8){finish();return}raf=requestAnimationFrame(frame);
+ }
+ closeButton.onclick=dismiss;
+ skipButton.onclick=finish;
+ window.addEventListener('keydown',onKey);window.addEventListener('resize',resize);
+ closeButton.focus({preventScroll:true});
+ if(reduced){finish()}else if(ctx){resize();raf=requestAnimationFrame(frame)}else{finish()}
 }
 function investPort(k,n){if(motherPreviewMode||!stageDone(S4)||motherState.portComplete)return;const need=40-(motherState.port[k]||0),amount=Math.min(need,motherState.resources[k]||0,n>=999?999:n);if(amount<=0)return;const before=motherState.stats[k]||0;motherState.resources[k]-=amount;motherState.port[k]=(motherState.port[k]||0)+amount;motherState.stats[k]=(motherState.stats[k]||0)+amount;motherState.portComplete=KEYS.every(x=>(motherState.port[x]||0)>=40);saveMother();renderMother();bumpMotherStat(k,motherState.stats[k]-before);if(motherState.portComplete)showPortMilestone()}
 
