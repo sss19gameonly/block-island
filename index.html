@@ -752,6 +752,10 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
 
 /* DECOR-03: preserve all DECOR-02 mechanics; trade an always-visible 9-item grid
    for a 1-row selected-item bar and a reopenable inventory on phone. */
+.bottleDialog{color:#273e36;width:min(340px,calc(100vw - 28px))}
+.bottleDialog::backdrop{background:#233e3880}
+.hakoniwaBalances{display:flex;align-items:center;justify-content:space-between;gap:4px 8px;flex-wrap:wrap;padding:4px 12px;font-size:12px;flex:0 0 auto}
+.hakoniwaBalances button,.bottleShortcut{font:inherit;padding:5px 8px}
 .decorQuickBar{display:flex;align-items:center;gap:8px;padding:4px 12px 6px;flex:0 0 auto;border-bottom:1px solid #d9d9bc}
 .decorCurrent{display:flex;gap:7px;align-items:center;min-width:0;flex:1}
 .decorCurrentIcon{font-size:21px;flex:0 0 25px;text-align:center}
@@ -933,6 +937,7 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
       <div class="resultToken nat"><div class="tokenFace"><span>🍃</span></div><b id="rhNature">0</b></div>
       <div class="resultToken cul"><div class="tokenFace"><span>▤</span></div><b id="rhCulture">0</b></div>
     </div>
+    <p class="recordCaption" id="hakoniwaResult" hidden></p>
     <div class="resultSectionTitle">今回の探索地</div>
     <div class="resultExploreRow">
       <div class="resultBoard"><div class="resultBoardGrid" id="resultBoardGrid"></div></div>
@@ -988,12 +993,15 @@ const Platform={
 };
 const SAVE_KEY='blockIslandV2Alpha',SAVE_SCHEMA=3;
 const qaMode=new URLSearchParams(location.search).has('qa');
+const HAKONIWA_PRICE=2,BOTTLE_LETTER_LIMIT=20;
 let hakoniwa;
 let currentScreen='mother',booting=true,saveQueued=false,saveWarningShown=false;
 function saveSnapshot(){
  if(booting||!state||state.animating)return;
  const payload={schema:SAVE_SCHEMA,savedAt:new Date().toISOString(),screen:currentScreen,mother:motherState,hakoniwa,puzzle:{...state,animating:false},pendingHaul};
- if(!Platform.write(SAVE_KEY,JSON.stringify(payload))&&!saveWarningShown){saveWarningShown=true;showUnlockToast('保存できませんでした','ブラウザの保存容量・設定を確認してください')}
+ const saved=Platform.write(SAVE_KEY,JSON.stringify(payload));
+ if(!saved&&!saveWarningShown){saveWarningShown=true;showUnlockToast('保存できませんでした','ブラウザの保存容量・設定を確認してください')}
+ return saved;
 }
 function queueSave(){if(saveQueued||booting)return;saveQueued=true;queueMicrotask(()=>{saveQueued=false;saveSnapshot()})}
 function validSnapshot(v){
@@ -1112,7 +1120,7 @@ const ACHS={settlement:{label:'👥 集落',test:()=>countObj('settlement')>0},w
 function blankMeta(){return{resources:Object.fromEntries(KEYS.map(k=>[k,0])),stats:Object.fromEntries(KEYS.map(k=>[k,0])),built:{},port:Object.fromEntries(KEYS.map(k=>[k,0])),rewards:{s2:false,s3:false,s4:false},portComplete:false,lastHarvest:null};}
 function loadMother(){try{let raw=localStorage.getItem('bi161')||localStorage.getItem('bi160')||localStorage.getItem('bi153')||localStorage.getItem('bi152')||localStorage.getItem('bi150');if(!raw)return blankMeta();let v=JSON.parse(raw),d=blankMeta();return{...d,...v,resources:{...d.resources,...(v.resources||{})},stats:{...d.stats,...(v.stats||{})},built:{...(v.built||{})},port:{...d.port,...(v.port||{})},rewards:{...d.rewards,...(v.rewards||{})}};}catch{return blankMeta();}}
 let motherState=loadMother(),motherPreviewMode=false,pendingHaul=null,lastUnlockedFacilities=new Set(),lastDecorUnlocked=new Set(),lastTier={...motherState.rewards},motherRenderInitialized=false;
-function saveMother(){try{localStorage.setItem('bi161',JSON.stringify({...motherState,hakoniwa}));}catch{}}
+function saveMother(){try{localStorage.setItem('bi161',JSON.stringify(motherState));}catch{}}
 function ct(id){return motherState.built[id]||0}function has(...ids){return ids.every(id=>ct(id)>0)}
 const facilityById=id=>FACILITIES.find(f=>f[0]===id);
 function facilityFrontierVisible(f){if(f[7]())return true;const deps=FACILITY_DEPS[f[0]]||[];return deps.length>0&&deps.every(id=>{const d=facilityById(id);return d&&d[7]()})}
@@ -1431,6 +1439,9 @@ renderBoard=function(){
 };
 renderResultScreen=function(){
  originalResult();
+ const reward=$('hakoniwaResult');
+ reward.hidden=state.turn!==MAX_TURNS||!state.finished||state.haulClaimed;
+ reward.textContent=hakoniwaReturnMessage();
  const terrain=biCreateTerrainLayer();
  // Avoid duplicate SVG fragment IDs when both boards coexist in the DOM.
  terrain.innerHTML=terrain.innerHTML.replaceAll('bi19-','result-bi19-');
@@ -1440,12 +1451,31 @@ renderResultScreen=function(){
 finishIsland=function(){if(!state.finalPhase||state.finished||state.animating||state.specialEvent)return;currentScreen='result';originalFinish();queueSave()};
 function confirmFinish(){if(!state.finalPhase||state.finished||state.animating||state.specialEvent)return;showSimpleModal('探索を終えますか？','この盤面で成果を記録します。まだ合体できる施設があれば、仕上げを続けられます。',[{label:'仕上げを続ける'},{label:'探索結果へ',cls:'',fn:finishIsland}])}
 function showMotherHome(){motherPreviewMode=false;currentScreen='mother';showOnly(motherEl);motherEl.classList.add('show');motherPreviewBanner.classList.remove('show');backToExploreBtn.classList.remove('show');nextExpeditionBtn.style.display='';renderMother();queueSave()}
+function hakoniwaReturnMessage(){
+ return '箱庭チケット ＋1枚 ・ '+(hakoniwa.letters<BOTTLE_LETTER_LIMIT?'ボトルレター ＋1通':`ボトルレターは所持上限（${BOTTLE_LETTER_LIMIT}通）`);
+}
 returnToMother=function(){
- if(!state.finished||state.haulClaimed||currentScreen!=='result')return;
+ if(!state.finished||state.animating||state.haulClaimed||currentScreen!=='result')return;
  const haul=pendingHaul||haulFromPuzzle();
- for(const k of KEYS)motherState.resources[k]+=haul[k];
- motherState.lastHarvest={...haul};motherState.completedExpeditions=(motherState.completedExpeditions||0)+1;
- state.haulClaimed=true;pendingHaul=null;showMotherHome();saveSnapshot();
+ const previousMother=motherState,previousWallet=hakoniwa,previousHaul=pendingHaul;
+ const resources={...motherState.resources};
+ for(const k of KEYS)resources[k]+=haul[k];
+ motherState={...motherState,resources,lastHarvest:{...haul},completedExpeditions:(motherState.completedExpeditions||0)+1};
+ let rewardMessage='';
+ if(state.turn===MAX_TURNS){
+  rewardMessage=hakoniwaReturnMessage();
+  hakoniwa={...hakoniwa,tickets:hakoniwa.tickets+1,letters:Math.min(BOTTLE_LETTER_LIMIT,hakoniwa.letters+1)};
+ }
+ state.haulClaimed=true;pendingHaul=null;currentScreen='mother';
+ if(!saveSnapshot()){
+  motherState=previousMother;hakoniwa=previousWallet;pendingHaul=previousHaul;
+  state.haulClaimed=false;currentScreen='result';
+  $('hakoniwaResult').hidden=false;
+  $('hakoniwaResult').textContent='保存できませんでした。もう一度帰還してください。';
+  return;
+ }
+ showMotherHome();
+ if(rewardMessage)$('sceneCaption').textContent=rewardMessage;
  requestAnimationFrame(()=>highlightReceivedResources(haul));window.scrollTo({top:0});
 };
 peekMother=function(){if(state.finished||state.animating)return;currentScreen='preview';originalPeek();queueSave()};
@@ -1659,7 +1689,7 @@ const BoundaryModel=Object.freeze({
  key(o,x,y){return `${o}:${x}:${y}`},
  edge(o,x,y,type='fence'){return{o,x,y,type}},
  validEdge(e){return !!e&&['h','v'].includes(e.o)&&Number.isInteger(e.x)&&Number.isInteger(e.y)&&e.x>=0&&e.y>=0&&e.x<=(e.o==='h'?19:20)&&e.y<=(e.o==='h'?20:19)&&['fence','gate'].includes(e.type)},
- sanitize(data,gateLimit=99){
+ sanitize(data,gateLimit=840){
   const out=this.empty(),seen=new Set();let gates=0;
   if(data?.version===1&&data.width===20&&data.height===20&&Array.isArray(data.items))for(const item of data.items){
    if(!this.validEdge(item))continue;
@@ -1668,7 +1698,7 @@ const BoundaryModel=Object.freeze({
    seen.add(k);out.items.push(this.edge(item.o,item.x,item.y,item.type));
   }return out;
  },
- valid(data,gateLimit=99){return !!data&&data.version===1&&data.width===20&&data.height===20&&Array.isArray(data.items)&&data.items.length<=840&&data.items.every(e=>this.validEdge(e))&&new Set(data.items.map(e=>this.key(e.o,e.x,e.y))).size===data.items.length&&data.items.filter(e=>e.type==='gate').length<=gateLimit},
+ valid(data,gateLimit=840){return !!data&&data.version===1&&data.width===20&&data.height===20&&Array.isArray(data.items)&&data.items.length<=840&&data.items.every(e=>this.validEdge(e))&&new Set(data.items.map(e=>this.key(e.o,e.x,e.y))).size===data.items.length&&data.items.filter(e=>e.type==='gate').length<=gateLimit},
  unlocked(m,type){const label=type==='gate'?'門':'木柵',rule=DECORS.find(d=>d[2]===label);return !!rule&&(m.stats?.[rule[0]]||0)>=rule[1]},
  set(data,o,x,y,type,gateLimit=1){
   if(!['fence','gate','none'].includes(type)||!this.validEdge({o,x,y,type:'fence'}))return false;
@@ -2261,24 +2291,30 @@ installQA=function(){groundInstallQA();window.BI_QA.ground={
 
 // FENCE-01 editor shares GroundMap's touch-safe brush/pan/pinch controller.
 function openBoundaryEditor(){
- if(boundaryEditor||placementEditor||groundEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
+ if(boundaryEditor||placementEditor||groundEditor||decorEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
  normalizeMotherBoundaries(motherState);
  const original=JSON.stringify(motherState.boundaries),draft=BoundaryModel.sanitize(motherState.boundaries);
  const previousFocus=document.activeElement,oldOverflow=document.body.style.overflow,scroll=window.scrollY;
- const gateLimit=hakoniwa.owned.gate;
+ let gateLimit=hakoniwa.owned.gate,tickets=hakoniwa.tickets,originalWallet=hakoniwa;
  const unlockedFence=BoundaryModel.unlocked(motherState,'fence'),unlockedGate=BoundaryModel.unlocked(motherState,'gate');
  let material=unlockedFence?'fence':'none',selected={o:'h',x:9,y:10},strokeBefore=null,closed=false,view=null;
  const dialog=document.createElement('div');dialog.className='placementBackdrop fenceBackdrop';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-labelledby','fenceTitle');
- dialog.innerHTML=`<section class="placementSheet fenceSheet"><header><div><h2 id="fenceTitle">木柵・門</h2><p class="placementSub">マスの境界に設置 · 木柵は無料・無制限</p></div><button class="placementClose" aria-label="木柵・門の編集をキャンセルして閉じる">×</button></header><div class="fencePalette" role="group" aria-label="境界の種類"><button data-fence="fence"><span>🪵</span>木柵<small></small></button><button data-fence="gate"><span>門</span>木製門<small></small></button><button data-fence="none"><span>✖</span>撤去<small>設置数は戻ります</small></button></div><div class="groundModes" role="group" aria-label="地図操作"><button data-mode="paint">設置・撤去</button><button data-mode="pan">地図移動</button></div><p class="groundHelp" id="fenceHelp">1本指で境界をタップ・なぞる · 2本指で移動／拡大</p><div class="placementMapWrap"><canvas class="placementMap fenceMap" aria-label="木柵・門の配置用母島" aria-describedby="fenceHelp"></canvas></div><div class="fenceBottom"><div class="fenceInfo" aria-live="polite"></div><div class="fenceSelect"><div class="fenceDirection"><button data-dir="h">横方向</button><button data-dir="v">縦方向</button></div><div class="fenceArrows"><button data-dx="-1" data-dy="0" aria-label="左奥へ">↖</button><button data-dx="0" data-dy="-1" aria-label="右奥へ">↗</button><button data-dx="0" data-dy="1" aria-label="左手前へ">↙</button><button data-dx="1" data-dy="0" aria-label="右手前へ">↘</button><button class="fencePlace">選択位置に配置</button></div></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">まとめて確定</button></div><p class="placementHint">未確定の変更は保存されません · キャンセルで全取消</p></div></section>`;
+ dialog.innerHTML=`<section class="placementSheet fenceSheet"><header><div><h2 id="fenceTitle">木柵・門</h2><p class="placementSub">マスの境界に設置 · 木柵は無料・無制限</p></div><button class="placementClose" aria-label="木柵・門の編集をキャンセルして閉じる">×</button></header><div class="fencePalette" role="group" aria-label="境界の種類"><button data-fence="fence"><span>🪵</span>木柵<small></small></button><button data-fence="gate"><span>門</span>木製門<small></small></button><button data-fence="none"><span>✖</span>撤去<small>設置数は戻ります</small></button></div><div class="groundModes" role="group" aria-label="地図操作"><button data-mode="paint">設置・撤去</button><button data-mode="pan">地図移動</button></div><p class="groundHelp" id="fenceHelp">1本指で境界をタップ・なぞる · 2本指で移動／拡大</p><div class="placementMapWrap"><canvas class="placementMap fenceMap" aria-label="木柵・門の配置用母島" aria-describedby="fenceHelp"></canvas></div><div class="fenceBottom"><div class="hakoniwaBalances gateExchange" hidden><span>箱庭チケット <b class="gateTickets"></b>枚</span><button class="gateBuy" type="button">門を1個追加（チケット2枚）</button><button class="bottleShortcut" type="button">ボトルレターを使う</button></div><div class="fenceInfo" aria-live="polite"></div><div class="fenceSelect"><div class="fenceDirection"><button data-dir="h">横方向</button><button data-dir="v">縦方向</button></div><div class="fenceArrows"><button data-dx="-1" data-dy="0" aria-label="左奥へ">↖</button><button data-dx="0" data-dy="-1" aria-label="右奥へ">↗</button><button data-dx="0" data-dy="1" aria-label="左手前へ">↙</button><button data-dx="1" data-dy="0" aria-label="右手前へ">↘</button><button class="fencePlace">選択位置に配置</button></div></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">まとめて確定</button></div><p class="placementHint">未確定の変更は保存されません · キャンセルで全取消</p></div></section>`;
  document.body.append(dialog);document.body.style.overflow='hidden';
  const info=dialog.querySelector('.fenceInfo'),confirm=dialog.querySelector('.placementConfirm');
  const fenceBtn=dialog.querySelector('[data-fence="fence"]'),gateBtn=dialog.querySelector('[data-fence="gate"]');
  fenceBtn.disabled=!unlockedFence;gateBtn.disabled=!unlockedGate;
  fenceBtn.querySelector('small').textContent=unlockedFence?'使用可能':'文化110で解放';
  gateBtn.querySelector('small').textContent=unlockedGate?`使用可能 ${gateLimit}個`:'文化270で解放';
- const changed=()=>JSON.stringify(draft)!==original;
+ const changed=()=>JSON.stringify(draft)!==original||gateLimit!==originalWallet.owned.gate;
  const count=type=>draft.items.filter(p=>p.type===type).length;
  function refresh(){
+  const exchange=unlockedGate&&material==='gate';
+  gateBtn.querySelector('small').textContent=unlockedGate?`使用可能 ${gateLimit}個`:'文化270で解放';
+  dialog.querySelector('.gateExchange').hidden=!exchange;
+  dialog.querySelector('.gateTickets').textContent=tickets;
+  dialog.querySelector('.gateBuy').disabled=!exchange||tickets<HAKONIWA_PRICE||gateLimit>=Number.MAX_SAFE_INTEGER;
+  dialog.querySelector('.bottleShortcut').hidden=!exchange||tickets>=HAKONIWA_PRICE;
   info.textContent=`木柵 ${count('fence')}区間 · 門 ${count('gate')}/${gateLimit}個 ${changed()?'· 未保存の変更あり':''}`;
   confirm.disabled=!changed();
   dialog.querySelectorAll('[data-fence]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fence===material)));
@@ -2310,15 +2346,25 @@ function openBoundaryEditor(){
  dialog.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>{selected={...selected,o:b.dataset.dir,x:Math.min(selected.x,b.dataset.dir==='h'?19:20),y:Math.min(selected.y,b.dataset.dir==='h'?20:19)};refresh()});
  dialog.querySelectorAll('[data-dx]').forEach(b=>b.onclick=()=>{const dx=+b.dataset.dx,dy=+b.dataset.dy;selected={...selected,x:Math.min(selected.o==='h'?19:20,Math.max(0,selected.x+dx)),y:Math.min(selected.o==='h'?20:19,Math.max(0,selected.y+dy))};refresh()});
  dialog.querySelector('.fencePlace').onclick=()=>putAt(selected);
+ dialog.querySelector('.gateBuy').onclick=()=>{
+  if(!unlockedGate||material!=='gate'||tickets<HAKONIWA_PRICE||gateLimit>=Number.MAX_SAFE_INTEGER)return;
+  tickets-=HAKONIWA_PRICE;gateLimit++;refresh();
+ };
+ dialog.querySelector('.bottleShortcut').onclick=()=>openBottleLetters(()=>{
+  tickets++;originalWallet=hakoniwa;refresh();
+ });
  dialog.querySelector('.placementClose').onclick=close;dialog.querySelector('.placementCancel').onclick=close;
  confirm.onclick=()=>{
   if(closed||currentScreen!=='mother'||motherPreviewMode||state.animating||!changed())return;
-  if(JSON.stringify(motherState.boundaries)!==original){info.textContent='島の柵が更新されました。閉じて編集し直してください';confirm.disabled=true;return}
+  if(JSON.stringify(motherState.boundaries)!==original||hakoniwa!==originalWallet){info.textContent='島の柵が更新されました。閉じて編集し直してください';confirm.disabled=true;return}
   if(!BoundaryModel.valid(draft,gateLimit))return;
   if(draft.items.some(e=>!BoundaryModel.unlocked(motherState,e.type)&&!motherState.boundaries.items.some(b=>JSON.stringify(b)===JSON.stringify(e)))){info.textContent='未解放のアイテムは配置できません';return}
-  const previous=motherState.boundaries;motherState.boundaries=BoundaryModel.sanitize(draft);saveSnapshot();
-  let saved=false;try{saved=JSON.stringify(JSON.parse(Platform.read(SAVE_KEY))?.mother?.boundaries)===JSON.stringify(motherState.boundaries)}catch{}
-  if(!saved){motherState.boundaries=previous;info.textContent='保存に失敗しました。編集を保持しています。再試行してください';return}
+  const previous=motherState.boundaries;
+  motherState.boundaries=BoundaryModel.sanitize(draft,gateLimit);
+  hakoniwa={...hakoniwa,owned:{...hakoniwa.owned,gate:gateLimit},tickets};
+  if(!saveSnapshot()){
+   motherState.boundaries=previous;hakoniwa=originalWallet;info.textContent='保存に失敗しました。編集を保持しています。再試行してください';return;
+  }
   Object.assign(motherCamera,view.camera);const total=draft.items.length;close();renderMother();$('sceneCaption').textContent=`木柵・門を更新しました（${total}区間）`;
  };
  boundaryEditor={view,draft,close,paint,mode,select:e=>{if(BoundaryModel.validEdge({...e,type:'fence'})){selected={...e};refresh()}},material:t=>dialog.querySelector(`[data-fence="${t}"]`)?.click(),put:e=>putAt(e),confirm:()=>confirm.click()};
@@ -2333,7 +2379,6 @@ installQA=function(){fenceInstallQA();window.BI_QA.fence={
 
 
 // DECOR-02: expand ordinary decorations to all nine. Fence/gate/stone are separate layers.
-// Ticket economy below is an explicit TEST PROTOTYPE, not the published economy.
 const DECOR_ITEMS=Object.freeze([
  {id:'bench',name:'木のベンチ',icon:'🪑',stat:'population',threshold:80},
  {id:'crates',name:'木箱・樽',icon:'📦',stat:'industry',threshold:90},
@@ -2346,7 +2391,6 @@ const DECOR_ITEMS=Object.freeze([
  {id:'streetTree',name:'街路樹',icon:'🌳',stat:'nature',threshold:260},
   {id:'originTree',name:'始まりの大樹',icon:'🌳',special:true,unique:true}
 ]);
-const DECOR_TEST_PRICE=1; // Test-only. Actual price and earning rules: undecided.
 const DecorModel=Object.freeze({
  empty(){return{version:2,width:20,height:20,owned:{},tickets:0,items:[]}},
  item(id){return DECOR_ITEMS.find(d=>d.id===id)},
@@ -2354,9 +2398,9 @@ const DecorModel=Object.freeze({
  sanitize(data,m){
   const out=this.empty(),owned=data?.owned&&typeof data.owned==='object'?data.owned:{};
   for(const d of DECOR_ITEMS){
-   const saved=owned[d.id];out.owned[d.id]=this.unlocked(m,d.id)?(d.unique?1:Math.max(1,Math.min(99,Number.isInteger(saved)?saved:1))):0;
+   const saved=owned[d.id];out.owned[d.id]=this.unlocked(m,d.id)?(d.unique?1:readHakoniwaCount(saved)):0;
   }
-  out.tickets=Number.isSafeInteger(data?.tickets)&&data.tickets>=0?Math.min(data.tickets,999999):0;
+  out.tickets=Number.isSafeInteger(data?.tickets)&&data.tickets>=0?data.tickets:0;
   const seen=new Set(),counts={},facilities=Array.isArray(m.layout?.placements)?m.layout.placements:[];
   if(Array.isArray(data?.items))for(const p of data.items){
    if(!this.item(p?.id)||!this.unlocked(m,p.id)||typeof p.uid!=='string'||seen.has(p.uid))continue;
@@ -2386,17 +2430,46 @@ function restoreHakoniwa(shared,m){
  }
  owned.gate=readHakoniwaCount(source?.owned?.gate);
  const balance=source?.tickets;
- hakoniwa={owned,tickets:Number.isSafeInteger(balance)&&balance>=0?Math.min(balance,999999):0};
+ const letters=source?.letters;
+ hakoniwa={owned,tickets:Number.isSafeInteger(balance)&&balance>=0?balance:0,
+  letters:Number.isSafeInteger(letters)&&letters>=0?Math.min(letters,BOTTLE_LETTER_LIMIT):0};
  delete m.hakoniwa;
 }
-function readHakoniwaCount(value){return Number.isInteger(value)?Math.max(1,Math.min(99,value)):1}
-function saveHakoniwaEdit(layer,value){
- saveSnapshot();
+function readHakoniwaCount(value){return Number.isSafeInteger(value)&&value>0?value:1}
+// A future provider resolves true only after its rewarded-video completion event.
+let rewardedVideo=null,rewardedVideoPending=false;
+async function redeemBottleLetter(){
+ if(!rewardedVideo||rewardedVideoPending||hakoniwa.letters<1)return false;
+ rewardedVideoPending=true;
+ const wallet=hakoniwa;
  try{
-  const saved=JSON.parse(Platform.read(SAVE_KEY));
-  return JSON.stringify(saved?.mother?.[layer])===JSON.stringify(value)
-   && JSON.stringify(saved?.hakoniwa)===JSON.stringify(hakoniwa);
+  if(await rewardedVideo()!==true||booting||wallet!==hakoniwa||wallet.letters<1)return false;
+  hakoniwa={...wallet,tickets:wallet.tickets+1,letters:wallet.letters-1};
+  if(saveSnapshot())return true;
+  hakoniwa=wallet;
+  return false;
  }catch{return false}
+ finally{rewardedVideoPending=false}
+}
+function openBottleLetters(onReward){
+ const dialog=document.createElement('dialog');
+ dialog.className='simpleModal bottleDialog';
+ dialog.setAttribute('aria-labelledby','bottleTitle');
+ dialog.innerHTML=`<h3 id="bottleTitle">漂着したボトルレター</h3><p>動画広告を視聴すると、ボトルレター1通と引き換えに箱庭チケットを1枚獲得できます。</p><p>所持数：${hakoniwa.letters}/${BOTTLE_LETTER_LIMIT}通</p><p class="bottleStatus" aria-live="polite"></p><div class="modalActions"><button type="button" class="action bottleWatch">動画広告を視聴</button><button type="button" class="action secondary bottleClose">閉じる</button></div>`;
+ const watch=dialog.querySelector('.bottleWatch'),close=dialog.querySelector('.bottleClose'),status=dialog.querySelector('.bottleStatus');
+ status.textContent=rewardedVideo?(hakoniwa.letters?'':'ボトルレターがありません'):'動画広告は準備中';
+ watch.disabled=!rewardedVideo||!hakoniwa.letters;
+ dialog.addEventListener('close',()=>dialog.remove(),{once:true});
+ dialog.addEventListener('cancel',e=>{if(rewardedVideoPending)e.preventDefault()});
+ close.onclick=()=>dialog.close();
+ watch.onclick=async()=>{
+  watch.disabled=close.disabled=true;
+  if(await redeemBottleLetter()){dialog.close();onReward();return}
+  status.textContent='報酬を受け取れませんでした。ボトルレターは消費していません。';
+  watch.disabled=close.disabled=false;
+ };
+ document.body.append(dialog);
+ dialog.showModal();
 }
 function decorDraft(m){return DecorModel.sanitize({...m.decorations,...hakoniwa},m)}
 function decorPlacement({version,width,height,items}){return{version,width,height,items}}
@@ -2469,14 +2542,15 @@ let decorEditor=null;
 function openDecorEditor(focusUid=null){
  if(decorEditor||placementEditor||boundaryEditor||groundEditor||motherPreviewMode||currentScreen!=='mother'||departureActive)return;
  normalizeMotherDecor(motherState);
- const draft=decorDraft(motherState),original=JSON.stringify(draft),originalLayout=JSON.stringify(motherState.layout);
+ const draft=decorDraft(motherState),originalLayout=JSON.stringify(motherState.layout);
+ let original=JSON.stringify(draft);
  const previousFocus=document.activeElement,oldOverflow=document.body.style.overflow,oldScroll=window.scrollY;
  let active=DECOR_ITEMS.find(d=>DecorModel.unlocked(motherState,d.id))?.id||'bench';
  let selected=draft.items.find(p=>p.uid===focusUid)||null;
  if(selected)active=selected.id;
  let target={x:selected?.x??9,y:selected?.y??9};let closed=false,view=null;
  const dialog=document.createElement('div');dialog.className='placementBackdrop decorBackdrop';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-labelledby','decorTitle');
- dialog.innerHTML=`<section class="placementSheet decorSheet"><header><div><h2 id="decorTitle">箱庭アイテム</h2><p class="placementSub">解放時に各1個無料 · 大樹は限定1本 · 移動・収納は無料</p></div><button class="placementClose" aria-label="箱庭アイテム編集をキャンセル">×</button></header><div class="decorQuickBar"><div class="decorCurrent" aria-live="polite"><span class="decorCurrentIcon" aria-hidden="true">🪑</span><div class="decorCurrentText"><b class="decorCurrentName">木のベンチ</b><small class="decorCurrentStock">手元0個</small></div></div><button class="decorToggle" type="button" aria-expanded="true" aria-controls="decorInventory">一覧を閉じる ▲</button></div><div class="decorInventory" id="decorInventory"><div class="decorPalette" role="group" aria-label="所持アイテム一覧">${DECOR_ITEMS.map(d=>`<button data-decor="${d.id}"><span>${d.icon}</span>${d.name}<small></small></button>`).join('')}</div><div class="decorTicketBar"><div>🎟️ チケット <b class="decorTickets">0</b>枚 <small>交換価格は試験用</small></div><button class="decorBuy" type="button">選択品を交換（仮1枚）</button><button class="decorGrant" type="button">テスト用 +10枚</button></div></div><p class="decorHelp">空きマスをタップして配置 · 配置済みをタップして移動 · ドラッグで地図移動</p><div class="placementMapWrap"><canvas class="placementMap decorMap" aria-label="箱庭アイテムの配置用母島"></canvas></div><div class="decorBottom"><div class="decorInfo" aria-live="polite"></div><div class="decorArrows"><button data-dx="-1" data-dy="0" aria-label="左奥に移動">↖</button><button data-dx="0" data-dy="-1" aria-label="右奥に移動">↗</button><button data-dx="0" data-dy="1" aria-label="左手前に移動">↙</button><button data-dx="1" data-dy="0" aria-label="右手前に移動">↘</button><button class="decorStore" type="button">収納</button></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">まとめて確定</button></div><p class="placementHint">確定まで保存しません · キャンセルで全変更を取り消し</p></div></section>`;
+ dialog.innerHTML=`<section class="placementSheet decorSheet"><header><div><h2 id="decorTitle">箱庭アイテム</h2><p class="placementSub">解放時に各1個無料 · 大樹は限定1本 · 移動・収納は無料</p></div><button class="placementClose" aria-label="箱庭アイテム編集をキャンセル">×</button></header><div class="hakoniwaBalances"><span>箱庭チケット <b class="decorTickets">0</b>枚</span><button class="bottleBalance" type="button"></button></div><div class="decorQuickBar"><div class="decorCurrent" aria-live="polite"><span class="decorCurrentIcon" aria-hidden="true">🪑</span><div class="decorCurrentText"><b class="decorCurrentName">木のベンチ</b><small class="decorCurrentStock">手元0個</small></div></div><button class="decorToggle" type="button" aria-expanded="true" aria-controls="decorInventory">一覧を閉じる ▲</button></div><div class="decorInventory" id="decorInventory"><div class="decorPalette" role="group" aria-label="所持アイテム一覧">${DECOR_ITEMS.map(d=>`<button data-decor="${d.id}"><span>${d.icon}</span>${d.name}<small></small></button>`).join('')}</div><div class="decorTicketBar"><button class="decorBuy" type="button">1個追加（チケット2枚）</button><button class="bottleShortcut" type="button">ボトルレターを使う</button><button class="decorGrant" type="button">テスト用 +10枚</button></div></div><p class="decorHelp">空きマスをタップして配置 · 配置済みをタップして移動 · ドラッグで地図移動</p><div class="placementMapWrap"><canvas class="placementMap decorMap" aria-label="箱庭アイテムの配置用母島"></canvas></div><div class="decorBottom"><div class="decorInfo" aria-live="polite"></div><div class="decorArrows"><button data-dx="-1" data-dy="0" aria-label="左奥に移動">↖</button><button data-dx="0" data-dy="-1" aria-label="右奥に移動">↗</button><button data-dx="0" data-dy="1" aria-label="左手前に移動">↙</button><button data-dx="1" data-dy="0" aria-label="右手前に移動">↘</button><button class="decorStore" type="button">収納</button></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">まとめて確定</button></div><p class="placementHint">確定まで保存しません · キャンセルで全変更を取り消し</p></div></section>`;
  document.body.appendChild(dialog);document.body.style.overflow='hidden';
  const info=dialog.querySelector('.decorInfo'),confirm=dialog.querySelector('.placementConfirm');
  const toggle=dialog.querySelector('.decorToggle');
@@ -2499,8 +2573,11 @@ function openDecorEditor(focusUid=null){
   dialog.querySelector('.decorCurrentName').textContent=activeItem.name;
   dialog.querySelector('.decorCurrentStock').textContent=selected?'配置済みを選択中':`手元${available}個`;
   dialog.querySelector('.decorTickets').textContent=draft.tickets;
-  dialog.querySelector('.decorBuy').hidden=!!activeItem.unique;
-   dialog.querySelector('.decorBuy').disabled=!!activeItem.unique||!DecorModel.unlocked(motherState,active)||draft.tickets<DECOR_TEST_PRICE||draft.owned[active]>=99;
+  const canExchange=!activeItem.unique&&DecorModel.unlocked(motherState,active);
+  dialog.querySelector('.bottleBalance').textContent=`ボトルレター ${hakoniwa.letters}/${BOTTLE_LETTER_LIMIT}通`;
+  dialog.querySelector('.bottleShortcut').hidden=!canExchange||draft.tickets>=HAKONIWA_PRICE;
+  dialog.querySelector('.decorBuy').hidden=!canExchange;
+  dialog.querySelector('.decorBuy').disabled=!canExchange||draft.tickets<HAKONIWA_PRICE||draft.owned[active]>=Number.MAX_SAFE_INTEGER;
   dialog.querySelector('.decorGrant').hidden=!qaMode;
   dialog.querySelector('.decorGrant').disabled=!qaMode||draft.tickets>999989;
   const invalid=draft.items.find(p=>DecorModel.positionError(p,draft.items,motherState.layout.placements));
@@ -2539,10 +2616,15 @@ function openDecorEditor(focusUid=null){
  dialog.querySelectorAll('[data-decor]').forEach(b=>b.onclick=()=>{if(b.disabled)return;active=b.dataset.decor;selected=null;setInventoryOpen(false);refresh()});
  dialog.querySelectorAll('[data-dx]').forEach(b=>b.onclick=()=>setTarget(target.x+Number(b.dataset.dx),target.y+Number(b.dataset.dy)));
  dialog.querySelector('.decorStore').onclick=()=>{if(!selected)return;draft.items=draft.items.filter(p=>p.uid!==selected.uid);selected=null;refresh('収納しました。所持品に戻っています')};
- dialog.querySelector('.decorGrant').onclick=()=>{draft.tickets=Math.min(999999,draft.tickets+10);refresh('テスト用チケットを10枚追加（確定まで未保存）')};
+ dialog.querySelector('.decorGrant').onclick=()=>{if(!qaMode)return;draft.tickets=Math.min(999999,draft.tickets+10);refresh('テスト用チケットを10枚追加（確定まで未保存）')};
+ const showLetters=()=>openBottleLetters(()=>{
+  draft.tickets++;original=JSON.stringify(decorDraft(motherState));refresh('箱庭チケットを1枚獲得しました');
+ });
+ dialog.querySelector('.bottleBalance').onclick=showLetters;
+ dialog.querySelector('.bottleShortcut').onclick=showLetters;
  dialog.querySelector('.decorBuy').onclick=()=>{
-  if(DecorModel.item(active).unique||!DecorModel.unlocked(motherState,active)||draft.tickets<DECOR_TEST_PRICE||draft.owned[active]>=99)return;
-  draft.tickets-=DECOR_TEST_PRICE;draft.owned[active]++;refresh(`${DecorModel.item(active).name}を1個追加しました（仮価格・確定まで未保存）`);
+  if(DecorModel.item(active).unique||!DecorModel.unlocked(motherState,active)||draft.tickets<HAKONIWA_PRICE||draft.owned[active]>=Number.MAX_SAFE_INTEGER)return;
+  draft.tickets-=HAKONIWA_PRICE;draft.owned[active]++;refresh(`${DecorModel.item(active).name}を1個追加しました（確定まで未保存）`);
  };
  dialog.querySelector('.placementClose').onclick=close;dialog.querySelector('.placementCancel').onclick=close;
  confirm.onclick=()=>{
@@ -2555,8 +2637,8 @@ function openDecorEditor(focusUid=null){
   for(const {id,unique} of DECOR_ITEMS){
    if(!unique&&DecorModel.unlocked(motherState,id))owned[id]=draft.owned[id];
   }
-  hakoniwa={owned,tickets:draft.tickets};
-  if(!saveHakoniwaEdit('decorations',motherState.decorations)){
+  hakoniwa={...hakoniwa,owned,tickets:draft.tickets};
+  if(!saveSnapshot()){
    motherState.decorations=before;hakoniwa=beforeShared;refresh('保存に失敗しました。再試行してください');return;
   }
   Object.assign(motherCamera,view.camera);const count=draft.items.length;close();renderMother();$('sceneCaption').textContent=`箱庭アイテムを更新しました（配置${count}個）`;
@@ -2571,7 +2653,7 @@ installQA=function(){decorQAOriginal();window.BI_QA.decor={
  state:()=>decorDraft(motherState),draft:()=>decorEditor?JSON.parse(JSON.stringify(decorEditor.draft)):null,
  unlocked:id=>DecorModel.unlocked(motherState,id),available:id=>DecorModel.available(decorDraft(motherState),motherState,id),
  choose:id=>decorEditor?.material(id),put:(x,y)=>decorEditor?.place(x,y),select:uid=>decorEditor?.select(uid),store:()=>decorEditor?.store(),buy:()=>decorEditor?.buy(),grant:()=>decorEditor?.grant(),confirm:()=>decorEditor?.confirm(),cancel:()=>decorEditor?.close(),
- shared:()=>JSON.parse(JSON.stringify(hakoniwa)),catalog:()=>DECOR_ITEMS.map(d=>({...d})),price:()=>DECOR_TEST_PRICE,
+ shared:()=>JSON.parse(JSON.stringify(hakoniwa)),catalog:()=>DECOR_ITEMS.map(d=>({...d})),price:()=>HAKONIWA_PRICE,
   tree:()=>({unlocked:DecorModel.unlocked(motherState,'originTree'),owned:decorDraft(motherState).owned.originTree||0,placed:motherState.decorations.items.filter(p=>p.id==='originTree').length}),
  camera:()=>({...decorEditor?.view.camera}),focus:(x,y)=>decorEditor?.view.focus({x,y,size:1}),point:(x,y)=>decorEditor?.view.point(x,y)
  }};

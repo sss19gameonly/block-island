@@ -16,7 +16,7 @@ from playwright.sync_api import sync_playwright
 
 HTML = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[1] / 'index.html'
 html = HTML.read_text(encoding='utf-8')
-needle = "if(new URLSearchParams(location.search).has('qa'))installQA();"
+needle = "if(qaMode)installQA();"
 assert html.count(needle) == 1, 'QA initialization location changed; revise test adapter'
 # Only change the in-memory test document, never the application file on disk.
 html = html.replace(needle, 'installQA();')
