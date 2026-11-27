@@ -754,8 +754,17 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
    for a 1-row selected-item bar and a reopenable inventory on phone. */
 .bottleDialog{color:#273e36;width:min(340px,calc(100vw - 28px))}
 .bottleDialog::backdrop{background:#233e3880}
-.hakoniwaBalances{display:flex;align-items:center;justify-content:space-between;gap:4px 8px;flex-wrap:wrap;padding:4px 12px;font-size:12px;flex:0 0 auto}
-.hakoniwaBalances button,.bottleShortcut{font:inherit;padding:5px 8px}
+.hakoniwaBalances{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:4px 12px;flex:0 0 auto}
+.hakoniwaItem{display:flex;align-items:center;gap:5px;min-width:0;padding:4px 7px;border:1px solid #c5ac7266;border-radius:8px;background:linear-gradient(165deg,#fff8e4c9,#e5d4aa55);box-shadow:inset 0 1px #fffaf0b0;color:#645337;text-align:left;font:inherit}
+.hakoniwaItem.bottleItem{color:#395e51}
+.hakoniwaIcon{width:32px;height:32px;flex:none}
+.hakoniwaItemText{display:grid;gap:2px;min-width:0}
+.hakoniwaItemName{font-size:12px;line-height:1.1;white-space:nowrap}
+.hakoniwaQuantity{font-size:17px;line-height:1.05;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.hakoniwaLimit{font-size:11px;line-height:1.1}
+.hakoniwaResult{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:6px 0}
+.hakoniwaError{grid-column:1/-1;margin:0}
+.bottleShortcut{font:inherit;padding:5px 8px}
 .decorQuickBar{display:flex;align-items:center;gap:8px;padding:4px 12px 6px;flex:0 0 auto;border-bottom:1px solid #d9d9bc}
 .decorCurrent{display:flex;gap:7px;align-items:center;min-width:0;flex:1}
 .decorCurrentIcon{font-size:21px;flex:0 0 25px;text-align:center}
@@ -937,7 +946,7 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
       <div class="resultToken nat"><div class="tokenFace"><span>🍃</span></div><b id="rhNature">0</b></div>
       <div class="resultToken cul"><div class="tokenFace"><span>▤</span></div><b id="rhCulture">0</b></div>
     </div>
-    <p class="recordCaption" id="hakoniwaResult" hidden></p>
+    <div class="hakoniwaResult" id="hakoniwaResult" aria-live="polite" hidden></div>
     <div class="resultSectionTitle">今回の探索地</div>
     <div class="resultExploreRow">
       <div class="resultBoard"><div class="resultBoardGrid" id="resultBoardGrid"></div></div>
@@ -1441,7 +1450,10 @@ renderResultScreen=function(){
  originalResult();
  const reward=$('hakoniwaResult');
  reward.hidden=state.turn!==MAX_TURNS||!state.finished||state.haulClaimed;
- reward.textContent=hakoniwaReturnMessage();
+ const bottleAtLimit=hakoniwa.letters>=BOTTLE_LETTER_LIMIT;
+ reward.innerHTML=hakoniwaItem('ticket','＋1枚')+
+  hakoniwaItem('bottle',bottleAtLimit?`所持上限 ${BOTTLE_LETTER_LIMIT}通`:'＋1通',
+   {limit:bottleAtLimit});
  const terrain=biCreateTerrainLayer();
  // Avoid duplicate SVG fragment IDs when both boards coexist in the DOM.
  terrain.innerHTML=terrain.innerHTML.replaceAll('bi19-','result-bi19-');
@@ -1451,6 +1463,56 @@ renderResultScreen=function(){
 finishIsland=function(){if(!state.finalPhase||state.finished||state.animating||state.specialEvent)return;currentScreen='result';originalFinish();queueSave()};
 function confirmFinish(){if(!state.finalPhase||state.finished||state.animating||state.specialEvent)return;showSimpleModal('探索を終えますか？','この盤面で成果を記録します。まだ合体できる施設があれば、仕上げを続けられます。',[{label:'仕上げを続ける'},{label:'探索結果へ',cls:'',fn:finishIsland}])}
 function showMotherHome(){motherPreviewMode=false;currentScreen='mother';showOnly(motherEl);motherEl.classList.add('show');motherPreviewBanner.classList.remove('show');backToExploreBtn.classList.remove('show');nextExpeditionBtn.style.display='';renderMother();queueSave()}
+// Block Island reward illustrations drawn with original SVG paths and gradients.
+const HAKONIWA_ICONS={
+ ticket:id=>`<defs>
+   <linearGradient id="${id}-paper" x1="0" y1="0" x2=".72" y2="1" gradientUnits="objectBoundingBox">
+    <stop stop-color="#fff0be"/><stop offset=".52" stop-color="#e6cb90"/><stop offset="1" stop-color="#b98b50"/>
+   </linearGradient>
+  </defs>
+  <g transform="rotate(-12 16 16)" stroke-linejoin="round">
+   <ellipse cx="16.4" cy="24.5" rx="12.3" ry="1.6" fill="#785b37" opacity=".24"/>
+   <path d="m3.4 9.3 24.9-.5.4 5.3c-3.6.1-3.6 4.2.1 4.2l.2 4.8-25.8.7-.1-5c3.5-.2 3.4-4.4-.1-4.2z" fill="#8c673e"/>
+   <path d="m3.1 8.4 24.9-.5.4 5.2c-3.6.1-3.6 4.2 0 4.3l.3 4.7-25.8.7-.1-5c3.5-.2 3.4-4.4-.1-4.2z" fill="url(#${id}-paper)" stroke="#9b7545" stroke-width=".7"/>
+   <path d="m4.3 10 22.4-.4m-22.2 11.7 22.8-.6" stroke="#fff0c3" stroke-width=".75" opacity=".85"/>
+   <path d="m21.6 10.4.2 10" fill="none" stroke="#9d7847" stroke-width=".9" stroke-dasharray="1 1.5" opacity=".85"/>
+   <path d="M8.2 17.8c.7-1.2 2-1.7 3-1.5.7-1.1 2.3-1.3 3.6-.6 1.1-.7 2.7-.3 3.5 1l-.7 1.7-2.6.7-3.8-.2z" fill="#8f9060"/>
+   <path d="m11.7 16.8.1-3.1 2.4-1.4 2.3 1.4v2.8z" fill="#f9e7b3"/>
+   <path d="m11.1 14 3.1-2.6 3 2.5-1 .4-2-1.6-2.1 1.8z" fill="#a26349"/>
+   <path d="m13.6 16.9.1-1.8 1.2.1v1.7z" fill="#9e784d"/>
+   <path d="m6.5 11 2.3-.1m9.2 8.7 1.7-.1m3.8-7.9 2-.1" stroke="#a57d4d" stroke-width=".55" stroke-linecap="round" opacity=".55"/>
+  </g>`,
+ bottle:id=>`<defs>
+   <linearGradient id="${id}-glass" x1="0" y1="0" x2="1" y2=".87" gradientUnits="objectBoundingBox">
+    <stop stop-color="#e2edc9"/><stop offset=".28" stop-color="#a5c4a0"/><stop offset=".7" stop-color="#65988a"/><stop offset="1" stop-color="#396e69"/>
+   </linearGradient>
+   <linearGradient id="${id}-cork" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+    <stop stop-color="#e3b979"/><stop offset="1" stop-color="#986341"/>
+   </linearGradient>
+  </defs>
+  <ellipse cx="15.6" cy="28.2" rx="8.4" ry="1.5" fill="#435d48" opacity=".24"/>
+  <g transform="rotate(15 16 16)" stroke-linecap="round" stroke-linejoin="round">
+   <path d="m12.5 3.3.9 5.6h5.3l.9-5.4-1.3-.9-4.8.1z" fill="url(#${id}-cork)" stroke="#876245" stroke-width=".7"/>
+   <path d="m13.8 4.1 3.9-.1m-1.5 1.4 1.9.1" stroke="#f4d298" stroke-width=".55" opacity=".8"/>
+   <path d="M12.7 7.8h6.5l.1 4.1c.2 1.7 2.7 2.8 3.5 5.3.7 2.2.5 6.4.1 8.5-.3 1.8-1.8 2.6-3.5 2.6h-7.6c-2 0-3.5-.9-3.7-2.7-.4-2.7-.3-6.4.5-8.7.8-2.3 3.5-3.3 3.8-5z" fill="url(#${id}-glass)" stroke="#4c796b" stroke-width=".85"/>
+   <path d="M13 10.2c2 .5 4.7.5 6.3-.1m-8.3 16c2.6.9 6.5 1.1 9.6.1" fill="none" stroke="#d0dfb4" stroke-width=".95" opacity=".8"/>
+   <path d="M13.8 12.4c-.4 2.2-2.3 3.2-3.1 5.5-.5 1.5-.6 3.1-.6 4.4" fill="none" stroke="#f4f4d5" stroke-width="1.15" opacity=".75"/>
+   <path d="M18.7 15.9c1.1.2 1.5 1.2 1 2.3l-2.1 6.1-4.3-.9c-1-.2-1.3-.9-1-1.7l1.8-5.3c.2-.8.8-1.2 1.6-1z" fill="#ead8a7" stroke="#99845d" stroke-width=".6"/>
+   <path d="m13.4 19.1 5.6 1.2" stroke="#a7684e" stroke-width="1"/>
+   <path d="M11.8 8.1c.1-.6.6-.8 1.3-.7l6.2.1c.5 0 .9.4.9.9l-.1.9-8.4-.1z" fill="#87ac96" stroke="#4e7c6b" stroke-width=".6"/>
+   <path d="m12.9 8.1 5.5.1" stroke="#d4e3c0" stroke-width=".55"/>
+  </g>`
+};
+function hakoniwaItem(kind,quantity,{button=false,limit=false,surface='result'}={}){
+ const name=kind==='ticket'?'箱庭チケット':'ボトルレター';
+ const tag=button?'button':'span';
+ const action=button?' type="button"':'';
+ return `<${tag} class="hakoniwaItem ${kind}Item${button?' bottleBalance':''}"${action}>
+  <svg class="hakoniwaIcon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">${HAKONIWA_ICONS[kind](`hakoniwa-${surface}-${kind}`)}</svg>
+  <span class="hakoniwaItemText"><span class="hakoniwaItemName">${name}</span>
+   <strong class="hakoniwaQuantity${limit?' hakoniwaLimit':''}">${quantity}</strong></span>
+ </${tag}>`;
+}
 function hakoniwaReturnMessage(){
  return '箱庭チケット ＋1枚 ・ '+(hakoniwa.letters<BOTTLE_LETTER_LIMIT?'ボトルレター ＋1通':`ボトルレターは所持上限（${BOTTLE_LETTER_LIMIT}通）`);
 }
@@ -1471,7 +1533,7 @@ returnToMother=function(){
   motherState=previousMother;hakoniwa=previousWallet;pendingHaul=previousHaul;
   state.haulClaimed=false;currentScreen='result';
   $('hakoniwaResult').hidden=false;
-  $('hakoniwaResult').textContent='保存できませんでした。もう一度帰還してください。';
+  $('hakoniwaResult').innerHTML='<p class="recordCaption hakoniwaError">保存できませんでした。もう一度帰還してください。</p>';
   return;
  }
  showMotherHome();
@@ -2550,7 +2612,7 @@ function openDecorEditor(focusUid=null){
  if(selected)active=selected.id;
  let target={x:selected?.x??9,y:selected?.y??9};let closed=false,view=null;
  const dialog=document.createElement('div');dialog.className='placementBackdrop decorBackdrop';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-labelledby','decorTitle');
- dialog.innerHTML=`<section class="placementSheet decorSheet"><header><div><h2 id="decorTitle">箱庭アイテム</h2><p class="placementSub">解放時に各1個無料 · 大樹は限定1本 · 移動・収納は無料</p></div><button class="placementClose" aria-label="箱庭アイテム編集をキャンセル">×</button></header><div class="hakoniwaBalances"><span>箱庭チケット <b class="decorTickets">0</b>枚</span><button class="bottleBalance" type="button"></button></div><div class="decorQuickBar"><div class="decorCurrent" aria-live="polite"><span class="decorCurrentIcon" aria-hidden="true">🪑</span><div class="decorCurrentText"><b class="decorCurrentName">木のベンチ</b><small class="decorCurrentStock">手元0個</small></div></div><button class="decorToggle" type="button" aria-expanded="true" aria-controls="decorInventory">一覧を閉じる ▲</button></div><div class="decorInventory" id="decorInventory"><div class="decorPalette" role="group" aria-label="所持アイテム一覧">${DECOR_ITEMS.map(d=>`<button data-decor="${d.id}"><span>${d.icon}</span>${d.name}<small></small></button>`).join('')}</div><div class="decorTicketBar"><button class="decorBuy" type="button">1個追加（チケット2枚）</button><button class="bottleShortcut" type="button">ボトルレターを使う</button><button class="decorGrant" type="button">テスト用 +10枚</button></div></div><p class="decorHelp">空きマスをタップして配置 · 配置済みをタップして移動 · ドラッグで地図移動</p><div class="placementMapWrap"><canvas class="placementMap decorMap" aria-label="箱庭アイテムの配置用母島"></canvas></div><div class="decorBottom"><div class="decorInfo" aria-live="polite"></div><div class="decorArrows"><button data-dx="-1" data-dy="0" aria-label="左奥に移動">↖</button><button data-dx="0" data-dy="-1" aria-label="右奥に移動">↗</button><button data-dx="0" data-dy="1" aria-label="左手前に移動">↙</button><button data-dx="1" data-dy="0" aria-label="右手前に移動">↘</button><button class="decorStore" type="button">収納</button></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">まとめて確定</button></div><p class="placementHint">確定まで保存しません · キャンセルで全変更を取り消し</p></div></section>`;
+ dialog.innerHTML=`<section class="placementSheet decorSheet"><header><div><h2 id="decorTitle">箱庭アイテム</h2><p class="placementSub">解放時に各1個無料 · 大樹は限定1本 · 移動・収納は無料</p></div><button class="placementClose" aria-label="箱庭アイテム編集をキャンセル">×</button></header><div class="hakoniwaBalances">${hakoniwaItem('ticket','0枚',{surface:'menu'})}${hakoniwaItem('bottle','0通',{button:true,surface:'menu'})}</div><div class="decorQuickBar"><div class="decorCurrent" aria-live="polite"><span class="decorCurrentIcon" aria-hidden="true">🪑</span><div class="decorCurrentText"><b class="decorCurrentName">木のベンチ</b><small class="decorCurrentStock">手元0個</small></div></div><button class="decorToggle" type="button" aria-expanded="true" aria-controls="decorInventory">一覧を閉じる ▲</button></div><div class="decorInventory" id="decorInventory"><div class="decorPalette" role="group" aria-label="所持アイテム一覧">${DECOR_ITEMS.map(d=>`<button data-decor="${d.id}"><span>${d.icon}</span>${d.name}<small></small></button>`).join('')}</div><div class="decorTicketBar"><button class="decorBuy" type="button">1個追加（チケット2枚）</button><button class="bottleShortcut" type="button">ボトルレターを使う</button><button class="decorGrant" type="button">テスト用 +10枚</button></div></div><p class="decorHelp">空きマスをタップして配置 · 配置済みをタップして移動 · ドラッグで地図移動</p><div class="placementMapWrap"><canvas class="placementMap decorMap" aria-label="箱庭アイテムの配置用母島"></canvas></div><div class="decorBottom"><div class="decorInfo" aria-live="polite"></div><div class="decorArrows"><button data-dx="-1" data-dy="0" aria-label="左奥に移動">↖</button><button data-dx="0" data-dy="-1" aria-label="右奥に移動">↗</button><button data-dx="0" data-dy="1" aria-label="左手前に移動">↙</button><button data-dx="1" data-dy="0" aria-label="右手前に移動">↘</button><button class="decorStore" type="button">収納</button></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">まとめて確定</button></div><p class="placementHint">確定まで保存しません · キャンセルで全変更を取り消し</p></div></section>`;
  document.body.appendChild(dialog);document.body.style.overflow='hidden';
  const info=dialog.querySelector('.decorInfo'),confirm=dialog.querySelector('.placementConfirm');
  const toggle=dialog.querySelector('.decorToggle');
@@ -2572,9 +2634,12 @@ function openDecorEditor(focusUid=null){
   dialog.querySelector('.decorCurrentIcon').textContent=activeItem.icon;
   dialog.querySelector('.decorCurrentName').textContent=activeItem.name;
   dialog.querySelector('.decorCurrentStock').textContent=selected?'配置済みを選択中':`手元${available}個`;
-  dialog.querySelector('.decorTickets').textContent=draft.tickets;
+  dialog.querySelector('.ticketItem .hakoniwaQuantity').textContent=`${draft.tickets}枚`;
   const canExchange=!activeItem.unique&&DecorModel.unlocked(motherState,active);
-  dialog.querySelector('.bottleBalance').textContent=`ボトルレター ${hakoniwa.letters}/${BOTTLE_LETTER_LIMIT}通`;
+  const bottleBalance=dialog.querySelector('.bottleBalance');
+  const bottleQuantity=`${hakoniwa.letters}/${BOTTLE_LETTER_LIMIT}通`;
+  bottleBalance.querySelector('.hakoniwaQuantity').textContent=bottleQuantity;
+  bottleBalance.setAttribute('aria-label',`ボトルレター ${bottleQuantity}。使用画面を開く`);
   dialog.querySelector('.bottleShortcut').hidden=!canExchange||draft.tickets>=HAKONIWA_PRICE;
   dialog.querySelector('.decorBuy').hidden=!canExchange;
   dialog.querySelector('.decorBuy').disabled=!canExchange||draft.tickets<HAKONIWA_PRICE||draft.owned[active]>=Number.MAX_SAFE_INTEGER;
