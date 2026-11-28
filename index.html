@@ -752,6 +752,13 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
 
 /* DECOR-03: preserve all DECOR-02 mechanics; trade an always-visible 9-item grid
    for a 1-row selected-item bar and a reopenable inventory on phone. */
+
+.gameMenu{box-sizing:border-box;width:min(390px,calc(100% - 24px));max-height:calc(100dvh - 24px);overflow:auto;color:inherit}
+.gameMenu::backdrop{background:#233e3866}
+.gameMenu .modalActions{grid-template-columns:1fr;margin-top:10px}
+.gameMenu dl{margin:8px 0 0;font-size:13px;line-height:1.55}
+.gameMenu dt{font-weight:700}
+.gameMenu dd{margin:2px 0 8px}
 .bottleDialog{color:#273e36;width:min(340px,calc(100vw - 28px))}
 .bottleDialog::backdrop{background:#233e3880}
 .hakoniwaBalances{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:4px 12px;flex:0 0 auto}
@@ -978,7 +985,7 @@ main{max-width:480px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-co
   <div class="motherSection resourcesPanel"><h3>保有資源</h3><div class="motherGrid">
     <div class="motherStat">👥 人口<b id="resLife">0</b></div><div class="motherStat">⚙️ 産業<b id="resIndustry">0</b></div><div class="motherStat">🌿 自然<b id="resNature">0</b></div><div class="motherStat">🗿 文化<b id="resCulture">0</b></div>
   </div></div>
-  <div class="motherSection testTools" hidden><h3>テスト用</h3><div class="actions"><button class="action secondary" id="grantResources">各資源＋100</button></div></div>
+  <div class="motherSection testTools" hidden><h3>開発・QA用</h3><div class="actions"><button class="action secondary" id="grantResources">各資源＋100</button></div></div>
   <div class="motherBuildToolbar"><button class="action" id="buildMenuBtn">建築<span class="notifyDot" id="buildNotifyDot"></span></button></div><div class="motherSection" id="buildSection"><h3>建築</h3><div class="facilityGrid" id="facilityGrid"></div></div>
   <div class="motherSection motherOnly"><h3>発展段階の報酬</h3><div class="motherRewardGrid" id="tierRewards"></div></div>
   <div class="motherSection motherOnly"><h3>箱庭アンロック</h3><div class="decorGrid" id="decorRewards"></div></div>
@@ -1149,7 +1156,6 @@ function travelTransition(done){const wave=document.createElement('div');wave.cl
 function showSimpleModal(title,text,buttons){const bg=document.createElement('div');bg.className='modalBackdrop';const m=document.createElement('div');m.className='simpleModal';m.innerHTML=`<h3>${title}</h3><p>${text}</p><div class="modalActions"></div>`;const a=m.querySelector('.modalActions');buttons.forEach(({label,cls='secondary',fn})=>{const b=document.createElement('button');b.className=`action ${cls}`;b.textContent=label;b.onclick=()=>{bg.remove();fn&&fn()};a.appendChild(b)});bg.appendChild(m);document.body.appendChild(bg)}
 function abortExploreToMother(){pendingHaul=null;motherPreviewMode=false;showOnly(motherEl);motherEl.classList.add('show');motherPreviewBanner.classList.remove('show');backToExploreBtn.classList.remove('show');nextExpeditionBtn.style.display='';resetMotherBtn.style.display='';renderMother();window.scrollTo({top:0,behavior:'smooth'})}
 function confirmQuitExplore(){if(state.finished||state.animating)return;showSimpleModal('探索を終了しますか？','この探索で得た資源は持ち帰れません。',[{label:'探索を再開'},{label:'探索を終了',cls:'warn',fn:abortExploreToMother}])}
-let openMenu;
 function checkStageRewards(showToast=true){const checks=[['s2',stageDone(S2),'第2段階完成！','開拓予測強化：予測精度UP（狙った候補 33%→50%）'],['s3',stageDone(S3),'第3段階完成！','始まりの大樹を無料で1本獲得！箱庭アイテムから配置できます'],['s4',stageDone(S4),'第4段階完成！','集中探索と港プロジェクトを解放']];for(const [k,on,title,sub] of checks){if(on&&!motherState.rewards[k]){motherState.rewards[k]=true;if(showToast)showUnlockToast(title,sub)}}saveMother()}
 function buildMotherFacility(id){const f=FACILITIES.find(x=>x[0]===id);if(!f||motherPreviewMode||ct(id)>=f[4]||!f[7]())return;const cost=facilityCost(f);if(!canAfford(cost))return;const before={...motherState.stats},beforeRewards={...motherState.rewards};for(const [k,v] of Object.entries(cost)){motherState.resources[k]-=v;motherState.stats[k]=(motherState.stats[k]||0)+v}motherState.built[id]=ct(id)+1;checkStageRewards(false);saveMother();renderMother();requestAnimationFrame(()=>{animateBuiltCard(id);for(const k of KEYS){const d=motherState.stats[k]-before[k];if(d>0)bumpMotherStat(k,d)}});const notices={s2:['第2段階完成！','開拓予測強化：予測精度UP（狙った候補 33%→50%）'],s3:['第3段階完成！','始まりの大樹を1本獲得！箱庭アイテムから配置できます'],s4:['第4段階完成！','集中探索と港プロジェクトを解放']};for(const k of ['s2','s3','s4'])if(!beforeRewards[k]&&motherState.rewards[k])showUnlockToast(notices[k][0],notices[k][1])}
 function renderMother(){
@@ -1663,8 +1669,85 @@ renderMother=function(){
 const SLOT_ORDER=[17,18,24,25,16,19,23,26,10,11,12,9,15,22,29,30,31,32,33,8,13,20,27,34,14,21,28,7,6,5,4,3,2,1,0,35,36,37,38,39,40,41];
 function renderMotherScene(){renderPlacementScene()}
 
-openMenu=function(){showSimpleModal('Block Island α7.25 TEST-03','進行はこのブラウザに自動保存されます。別の端末や公開URLへ移す場合は、セーブを書き出してください。',[{label:'閉じる'},{label:'セーブ書き出し',fn:()=>{saveSnapshot();Platform.download('block-island-save.json',Platform.read(SAVE_KEY)||'{}')}},{label:'セーブ読み込み',fn:importSave},{label:'遊び方',fn:()=>showSimpleModal('遊び方','手札を選び、空いた陸地に配置。同じ施設を上下左右に並べ、タップで合体します。45ターン後は仕上げをして帰還。母島で建築すると景観と次の探索が発展します。',[{label:'閉じる'}])}])};
-function importSave(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=async()=>{try{const file=input.files[0];if(!file)return;const v=JSON.parse(await file.text());if(!validSnapshot(v))throw Error('invalid');showSimpleModal('セーブを読み込みますか？','現在のv2.0の進行を、選んだセーブの内容に置き換えます。',[{label:'キャンセル'},{label:'読み込む',fn:()=>{if(Platform.write(SAVE_KEY,JSON.stringify(v))){booting=true;location.reload();}else showUnlockToast('読み込みを保存できませんでした')}}])}catch{showUnlockToast('セーブを読み込めません','v2.0 αのセーブファイルを選んでください')}};input.click()}
+const GAME_MENU_PAGES={
+ settings:{title:'設定',body:'<p>このバージョンでは、ゲーム内で変更できる設定はありません。</p>'},
+ help:{title:'遊び方',body:`<dl>
+  <dt>探索</dt><dd>手札から施設を選び、空いた陸地に置きます。45ターン後の仕上げを終えたら、母島へ帰って資源を受け取ります。途中で探索を終了すると資源は持ち帰れません。</dd>
+  <dt>進化</dt><dd>同じ種類・レベルの施設を上下左右に隣接させ、タップで合体させます。Lv3同士を合体させると、2マスの最終進化になります。</dd>
+  <dt>建築</dt><dd>母島では持ち帰った資源を使って施設を建てます。島の発展に応じて建てられる施設が増え、港の完成を目指せます。</dd>
+  <dt>箱庭</dt><dd>解放した装飾を配置・移動・収納できます。通常の装飾と門は初回1個が無料で、追加1個は箱庭チケット2枚と交換できます。探索を完了して帰るとチケット1枚とボトルレター1通を獲得できます。ボトルレターの所持上限は20通です。</dd>
+ </dl>`},
+ save:{title:'セーブデータ',body:'<p>進行はこのブラウザに自動保存されます。別の端末に移すときは、バックアップを書き出してください。</p>'},
+ about:{title:'Block Islandについて',body:`<p>島を探索し、持ち帰った資源で母島を育てるパズルゲームです。</p>
+  <dl><dt>バージョン</dt><dd>${document.title.replace('Block Island ','')}（開発版）</dd>
+  <dt>アイコン制作</dt><dd>箱庭チケットとボトルレターはBlock Island用のオリジナルSVGです。</dd></dl>`}
+};
+function openMenu(){
+ const dialog=document.createElement('dialog');
+ dialog.className='simpleModal gameMenu';
+ dialog.setAttribute('aria-labelledby','gameMenuTitle');
+ dialog.innerHTML='<h3 id="gameMenuTitle" tabindex="-1"></h3><div class="gameMenuBody"></div><p class="gameMenuStatus" role="status" hidden></p><div class="modalActions"></div>';
+ const title=dialog.querySelector('h3'),body=dialog.querySelector('.gameMenuBody');
+ const actions=dialog.querySelector('.modalActions'),status=dialog.querySelector('.gameMenuStatus');
+ function addAction(label,fn){
+  const button=document.createElement('button');
+  button.type='button';button.className='action secondary';button.textContent=label;button.onclick=fn;
+  actions.append(button);
+ }
+ function report(message){status.textContent=message;status.hidden=false}
+ function showPage(key){
+  const page=GAME_MENU_PAGES[key];
+  title.textContent=page?.title||'メニュー';
+  body.innerHTML=page?.body||'';
+  status.hidden=true;
+  actions.replaceChildren();
+  if(!page){
+   for(const [id,entry] of Object.entries(GAME_MENU_PAGES))addAction(entry.title,()=>showPage(id));
+   addAction('ゲームに戻る',()=>dialog.close());
+  }else{
+   if(key==='save'){
+    addAction('バックアップを書き出す',()=>{
+     if(!saveSnapshot())return report('書き出せませんでした。少し待ってから再試行してください。');
+     const data=Platform.read(SAVE_KEY);
+     if(!data)return report('保存データを取得できませんでした。');
+     Platform.download('block-island-save.json',data);
+    });
+    addAction('バックアップを読み込む',()=>importSave(onRestore,report));
+   }
+   addAction('メニューに戻る',()=>showPage());
+  }
+  title.focus();
+ }
+ function onRestore(snapshot){
+  showPage('save');
+  title.textContent='セーブを読み込みますか？';
+  body.innerHTML='<p>いまの進行を、選んだバックアップの内容に置き換えます。</p>';
+  actions.replaceChildren();
+  addAction('キャンセル',()=>showPage('save'));
+  addAction('読み込む',()=>{
+   if(!Platform.write(SAVE_KEY,JSON.stringify(snapshot)))return report('読み込みを保存できませんでした。');
+   booting=true;
+   location.reload();
+  });
+ }
+ dialog.addEventListener('close',()=>dialog.remove(),{once:true});
+ document.body.append(dialog);
+ dialog.showModal();
+ showPage();
+}
+function importSave(onRestore,onError){
+ const input=document.createElement('input');
+ input.type='file';input.accept='.json,application/json';
+ input.onchange=async()=>{
+  try{
+   const file=input.files[0];if(!file)return;
+   const snapshot=JSON.parse(await file.text());
+   if(!validSnapshot(snapshot))throw Error('invalid save');
+   onRestore(snapshot);
+  }catch{onError('セーブを読み込めません。Block Islandのバックアップを選んでください。')}
+ };
+ input.click();
+}
 function enhanceResourceUI(){
  document.querySelectorAll('.resultTokens>.resultToken .tokenFace').forEach((e,i)=>{const k=KEYS[i];e.innerHTML=resourceIcon(k);e.setAttribute('aria-label',RESOURCE_COLORS[k]+'の資源トークン')});
  document.querySelectorAll('.devRow .devIcon').forEach((e,i)=>{const k=KEYS[i];e.innerHTML=resourceIcon(k);e.classList.add('resource-'+k);e.setAttribute('aria-label',RESOURCE_COLORS[k]+'系統の発展値')});
@@ -2612,7 +2695,7 @@ function openDecorEditor(focusUid=null){
  if(selected)active=selected.id;
  let target={x:selected?.x??9,y:selected?.y??9};let closed=false,view=null;
  const dialog=document.createElement('div');dialog.className='placementBackdrop decorBackdrop';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-labelledby','decorTitle');
- dialog.innerHTML=`<section class="placementSheet decorSheet"><header><div><h2 id="decorTitle">箱庭アイテム</h2><p class="placementSub">解放時に各1個無料 · 大樹は限定1本 · 移動・収納は無料</p></div><button class="placementClose" aria-label="箱庭アイテム編集をキャンセル">×</button></header><div class="hakoniwaBalances">${hakoniwaItem('ticket','0枚',{surface:'menu'})}${hakoniwaItem('bottle','0通',{button:true,surface:'menu'})}</div><div class="decorQuickBar"><div class="decorCurrent" aria-live="polite"><span class="decorCurrentIcon" aria-hidden="true">🪑</span><div class="decorCurrentText"><b class="decorCurrentName">木のベンチ</b><small class="decorCurrentStock">手元0個</small></div></div><button class="decorToggle" type="button" aria-expanded="true" aria-controls="decorInventory">一覧を閉じる ▲</button></div><div class="decorInventory" id="decorInventory"><div class="decorPalette" role="group" aria-label="所持アイテム一覧">${DECOR_ITEMS.map(d=>`<button data-decor="${d.id}"><span>${d.icon}</span>${d.name}<small></small></button>`).join('')}</div><div class="decorTicketBar"><button class="decorBuy" type="button">1個追加（チケット2枚）</button><button class="bottleShortcut" type="button">ボトルレターを使う</button><button class="decorGrant" type="button">テスト用 +10枚</button></div></div><p class="decorHelp">空きマスをタップして配置 · 配置済みをタップして移動 · ドラッグで地図移動</p><div class="placementMapWrap"><canvas class="placementMap decorMap" aria-label="箱庭アイテムの配置用母島"></canvas></div><div class="decorBottom"><div class="decorInfo" aria-live="polite"></div><div class="decorArrows"><button data-dx="-1" data-dy="0" aria-label="左奥に移動">↖</button><button data-dx="0" data-dy="-1" aria-label="右奥に移動">↗</button><button data-dx="0" data-dy="1" aria-label="左手前に移動">↙</button><button data-dx="1" data-dy="0" aria-label="右手前に移動">↘</button><button class="decorStore" type="button">収納</button></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">まとめて確定</button></div><p class="placementHint">確定まで保存しません · キャンセルで全変更を取り消し</p></div></section>`;
+ dialog.innerHTML=`<section class="placementSheet decorSheet"><header><div><h2 id="decorTitle">箱庭アイテム</h2><p class="placementSub">解放時に各1個無料 · 大樹は限定1本 · 移動・収納は無料</p></div><button class="placementClose" aria-label="箱庭アイテム編集をキャンセル">×</button></header><div class="hakoniwaBalances">${hakoniwaItem('ticket','0枚',{surface:'menu'})}${hakoniwaItem('bottle','0通',{button:true,surface:'menu'})}</div><div class="decorQuickBar"><div class="decorCurrent" aria-live="polite"><span class="decorCurrentIcon" aria-hidden="true">🪑</span><div class="decorCurrentText"><b class="decorCurrentName">木のベンチ</b><small class="decorCurrentStock">手元0個</small></div></div><button class="decorToggle" type="button" aria-expanded="true" aria-controls="decorInventory">一覧を閉じる ▲</button></div><div class="decorInventory" id="decorInventory"><div class="decorPalette" role="group" aria-label="所持アイテム一覧">${DECOR_ITEMS.map(d=>`<button data-decor="${d.id}"><span>${d.icon}</span>${d.name}<small></small></button>`).join('')}</div><div class="decorTicketBar"><button class="decorBuy" type="button">1個追加（チケット2枚）</button><button class="bottleShortcut" type="button">ボトルレターを使う</button><button class="decorGrant" type="button" hidden>テスト用 +10枚</button></div></div><p class="decorHelp">空きマスをタップして配置 · 配置済みをタップして移動 · ドラッグで地図移動</p><div class="placementMapWrap"><canvas class="placementMap decorMap" aria-label="箱庭アイテムの配置用母島"></canvas></div><div class="decorBottom"><div class="decorInfo" aria-live="polite"></div><div class="decorArrows"><button data-dx="-1" data-dy="0" aria-label="左奥に移動">↖</button><button data-dx="0" data-dy="-1" aria-label="右奥に移動">↗</button><button data-dx="0" data-dy="1" aria-label="左手前に移動">↙</button><button data-dx="1" data-dy="0" aria-label="右手前に移動">↘</button><button class="decorStore" type="button">収納</button></div><div class="placementActions"><button class="placementCancel">キャンセル</button><button class="placementConfirm">まとめて確定</button></div><p class="placementHint">確定まで保存しません · キャンセルで全変更を取り消し</p></div></section>`;
  document.body.appendChild(dialog);document.body.style.overflow='hidden';
  const info=dialog.querySelector('.decorInfo'),confirm=dialog.querySelector('.placementConfirm');
  const toggle=dialog.querySelector('.decorToggle');
